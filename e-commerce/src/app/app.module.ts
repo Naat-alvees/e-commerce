@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { LoginComponent } from './login/login.component';
 import { MenuCategoriasComponent } from './menu-categorias/menu-categorias.component';
+import { CadastroComponent } from './cadastro/cadastro.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +15,9 @@ import { MenuCategoriasComponent } from './menu-categorias/menu-categorias.compo
     MenuComponent,
     AppComponent,
     LoginComponent,
-    MenuCategoriasComponent
+    MenuCategoriasComponent,
+    CadastroComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
