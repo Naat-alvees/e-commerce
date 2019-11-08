@@ -2,7 +2,8 @@
     border-color:#17A589;
     margin: 0 auto; /* Added */
     /* float: none; */
-    margin-top: 3%;
+    margin-top: 15px;
+    margin-bottom: 15px;
     width: 52%;
 }
 
@@ -19,3 +20,11 @@
     background-color: #17A589;
 }
 
+a{
+    color: #17A589;
+    text-decoration: none;
+}
+a:hover {
+    color: #17A589;
+    text-decoration: none;
+  }
