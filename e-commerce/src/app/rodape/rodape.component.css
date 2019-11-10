@@ -1,0 +1,13 @@
+.rodape{
+    background: #17A589;
+    color: white;
+}
+
+a{
+    color: white;
+    text-decoration: none;
+}
+
+a:hover{
+    color: rgb(139, 247, 225);
+}

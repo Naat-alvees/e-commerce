@@ -9,6 +9,9 @@ import { InfantilComponent } from './infantil/infantil.component'
 import { EsporteFinoComponent } from './esporte-fino/esporte-fino.component'
 import { EsporteComponent} from './esporte/esporte.component'
 import { DescricaoProdutoComponent} from './descricao-produto/descricao-produto.component'
+import { InformacoesClienteComponent } from './informacoes-cliente/informacoes-cliente.component';
+import { EditarClienteComponent } from './editar-cliente/editar-cliente.component';
+import { EditarSenhaClienteComponent } from './editar-senha-cliente/editar-senha-cliente.component';
 
 
 const routes: Routes = [
@@ -47,6 +50,18 @@ const routes: Routes = [
   {
     path: '',
     component: HomeComponent
+  },
+  {
+    path: 'informacoes-cliente',
+    component: InformacoesClienteComponent
+  },
+  {
+    path: 'editar-cliente',
+    component: EditarClienteComponent
+  },
+  {
+    path: 'editar-senha-cliente',
+    component: EditarSenhaClienteComponent
   }
 ];
 

@@ -2,7 +2,8 @@
     border-color:#17A589;
     margin: 0 auto; /* Added */
     /* float: none; */
-    margin-top: 1%;
+    margin-top: 15px;
+    margin-bottom: 15px;
     width: 52%;
 }
 
@@ -19,30 +20,11 @@
     background-color: #17A589;
 }
 
-.formato{
-    float: left;
-    width: 30%;
-    padding-right: 5%;
+a{
+    color: #17A589;
+    text-decoration: none;
 }
-
-.formato2{
-    float: left;
-    width: 70%;
-}
-
-.formato3{
-    clear: both;
-}
-
-.formato4{
-    float: left;
-    width: 50%;
-    padding-right: 5%;
-}
-
-.formato5{
-    float: left;
-    width: 50%;
-}
-
-
+a:hover {
+    color: #17A589;
+    text-decoration: none;
+  }

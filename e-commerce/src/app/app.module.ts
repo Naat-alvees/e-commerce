@@ -13,6 +13,10 @@ import { MasculinoComponent } from './masculino/masculino.component';
 import { InfantilComponent } from './infantil/infantil.component';
 import { EsporteFinoComponent } from './esporte-fino/esporte-fino.component';
 import { EsporteComponent } from './esporte/esporte.component';
+import { InformacoesClienteComponent } from './informacoes-cliente/informacoes-cliente.component';
+import { EditarClienteComponent } from './editar-cliente/editar-cliente.component';
+import { EditarSenhaClienteComponent } from './editar-senha-cliente/editar-senha-cliente.component';
+import { RodapeComponent } from './rodape/rodape.component';
 import { DescricaoProdutoComponent } from './descricao-produto/descricao-produto.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 
@@ -29,8 +33,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     MasculinoComponent,
     InfantilComponent,
     EsporteFinoComponent,
-    EsporteComponent,
-    DescricaoProdutoComponent
+    EsporteComponent
   ],
   imports: [
     BrowserModule,
