@@ -2,11 +2,11 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
-  selector: 'app-esporte',
-  templateUrl: './esporte.component.html',
-  styleUrls: ['./esporte.component.css']
+  selector: 'app-produtos',
+  templateUrl: './produtos.component.html',
+  styleUrls: ['./produtos.component.css']
 })
-export class EsporteComponent implements OnInit {
+export class ProdutosComponent implements OnInit {
 
   public administrador: boolean = true;
   modalRef: BsModalRef;
