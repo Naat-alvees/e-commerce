@@ -17,6 +17,8 @@ import { InformacoesClienteComponent } from './informacoes-cliente/informacoes-c
 import { EditarClienteComponent } from './editar-cliente/editar-cliente.component';
 import { EditarSenhaClienteComponent } from './editar-senha-cliente/editar-senha-cliente.component';
 import { RodapeComponent } from './rodape/rodape.component';
+import { DescricaoProdutoComponent } from './descricao-produto/descricao-produto.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 import { CarrinhoComponent } from './carrinho/carrinho.component';
 
 @NgModule({
@@ -42,7 +44,8 @@ import { CarrinhoComponent } from './carrinho/carrinho.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ModalModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
