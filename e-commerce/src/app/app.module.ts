@@ -33,7 +33,12 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     MasculinoComponent,
     InfantilComponent,
     EsporteFinoComponent,
-    EsporteComponent
+    EsporteComponent,
+    DescricaoProdutoComponent,
+    InformacoesClienteComponent,
+    EditarClienteComponent,
+    EditarSenhaClienteComponent,
+    RodapeComponent 
   ],
   imports: [
     BrowserModule,

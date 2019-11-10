@@ -48,10 +48,6 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
-    path: '',
-    component: HomeComponent
-  },
-  {
     path: 'informacoes-cliente',
     component: InformacoesClienteComponent
   },
@@ -62,6 +58,10 @@ const routes: Routes = [
   {
     path: 'editar-senha-cliente',
     component: EditarSenhaClienteComponent
+  },
+  {
+    path: '',
+    component: HomeComponent
   }
 ];
 
