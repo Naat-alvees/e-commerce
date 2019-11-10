@@ -13,6 +13,8 @@ import { MasculinoComponent } from './masculino/masculino.component';
 import { InfantilComponent } from './infantil/infantil.component';
 import { EsporteFinoComponent } from './esporte-fino/esporte-fino.component';
 import { EsporteComponent } from './esporte/esporte.component';
+import { DescricaoProdutoComponent } from './descricao-produto/descricao-produto.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -27,11 +29,13 @@ import { EsporteComponent } from './esporte/esporte.component';
     MasculinoComponent,
     InfantilComponent,
     EsporteFinoComponent,
-    EsporteComponent
+    EsporteComponent,
+    DescricaoProdutoComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ModalModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

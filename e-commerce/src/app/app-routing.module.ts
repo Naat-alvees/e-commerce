@@ -8,6 +8,7 @@ import { MasculinoComponent } from './masculino/masculino.component'
 import { InfantilComponent } from './infantil/infantil.component'
 import { EsporteFinoComponent } from './esporte-fino/esporte-fino.component'
 import { EsporteComponent} from './esporte/esporte.component'
+import { DescricaoProdutoComponent} from './descricao-produto/descricao-produto.component'
 
 
 const routes: Routes = [
@@ -30,6 +31,10 @@ const routes: Routes = [
   {
     path:'esporte',
     component: EsporteComponent
+  },
+  {
+    path:'descricao-produto',
+    component: DescricaoProdutoComponent
   },
   { 
     path: 'cadastro',
