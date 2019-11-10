@@ -35,12 +35,12 @@ import { CarrinhoComponent } from './carrinho/carrinho.component';
     InfantilComponent,
     EsporteFinoComponent,
     EsporteComponent,
-    CarrinhoComponent
-    EsporteComponent,
+    DescricaoProdutoComponent,
     InformacoesClienteComponent,
     EditarClienteComponent,
     EditarSenhaClienteComponent,
-    RodapeComponent
+    RodapeComponent 
+    CarrinhoComponent
   ],
   imports: [
     BrowserModule,
