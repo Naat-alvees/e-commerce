@@ -13,6 +13,10 @@ import { MasculinoComponent } from './masculino/masculino.component';
 import { InfantilComponent } from './infantil/infantil.component';
 import { EsporteFinoComponent } from './esporte-fino/esporte-fino.component';
 import { EsporteComponent } from './esporte/esporte.component';
+import { InformacoesClienteComponent } from './informacoes-cliente/informacoes-cliente.component';
+import { EditarClienteComponent } from './editar-cliente/editar-cliente.component';
+import { EditarSenhaClienteComponent } from './editar-senha-cliente/editar-senha-cliente.component';
+import { RodapeComponent } from './rodape/rodape.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,11 @@ import { EsporteComponent } from './esporte/esporte.component';
     MasculinoComponent,
     InfantilComponent,
     EsporteFinoComponent,
-    EsporteComponent
+    EsporteComponent,
+    InformacoesClienteComponent,
+    EditarClienteComponent,
+    EditarSenhaClienteComponent,
+    RodapeComponent
   ],
   imports: [
     BrowserModule,
