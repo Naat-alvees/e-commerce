@@ -13,6 +13,7 @@ import { MasculinoComponent } from './masculino/masculino.component';
 import { InfantilComponent } from './infantil/infantil.component';
 import { EsporteFinoComponent } from './esporte-fino/esporte-fino.component';
 import { EsporteComponent } from './esporte/esporte.component';
+import { CarrinhoComponent } from './carrinho/carrinho.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { EsporteComponent } from './esporte/esporte.component';
     MasculinoComponent,
     InfantilComponent,
     EsporteFinoComponent,
-    EsporteComponent
+    EsporteComponent,
+    CarrinhoComponent
   ],
   imports: [
     BrowserModule,

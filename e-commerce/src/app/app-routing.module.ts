@@ -8,9 +8,14 @@ import { MasculinoComponent } from './masculino/masculino.component'
 import { InfantilComponent } from './infantil/infantil.component'
 import { EsporteFinoComponent } from './esporte-fino/esporte-fino.component'
 import { EsporteComponent} from './esporte/esporte.component'
+import { CarrinhoComponent } from './carrinho/carrinho.component';
 
 
 const routes: Routes = [
+  {
+    path:'carrinho',
+    component: CarrinhoComponent
+  },
   {
     path:'feminino',
     component: FemininoComponent

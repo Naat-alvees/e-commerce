@@ -1,0 +1,18 @@
+.formLink{
+    cursor:pointer;
+}
+
+.borda-qnt{
+    border: 1px solid gray;
+    padding: 2% 5%;
+    margin: 0 5px;
+}
+
+.resumo-compra{
+    background: #f0f0f5;
+}
+
+.span-format{
+    display: inline-block;
+    width: 50%;
+}
