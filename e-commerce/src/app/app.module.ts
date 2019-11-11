@@ -17,6 +17,13 @@ import { DescricaoProdutoComponent } from './descricao-produto/descricao-produto
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CarrinhoComponent } from './carrinho/carrinho.component';
 import { FinalizarPedidoComponent } from './finalizar-pedido/finalizar-pedido.component';
+import { NovoProdutoComponent } from './novo-produto/novo-produto.component';
+import { AdmClienteComponent } from './adm-cliente/adm-cliente.component';
+import { AdmProdutosComponent } from './adm-produtos/adm-produtos.component';
+
+import {CdkTableModule} from '@angular/cdk/table';
+import { MatFormFieldModule, MatTableModule, MatInputModule} from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -34,11 +41,19 @@ import { FinalizarPedidoComponent } from './finalizar-pedido/finalizar-pedido.co
     EditarSenhaClienteComponent,
     RodapeComponent ,
     CarrinhoComponent,
+    NovoProdutoComponent,
+    AdmClienteComponent,
+    AdmProdutosComponent
     FinalizarPedidoComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    CdkTableModule,
+    MatFormFieldModule,
+    MatTableModule,
+    MatInputModule,
+    BrowserAnimationsModule,
     ModalModule.forRoot()
   ],
   providers: [],

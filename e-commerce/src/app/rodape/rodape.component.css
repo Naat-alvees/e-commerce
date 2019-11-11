@@ -1,6 +1,10 @@
 .rodape{
+    margin-top: 2%;
+    padding-top: 1%;
+    padding-bottom: 1%;
     background: #17A589;
     color: white;
+
 }
 
 a{
@@ -10,4 +14,8 @@ a{
 
 a:hover{
     color: rgb(139, 247, 225);
+}
+
+.formato{
+    padding-left: 10%;
 }
