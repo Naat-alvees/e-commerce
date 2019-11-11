@@ -16,6 +16,7 @@ import { RodapeComponent } from './rodape/rodape.component';
 import { DescricaoProdutoComponent } from './descricao-produto/descricao-produto.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CarrinhoComponent } from './carrinho/carrinho.component';
+import { FinalizarPedidoComponent } from './finalizar-pedido/finalizar-pedido.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { CarrinhoComponent } from './carrinho/carrinho.component';
     EditarClienteComponent,
     EditarSenhaClienteComponent,
     RodapeComponent ,
-    CarrinhoComponent
+    CarrinhoComponent,
+    FinalizarPedidoComponent
   ],
   imports: [
     BrowserModule,

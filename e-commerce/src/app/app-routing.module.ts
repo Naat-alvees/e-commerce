@@ -9,6 +9,7 @@ import { CarrinhoComponent } from './carrinho/carrinho.component';
 import { InformacoesClienteComponent } from './informacoes-cliente/informacoes-cliente.component';
 import { EditarClienteComponent } from './editar-cliente/editar-cliente.component';
 import { EditarSenhaClienteComponent } from './editar-senha-cliente/editar-senha-cliente.component';
+import { FinalizarPedidoComponent } from './finalizar-pedido/finalizar-pedido.component'
 
 
 const routes: Routes = [
@@ -43,6 +44,10 @@ const routes: Routes = [
   {
     path: 'editar-senha-cliente',
     component: EditarSenhaClienteComponent
+  },
+  {
+    path: 'finalizar-pedido',
+    component: FinalizarPedidoComponent
   },
   {
     path: '',
