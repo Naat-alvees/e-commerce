@@ -22,8 +22,9 @@ import { AdmClienteComponent } from './adm-cliente/adm-cliente.component';
 import { AdmProdutosComponent } from './adm-produtos/adm-produtos.component';
 
 import {CdkTableModule} from '@angular/cdk/table';
-import { MatFormFieldModule, MatTableModule, MatInputModule} from '@angular/material';
+import { MatFormFieldModule, MatTableModule, MatInputModule, MatIconModule} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SobreComponent } from './sobre/sobre.component';
 
 @NgModule({
   declarations: [
@@ -43,8 +44,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CarrinhoComponent,
     NovoProdutoComponent,
     AdmClienteComponent,
-    AdmProdutosComponent
     FinalizarPedidoComponent
+    AdmProdutosComponent,
+    SobreComponent
   ],
   imports: [
     BrowserModule,
@@ -54,6 +56,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatTableModule,
     MatInputModule,
     BrowserAnimationsModule,
+    MatIconModule,
     ModalModule.forRoot()
   ],
   providers: [],

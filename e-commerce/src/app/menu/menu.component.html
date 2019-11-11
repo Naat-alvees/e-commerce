@@ -19,15 +19,16 @@
                 </div>
                 <div class="dropdown" *ngIf = "administrador">
                     <button class="btn"><img src="../../assets/settings.png" width="35px"></button>
-                    <div class="dropdown-content">
+                    <div class="dropdown-content" style="z-index:4;">
                         <a routerLink="/adm-cliente">Clientes</a>
-                        <a routerLink="/informacoes-cliente">Produtos</a>
+                        <a routerLink="/adm-produtos">Produtos</a>
+                        <a routerLink="/novo-produto">Novo Produto</a>
                     </div>
                 </div>
                 
                 <div class="dropdown" style="float:right;">
                     <button class="btn"><img src="../../assets/user.png" width="50px"alt=""></button>
-                    <div class="dropdown-content">
+                    <div class="dropdown-content" style="z-index:4;">
                         <a routerLink="/login">Login</a>
                         <a routerLink="/informacoes-cliente">Minha Conta</a>
                         <a routerLink="#">Logout</a>

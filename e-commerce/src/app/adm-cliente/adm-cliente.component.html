@@ -28,6 +28,20 @@
                 <th mat-header-cell *matHeaderCellDef> Symbol </th>
                 <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
             </ng-container>
+
+            <ng-container matColumnDef="edit">
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let element">
+                    <button type="button" class="btn btn-outline-success btn-sm">Editar</button>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="delete">
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let element">
+                    <button type="button" class="btn btn-outline-danger btn-sm">Excluir</button>
+                </td>
+            </ng-container>
         
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

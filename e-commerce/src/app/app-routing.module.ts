@@ -11,6 +11,9 @@ import { EditarClienteComponent } from './editar-cliente/editar-cliente.componen
 import { EditarSenhaClienteComponent } from './editar-senha-cliente/editar-senha-cliente.component';
 import { FinalizarPedidoComponent } from './finalizar-pedido/finalizar-pedido.component'
 import { AdmClienteComponent } from './adm-cliente/adm-cliente.component'
+import { AdmProdutosComponent } from './adm-produtos/adm-produtos.component'
+import { NovoProdutoComponent } from './novo-produto/novo-produto.component'
+import { SobreComponent } from './sobre/sobre.component'
 
 
 const routes: Routes = [
@@ -25,6 +28,18 @@ const routes: Routes = [
   {
     path:'produtos',
     component: ProdutosComponent
+  },
+  {
+    path:'adm-produtos',
+    component: AdmProdutosComponent
+  },
+  {
+    path:'novo-produto',
+    component: NovoProdutoComponent
+  },
+  {
+    path:'sobre',
+    component: SobreComponent
   },
   {
     path:'descricao-produto',
