@@ -1,0 +1,20 @@
+.card{
+    border-color:#17A589;
+    margin: 0 auto; /* Added */
+    /* float: none; */
+    margin-top: 1%;
+    width: 52%;
+}
+
+.card-header, .card-footer{
+    background-color: #17A589;
+    color: white;
+}
+
+.btn-outline-dark{
+    border-color:#17A589;
+}
+
+.btn-outline-dark:hover{
+    background-color: #17A589;
+}

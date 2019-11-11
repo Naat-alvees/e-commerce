@@ -21,7 +21,7 @@ import { AdmClienteComponent } from './adm-cliente/adm-cliente.component';
 import { AdmProdutosComponent } from './adm-produtos/adm-produtos.component';
 
 import {CdkTableModule} from '@angular/cdk/table';
-import { MatFormFieldModule, MatTableModule, MatInputModule} from '@angular/material';
+import { MatFormFieldModule, MatTableModule, MatInputModule, MatIconModule} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -52,6 +52,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatTableModule,
     MatInputModule,
     BrowserAnimationsModule,
+    MatIconModule,
     ModalModule.forRoot()
   ],
   providers: [],

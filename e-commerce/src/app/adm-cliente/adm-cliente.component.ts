@@ -28,7 +28,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class AdmClienteComponent implements OnInit {
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol','edit', 'delete'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
   constructor() { }
