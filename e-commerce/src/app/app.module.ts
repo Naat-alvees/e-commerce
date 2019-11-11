@@ -23,6 +23,7 @@ import { AdmProdutosComponent } from './adm-produtos/adm-produtos.component';
 import {CdkTableModule} from '@angular/cdk/table';
 import { MatFormFieldModule, MatTableModule, MatInputModule, MatIconModule} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SobreComponent } from './sobre/sobre.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CarrinhoComponent,
     NovoProdutoComponent,
     AdmClienteComponent,
-    AdmProdutosComponent
+    AdmProdutosComponent,
+    SobreComponent
   ],
   imports: [
     BrowserModule,

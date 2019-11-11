@@ -12,6 +12,7 @@ import { EditarSenhaClienteComponent } from './editar-senha-cliente/editar-senha
 import { AdmClienteComponent } from './adm-cliente/adm-cliente.component'
 import { AdmProdutosComponent } from './adm-produtos/adm-produtos.component'
 import { NovoProdutoComponent } from './novo-produto/novo-produto.component'
+import { SobreComponent } from './sobre/sobre.component'
 
 
 const routes: Routes = [
@@ -34,6 +35,10 @@ const routes: Routes = [
   {
     path:'novo-produto',
     component: NovoProdutoComponent
+  },
+  {
+    path:'sobre',
+    component: SobreComponent
   },
   {
     path:'descricao-produto',
