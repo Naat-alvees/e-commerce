@@ -14,13 +14,23 @@
                 </form> 
             </div>
             <div class="col-lg-3 d-flex justify-content-end align-items-center ">
-                <button class="btn" routerLink = '/carrinho'><img src="../../assets/sacola-compra.png" width="35px"></button>
+                <div *ngIf = "!administrador">
+                    <button class="btn" routerLink = '/carrinho'><img src="../../assets/sacola-compra.png" width="35px"></button>
+                </div>
+                <div class="dropdown" *ngIf = "administrador">
+                    <button class="btn"><img src="../../assets/settings.png" width="35px"></button>
+                    <div class="dropdown-content">
+                        <a routerLink="/adm-cliente">Clientes</a>
+                        <a routerLink="/informacoes-cliente">Produtos</a>
+                    </div>
+                </div>
+                
                 <div class="dropdown" style="float:right;">
                     <button class="btn"><img src="../../assets/user.png" width="50px"alt=""></button>
                     <div class="dropdown-content">
-                        <a href="/login">Login</a>
-                        <a href="/informacoes-cliente">Minha Conta</a>
-                        <a href="#">Logout</a>
+                        <a routerLink="/login">Login</a>
+                        <a routerLink="/informacoes-cliente">Minha Conta</a>
+                        <a routerLink="#">Logout</a>
                     </div>
                 </div>
             </div>

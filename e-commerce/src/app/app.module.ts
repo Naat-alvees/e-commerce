@@ -16,6 +16,13 @@ import { RodapeComponent } from './rodape/rodape.component';
 import { DescricaoProdutoComponent } from './descricao-produto/descricao-produto.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CarrinhoComponent } from './carrinho/carrinho.component';
+import { NovoProdutoComponent } from './novo-produto/novo-produto.component';
+import { AdmClienteComponent } from './adm-cliente/adm-cliente.component';
+import { AdmProdutosComponent } from './adm-produtos/adm-produtos.component';
+
+import {CdkTableModule} from '@angular/cdk/table';
+import { MatFormFieldModule, MatTableModule, MatInputModule} from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -32,11 +39,19 @@ import { CarrinhoComponent } from './carrinho/carrinho.component';
     EditarClienteComponent,
     EditarSenhaClienteComponent,
     RodapeComponent ,
-    CarrinhoComponent
+    CarrinhoComponent,
+    NovoProdutoComponent,
+    AdmClienteComponent,
+    AdmProdutosComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    CdkTableModule,
+    MatFormFieldModule,
+    MatTableModule,
+    MatInputModule,
+    BrowserAnimationsModule,
     ModalModule.forRoot()
   ],
   providers: [],

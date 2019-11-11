@@ -9,12 +9,17 @@ import { CarrinhoComponent } from './carrinho/carrinho.component';
 import { InformacoesClienteComponent } from './informacoes-cliente/informacoes-cliente.component';
 import { EditarClienteComponent } from './editar-cliente/editar-cliente.component';
 import { EditarSenhaClienteComponent } from './editar-senha-cliente/editar-senha-cliente.component';
+import { AdmClienteComponent } from './adm-cliente/adm-cliente.component'
 
 
 const routes: Routes = [
   {
     path:'carrinho',
     component: CarrinhoComponent
+  },
+  {
+    path:'adm-cliente',
+    component: AdmClienteComponent
   },
   {
     path:'produtos',
