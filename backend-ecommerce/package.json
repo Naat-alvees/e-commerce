@@ -1,0 +1,27 @@
+{
+  "name": "backend-ecommerce",
+  "version": "1.0.0",
+  "description": "Desenvolvimento de um E-commerce utilizando as tecnologias: Angular, NodeJS, ExpressJS, MySQL",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Naat-alvees/e-commerce.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Naat-alvees/e-commerce/issues"
+  },
+  "homepage": "https://github.com/Naat-alvees/e-commerce#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mysql": "^2.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4"
+  }
+}
