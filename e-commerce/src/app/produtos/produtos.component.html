@@ -11,8 +11,8 @@
                         <button type="button" class="btn btn-danger espaco">Add na sacola</button> 
                     </div>
                     <div *ngIf = "administrador">
-                        <button type="button" class="btn btn-success" (click)="openModal(template)">Editar</button> 
-                        <button type="button" class="btn btn-danger espaco">Excluir</button> 
+                        <button type="button" class="btn btn-success" (click)="openModalEditar(template)">Editar</button> 
+                        <button type="button" class="btn btn-danger espaco" (click)="openModalExcluir(template1)">Excluir</button> 
                     </div>
                 </div>
             </div>
@@ -28,8 +28,8 @@
                         <button type="button" class="btn btn-danger espaco">Add na sacola</button> 
                     </div>
                     <div *ngIf = "administrador">
-                        <button type="button" class="btn btn-success" (click)="openModal(template)">Editar</button> 
-                        <button type="button" class="btn btn-danger espaco">Excluir</button> 
+                        <button type="button" class="btn btn-success" (click)="openModalEditar(template)">Editar</button> 
+                        <button type="button" class="btn btn-danger espaco" (click)="openModalExcluir(template1)">Excluir</button> 
                     </div>
                 </div>
             </div>
@@ -45,8 +45,8 @@
                         <button type="button" class="btn btn-danger espaco">Add na sacola</button> 
                     </div>
                     <div *ngIf = "administrador">
-                        <button type="button" class="btn btn-success" (click)="openModal(template)">Editar</button> 
-                        <button type="button" class="btn btn-danger espaco">Excluir</button> 
+                        <button type="button" class="btn btn-success" (click)="openModalEditar(template)">Editar</button> 
+                        <button type="button" class="btn btn-danger espaco" (click)="openModalExcluir(template1)">Excluir</button> 
                     </div>
                 </div>
             </div>
@@ -57,7 +57,7 @@
 <ng-template #template>
     <div class="modal-header">
         <h4 class="modal-title pull-left">Editar Produto</h4>
-        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalEditar.hide()">
         <span aria-hidden="true">&times;</span>
         </button>
     </div>
@@ -99,3 +99,22 @@
     </div>
 </ng-template>
     
+<ng-template #template1>
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" >Excluir Produto</h5>
+            <button type="button" class="close pull-right" aria-label="Close" (click)="modalExcluir.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button> 
+        </div>
+
+        <div class="modal-body">
+            <p>Você tem certeza que deseja excluir este produto?</p>
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="modalExcluir.hide()">Cancelar</button>
+            <button type="button" class="btn btn-danger" >Excluir</button>
+          </div>
+    </div>
+</ng-template>

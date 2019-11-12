@@ -16,6 +16,7 @@ import { RodapeComponent } from './rodape/rodape.component';
 import { DescricaoProdutoComponent } from './descricao-produto/descricao-produto.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CarrinhoComponent } from './carrinho/carrinho.component';
+import { FinalizarPedidoComponent } from './finalizar-pedido/finalizar-pedido.component';
 import { NovoProdutoComponent } from './novo-produto/novo-produto.component';
 import { AdmClienteComponent } from './adm-cliente/adm-cliente.component';
 import { AdmProdutosComponent } from './adm-produtos/adm-produtos.component';
@@ -43,6 +44,7 @@ import { SobreComponent } from './sobre/sobre.component';
     CarrinhoComponent,
     NovoProdutoComponent,
     AdmClienteComponent,
+    FinalizarPedidoComponent,
     AdmProdutosComponent,
     SobreComponent
   ],

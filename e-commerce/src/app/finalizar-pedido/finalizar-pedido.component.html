@@ -1,0 +1,111 @@
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-4">
+            <div class="card">
+                <div class="card-header">
+                    Endereço
+                </div>
+                <div class="card-body">
+                        <b>Natasha Alves de Castro</b> <br>
+                        Rua Gabriela Augusta da Silveira, 55 <br>
+                        Jardim do Contorno <br>
+                        37706-170 | Pocos de Caldas - MG <br>
+                        (35) 99127-8588
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card">
+                <div class="card-header">
+                    Pagamento
+                </div>
+                <div class="card-body">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="exampleRadios"  value="opcaoCartao" (change) = "selectCartao()">
+                        <label class="form-check-label" >
+                            Cartão de Crédito
+                        </label>
+                    </div>
+                    <div *ngIf="pagamentoCartao">
+                        <form class="text-sm">
+                            <div class="form-group">
+                                <label class="">N° do cartão</label>
+                                <input type="text" class="form-control form-control-sm"  placeholder="0000 0000 0000 0000">
+                            </div>
+                            <div class="form-group">
+                                <label >Nome (igual do cartão)</label>
+                                <input type="text" class="form-control form-control-sm"  placeholder="Nome">
+                            </div>
+                            <div class="form-group">
+                                <label >Vencimento</label>
+                                <input type="text" class="form-control form-control-sm"  placeholder="00/0000">
+                            </div>
+                            <div class="form-group">
+                                <label >Cod de segurança</label>
+                                <input type="text" class="form-control form-control-sm"  placeholder="000">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="exampleRadios"  value="opcaoBoleto" (change) = "selectBoleto()">
+                        <label class="form-check-label" >
+                            Boleto
+                        </label>
+                    </div>
+                    <div *ngIf="pagamentoBoleto" class="text-sm">
+                        <ul>
+                            <li>Pagamento somente à vista.</li>
+                            <li>O boleto vence em 3 dias úteis.</li>
+                            <li>É necessário imprimir o boleto ou utilizar o código de barras do mesmo para fazer o pagamento.</li>
+                            <li>Imprima o boleto após a finalização da compra.</li>
+                            <li>O boleto não será enviado para o seu endereço físico</li> 
+                        </ul>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card">
+                <div class="card-header">
+                    Resumo do pedido
+                </div>
+                <div class="card-body">
+                    <div>   <!--  Inicio produto -->
+                        <div class="row"> 
+                            <div class="col-3 ">
+                                <img src="../../assets/camiseta.jpg" width="60px" height="65px" alt="">
+                            </div>
+                            <div class="col-5 ">
+                                <div class="text-sm  mt-1">
+                                    <b>Uma bela camisa</b>
+                                    Quantidade: 3
+                                </div>
+                            </div>
+                            <div class="col-4 d-flex align-items-center ">
+                                <h5>R$ 60,00</h5>
+                            </div>
+                            
+                        </div>
+                    </div> <!-- Fim produto -->
+                    
+                    
+                </div>
+                
+                
+                <div class=" border bg-light">
+                    <div class="row p-3">
+                        <div class="col-6">
+                            <h5>Total</h5>
+                        </div>
+                        <div class="col-6 d-flex justify-content-end">
+                            <h4>R$60,00</h4>
+                        </div>
+                    </div>
+                    
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
