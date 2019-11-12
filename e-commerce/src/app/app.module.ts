@@ -44,7 +44,7 @@ import { SobreComponent } from './sobre/sobre.component';
     CarrinhoComponent,
     NovoProdutoComponent,
     AdmClienteComponent,
-    FinalizarPedidoComponent
+    FinalizarPedidoComponent,
     AdmProdutosComponent,
     SobreComponent
   ],

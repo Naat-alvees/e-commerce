@@ -9,16 +9,21 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 export class ProdutosComponent implements OnInit {
 
   public administrador: boolean = true;
-  modalRef: BsModalRef;
+  public modalEditar: BsModalRef;
+  public modalExcluir: BsModalRef;
+
 
   constructor(private modalService: BsModalService) { }
 
   ngOnInit() {
     
   }
+  openModalEditar(template: TemplateRef<any>) {
+    this.modalEditar = this.modalService.show(template, {class: 'modal-dialog-centered'});
+  }
 
-  openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template);
+  openModalExcluir(template: TemplateRef<any>) {
+    this.modalExcluir = this.modalService.show(template, {class: 'modal-dialog-centered'});
   }
 
 }
