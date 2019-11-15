@@ -26,5 +26,5 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors(corsOptions));
 
-var routes = require('./app/routes/approutes'); //importing route
+var routes = require('./routes/approutes'); //importing route
 routes(app); //register tnhe route
