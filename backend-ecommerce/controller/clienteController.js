@@ -50,7 +50,7 @@ exports.update_a_cliente = function(req, res) {
 
 
 exports.delete_a_cliente = function(req, res) {
-  Cliente.remove( req.params.clienteId, function(err, cliente) {
+  Cliente.remove(req.params.clienteId, function(err, cliente) {
     if (err)
       res.send(err);
     res.json({ message: 'Cliente successfully deleted' });

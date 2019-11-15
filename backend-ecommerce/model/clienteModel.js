@@ -29,7 +29,7 @@ Cliente.createCliente = function (newCliente, result) {
             });           
 };
 Cliente.getClienteById = function (clienteId, result) {
-        sql.query("Select * from cliente where id = ? ", clienteId, function (err, res) {             
+        sql.query("Select * from cliente where idcliente = ? ", clienteId, function (err, res) {             
                 if(err) {
                     console.log("error: ", err);
                     result(err, null);
@@ -55,7 +55,7 @@ Cliente.getAllCliente = function (result) {
             });   
 };
 Cliente.updateById = function(id, cliente, result){
-  sql.query("UPDATE cliente SET nome = ?, email = ?, telefone = ?, rua = ?, numero = ?, complemento = ?, bairro = ?, cidade = ?, estado = ?, senha = ? WHERE id = ?", 
+  sql.query("UPDATE cliente SET nome = ?, email = ?, telefone = ?, rua = ?, numero = ?, complemento = ?, bairro = ?, cidade = ?, estado = ?, senha = ? WHERE idcliente = ?", 
                 [cliente.nome, cliente.email, cliente.telefone, cliente.rua, cliente.numero, cliente.complemento, cliente.bairro, cliente.cidade, cliente.estado, cliente.senha, id], function (err, res) {
           if(err) {
               console.log("error: ", err);
@@ -68,7 +68,7 @@ Cliente.updateById = function(id, cliente, result){
 };
 
 Cliente.remove = function(id, result){
-     sql.query("DELETE FROM cliente WHERE id = ?", [id], function (err, res) {
+     sql.query("DELETE FROM cliente WHERE idcliente = ?", [id], function (err, res) {
 
                 if(err) {
                     console.log("error: ", err);
