@@ -17,8 +17,8 @@ exports.list_all_produto = function(req, res) {
 exports.create_a_produto = function(req, res) {
   var new_produto = new Produto(req.body);
   //handles null error 
-   if(new_produto.titulo || new_produto.descricao || new_produto.preco  || new_produto.qtdP || new_produto.qtdM || new_produto.qtdG || new_produto.categoria){
-
+   if(!new_produto.titulo || !new_produto.descricao || !new_produto.preco  || !new_produto.qtdP || !new_produto.qtdM || !new_produto.qtdG || !new_produto.categoria){
+        console.log(new_produto)
         res.status(400).send({ error:true, message: 'Campo(s) vazio(s)'});
 
     }else{
