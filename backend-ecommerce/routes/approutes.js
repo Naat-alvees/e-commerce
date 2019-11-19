@@ -23,4 +23,7 @@ module.exports = function(app) {
     .get(produto.read_a_produto)
     .put(produto.update_a_produto)
     .delete(produto.delete_a_produto);
+
+  app.route('/produto/categoria/:nomeCategoria')
+    .get(produto.list_produto_categoria);
 };

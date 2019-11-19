@@ -12,6 +12,15 @@ exports.list_all_produto = function(req, res) {
   });
 };
 
+exports.list_produto_categoria = function(req, res) {
+  Produto.getProdutoByCategoria(req.params.nomeCategoria, function(err, produto) {
+    if (err)
+      res.send(err);
+      // console.log('res', post);
+    res.send(produto);
+  });
+};
+
 
 
 exports.create_a_produto = function(req, res) {
