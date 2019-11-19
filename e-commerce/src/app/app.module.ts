@@ -20,6 +20,9 @@ import { FinalizarPedidoComponent } from './finalizar-pedido/finalizar-pedido.co
 import { NovoProdutoComponent } from './novo-produto/novo-produto.component';
 import { AdmClienteComponent } from './adm-cliente/adm-cliente.component';
 import { AdmProdutosComponent } from './adm-produtos/adm-produtos.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 
 import {CdkTableModule} from '@angular/cdk/table';
 import { MatFormFieldModule, MatTableModule, MatInputModule, MatIconModule} from '@angular/material';
@@ -57,6 +60,8 @@ import { SobreComponent } from './sobre/sobre.component';
     MatInputModule,
     BrowserAnimationsModule,
     MatIconModule,
+    FormsModule, ReactiveFormsModule,
+    HttpClientModule,
     ModalModule.forRoot()
   ],
   providers: [],

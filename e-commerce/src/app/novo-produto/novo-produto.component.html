@@ -5,35 +5,45 @@
             </div>
 
             <div class="card-body">
-                <form>
+                <form [formGroup]="produtoForm" (ngSubmit)="addProduto(produtoForm.value)">
                     <div class="form-group">
                         <label for="formGroupExampleInput">Nome Produto</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Nome Produto">
+                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Nome Produto" formControlName="titulo">
                     </div>
                     <div class="form-group">
                         <label for="formGroupExampleInput">Descrição</label>
-                        <textarea class="form-control" id="validationTextarea" required></textarea>
+                        <textarea class="form-control" id="validationTextarea" required formControlName="descricao"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="formGroupExampleInput">Preço</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Preço do Produto">
+                        <input type="number" class="form-control" id="formGroupExampleInput" placeholder="Preço do Produto" formControlName="preco">
                     </div>
                     <div class="form-group">
                         <label for="formGroupExampleInput">Quantidade</label>
                         <div class="row">
                             <div class="col-4">
                                 <label for="formGroupExampleInput">P</label>
-                                <input type="text" class="form-control" id="formGroupExampleInput">
+                                <input type="number" class="form-control" id="formGroupExampleInput" formControlName="qtdP">
                             </div>
                             <div class="col-4">
                                 <label for="formGroupExampleInput">M</label>
-                                <input type="text" class="form-control" id="formGroupExampleInput">
+                                <input type="number" class="form-control" id="formGroupExampleInput" formControlName="qtdM">
                             </div>
                             <div class="col-4">
                                 <label for="formGroupExampleInput">G</label>
-                                <input type="text" class="form-control" id="formGroupExampleInput">
+                                <input type="number" class="form-control" id="formGroupExampleInput" formControlName="qtdG">
                             </div>
                         </div> 
+                    </div>
+                    <div class="form-group">
+                        <label for="inputState">Categorias</label>
+                        <select id="inputState" class="form-control" formControlName="categoria">
+                          <option selected value="Feminino">Feminino</option>
+                          <option value="Masculino">Masculino</option>
+                          <option value="Infantil">Infantil</option>
+                          <option value="Esporte Fino">Esporte Fino</option>
+                          <option value="Esporte">Esporte</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlFile1">Selecionar imagens</label>
@@ -41,11 +51,10 @@
                     </div>
 
                     <div class="text-center">
-                        <button type="submit" class="btn btn-outline-dark">Salvar</button>
+                        <button type="submit" class="btn btn-outline-dark" [disabled]="!produtoForm.valid">Salvar</button>
                     </div>
                 </form>                
             </div>
-
             <div class="card-footer text-muted"></div>
         </div>
     </div>
