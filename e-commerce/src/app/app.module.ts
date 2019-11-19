@@ -25,6 +25,7 @@ import {CdkTableModule} from '@angular/cdk/table';
 import { MatFormFieldModule, MatTableModule, MatInputModule, MatIconModule} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SobreComponent } from './sobre/sobre.component';
+import { FormsModule }   from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { SobreComponent } from './sobre/sobre.component';
     MatInputModule,
     BrowserAnimationsModule,
     MatIconModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
