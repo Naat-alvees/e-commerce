@@ -29,6 +29,10 @@ const routes: Routes = [
     path:'produtos',
     component: ProdutosComponent
   },
+  { 
+    path: 'produtos/:categoria', 
+    component: ProdutosComponent 
+  },
   {
     path:'adm-produtos',
     component: AdmProdutosComponent

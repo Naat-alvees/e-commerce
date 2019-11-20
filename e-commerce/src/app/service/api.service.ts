@@ -7,7 +7,7 @@ import { Produto } from 'src/model/produto';
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
-const apiUrl = 'http://localhost:5000/produto';
+const apiUrl = 'http://localhost:3000/produto';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +18,15 @@ export class ApiService {
 
   getProdutos (): Observable<Produto[]> {
     return this.http.get<Produto[]>(apiUrl)
+      .pipe(
+        tap(produtos => console.log('leu os produtos')),
+        catchError(this.handleError('getProdutos', []))
+      );
+  }
+
+  getProdutosByCategoria (categoria: String): Observable<Produto[]> {
+    const url = `${apiUrl}/categoria/${categoria}`;
+    return this.http.get<Produto[]>(url)
       .pipe(
         tap(produtos => console.log('leu os produtos')),
         catchError(this.handleError('getProdutos', []))
