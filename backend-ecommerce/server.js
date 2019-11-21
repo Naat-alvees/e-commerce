@@ -39,11 +39,11 @@ app.post('/cliente', function(req, res) {
 
     
   const body = req.body;
-  
-  const login = find(login => login.email == body.email);
+
+  const login = cliente.find(login => login.email == body.email);
   
 
-  if(!login || body.password != 'login') return res.sendStatus(401);
+  if(!login || body.password != getAllCliente) return res.sendStatus(401);
   
   var token = jwt.sign({idCliente: login.idCliente}, 'todo-app-super-shared-secret', {expiresIn: '2h'});
   res.send({token});

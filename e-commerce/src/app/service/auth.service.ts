@@ -1,8 +1,13 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+const httpOptions = {
+  headers: new HttpHeaders({'Content-Type': 'application/json'})
+};
+
+const apiUrl = 'http://localhost:3000/cliente';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +21,7 @@ export class AuthService {
     console.log(email);
     console.log(password);
 
-    return this.http.post<{token: string}>('/cliente', {email: email, password: password})
+    return this.http.post<{token: string}>(apiUrl, {email: email, password: password})
       .pipe(map(result => {
           
           localStorage.setItem('access_token', result.token);

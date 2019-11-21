@@ -24,7 +24,7 @@ import { NovoProdutoComponent } from './novo-produto/novo-produto.component';
 import { AdmClienteComponent } from './adm-cliente/adm-cliente.component';
 import { AdmProdutosComponent } from './adm-produtos/adm-produtos.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+
 
 
 import {CdkTableModule} from '@angular/cdk/table';
@@ -70,17 +70,15 @@ export function tokenGetter() {
     MatIconModule,
     FormsModule, ReactiveFormsModule,
     HttpClientModule,
-    ModalModule.forRoot()
     ModalModule.forRoot(),
     FormsModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        whitelistedDomains: ['localhost:3000'],
-        blacklistedRoutes: ['localhost:3000/cliente']
+        whitelistedDomains: ['http://localhost:3000'],
+        blacklistedRoutes: ['http://localhost:3000/cliente']
       }
-    }),
-    HttpClientModule
+    })
   ],
   providers: [
     AuthService,
