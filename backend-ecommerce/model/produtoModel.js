@@ -24,8 +24,8 @@ Produto.createProduto = function (newProduto, result) {
                 }
             });           
 };
-Produto.getProdutoById = function (produtoId, result) {
-        sql.query("Select * from produto where idproduto = ? ", produtoId, function (err, res) {             
+Produto.getProdutoByCategoria = function (nomeCategoria, result) {
+        sql.query("Select * from produto where categoria = ? ", nomeCategoria, function (err, res) {             
                 if(err) {
                     console.log("error: ", err);
                     result(err, null);
@@ -36,6 +36,20 @@ Produto.getProdutoById = function (produtoId, result) {
                 }
             });   
 };
+
+Produto.getProdutoById = function (produtoId, result) {
+    sql.query("Select * from produto where idproduto = ? ", produtoId, function (err, res) {             
+            if(err) {
+                console.log("error: ", err);
+                result(err, null);
+            }
+            else{
+                result(null, res);
+          
+            }
+        });   
+};
+
 Produto.getAllProduto = function (result) {
         sql.query("Select * from produto", function (err, res) {
 

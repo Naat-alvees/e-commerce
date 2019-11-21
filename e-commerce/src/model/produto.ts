@@ -3,8 +3,8 @@ export class Produto{
     titulo: string;
     descricao: string;
     preco: string;
-    qtdP: string;
-    qtdM: string;
-    qtdG: string;
+    qtdP: number;
+    qtdM: number;
+    qtdG: number;
     categoria: string;
 }

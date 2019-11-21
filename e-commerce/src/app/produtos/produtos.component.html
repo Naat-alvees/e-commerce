@@ -1,11 +1,12 @@
 <div class="container">
     <div class="row">
-        <div class="col-4">
+        <div *ngFor="let produto of produtos" class="col-4">
             <div class="card" style="width: 22rem; margin-top: 20px; ">
                 <a routerLink = "/descricao-produto"><img src="https://picsum.photos/750/600" class="card-img-top" alt="..."></a>
                 <div class="card-body">
-                    <a routerLink = "/descricao-produto"><h5 class="card-title">Card title</h5></a>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a routerLink = "/descricao-produto"><h5 class="card-title"> {{ produto.titulo }}</h5></a>
+                    <p class="card-text">{{ produto.descricao }}</p>
+                    <h3 class="">{{ produto.preco }}</h3>
                     <div *ngIf = "!administrador">
                         <button type="button" class="btn btn-success">Comprar agora</button> 
                         <button type="button" class="btn btn-danger espaco">Add na sacola</button> 
@@ -17,43 +18,12 @@
                 </div>
             </div>
         </div>
-        <div class="col-4">
-            <div class="card" style="width: 22rem; margin-top: 20px;">
-                <a routerLink = "/descricao-produto"><img src="https://picsum.photos/750/600" class="card-img-top" alt="..."></a>
-                <div class="card-body">
-                    <a routerLink = "/descricao-produto"><h5 class="card-title">Card title</h5></a>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <div *ngIf = "!administrador">
-                        <button type="button" class="btn btn-success">Comprar agora</button> 
-                        <button type="button" class="btn btn-danger espaco">Add na sacola</button> 
-                    </div>
-                    <div *ngIf = "administrador">
-                        <button type="button" class="btn btn-success" (click)="openModalEditar(template)">Editar</button> 
-                        <button type="button" class="btn btn-danger espaco" (click)="openModalExcluir(template1)">Excluir</button> 
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-4">
-            <div class="card" style="width: 22rem; margin-top: 20px;">
-                <a routerLink = "/descricao-produto"><img src="https://picsum.photos/750/600" class="card-img-top" alt="..."></a>
-                <div class="card-body">
-                    <a routerLink = "/descricao-produto"><h5 class="card-title">Card title</h5></a>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <div *ngIf = "!administrador">
-                        <button type="button" class="btn btn-success">Comprar agora</button> 
-                        <button type="button" class="btn btn-danger espaco">Add na sacola</button> 
-                    </div>
-                    <div *ngIf = "administrador">
-                        <button type="button" class="btn btn-success" (click)="openModalEditar(template)">Editar</button> 
-                        <button type="button" class="btn btn-danger espaco" (click)="openModalExcluir(template1)">Excluir</button> 
-                    </div>
-                </div>
-            </div>
-        </div>  
-    </div>
+        
+    </div>  
 </div>
 
+
+<!-- Código modal -->
 <ng-template #template>
     <div class="modal-header">
         <h4 class="modal-title pull-left">Editar Produto</h4>
