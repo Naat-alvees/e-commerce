@@ -6,24 +6,25 @@
 
         <div class="card-body">
             <p>Faça seu login agora para acompanhar seus pedidos, ter acesso a ofertas exclusivas e muito mais.</p>
-            <form>
+            <h4 *ngIf="error">{{error}}</h4>
+            <form (ngSubmit)="submit()">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Endereço de email</label>
-                    <input [(ngModel)]="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Seu email">
+                    <label for="email">Endereço de email</label>
+                    <input type="text" name="email" class="form-control" placeholder="Seu email" [(ngModel)]="email" required/>
                     <small id="emailHelp" class="form-text text-muted">Nunca vamos compartilhar seu email, com ninguém.</small>
                 </div>
 
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Senha</label>
-                    <input [(ngModel)]="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha">
+                    <label for="password">Senha</label>
+                    <input type="password" name="password" class="form-control" placeholder="Senha" [(ngModel)]="password" required/>
                 </div>
 
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <a href="">Esqueci minha senha</a>
-                </div>
+                </div> -->
 
                 <div class="text-center">
-                    <button (click)="login()" type="submit" class="btn btn-outline-dark">Entrar</button>
+                    <button type="submit" class="btn btn-outline-dark">Entrar</button>
                 </div>
             </form>
             <br>

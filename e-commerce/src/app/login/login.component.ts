@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticationService } from '../service/authentication.service';
+import { AuthService } from '../service/auth.service';
+import { first } from 'rxjs/operators';
 
 @Component({
     selector: 'app-login',
@@ -8,28 +9,24 @@ import { AuthenticationService } from '../service/authentication.service';
     styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-    email: string;
-    hide = true;
-    password: string;
-    title = "auth-guard-demo";
+    public email: string;
+    public password: string;
+    public error: string;
 
-    constructor(private _auth: AuthenticationService, private _router: Router) {
-        if (this._auth.loggedIn) {
-            this._router.navigate(['home']);
-        }
-    }
+  constructor(private auth: AuthService, private router: Router) { }
 
     ngOnInit() {
     }
 
-    login(): void {
-        if (this.email != '' && this.password != '') {
-            if (this._auth.login(this.email, this.password)) {
-                this._router.navigate(["home"]);
-            } else {
-                alert("Wrong username or password");
-            }
-        }
-    }
+    public submit() {
+        this.auth.login(this.email, this.password)
+          .pipe(first())
+          .subscribe(
+            result => this.router.navigate(['home']),
+            err => this.error = 'Could not authenticate'
+          );
+          console.log(this.email);
+          console.log(this.password);
+      }
 
 }
