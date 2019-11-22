@@ -1,32 +1,40 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../service/auth.service';
-import { first } from 'rxjs/operators';
+import { LoginService } from '../service/login.service';
+import { FormGroup, FormControl } from '@angular/forms';
+import { Cliente } from 'src/model/cliente';
 
 @Component({
-    selector: 'app-login',
-    templateUrl: './login.component.html',
-    styleUrls: ['./login.component.css']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-    public email: string;
-    public password: string;
-    public error: string;
-
-  constructor(private auth: AuthService, private router: Router) { }
-
-    ngOnInit() {
+  public login: FormGroup = new FormGroup(
+    {
+      'email': new FormControl(""),
+      'senha': new FormControl("")
     }
+  )
+  constructor(private loginService: LoginService, private router: Router) { }
 
-    public submit() {
-        this.auth.login(this.email, this.password)
-          .pipe(first())
-          .subscribe(
-            result => this.router.navigate(['home']),
-            err => this.error = 'Could not authenticate'
-          );
-          console.log(this.email);
-          console.log(this.password);
-      }
+  public tLogin(): void {
+    this.loginService.login(this.login.value.email, this.login.value.senha).subscribe((cliente: Cliente) => {
+      if (cliente === undefined) {
+        console.log(this.login.value)
+        console.log(this.login.value)
+        alert("Falha ao realizar login!Email ou senha incorreta")
+        return
+      };
+
+      this.loginService.cliente = cliente
+      this.loginService.isLogged = true
+    })
+
+    
+  }
+  ngOnInit() {
+  }
+
 
 }

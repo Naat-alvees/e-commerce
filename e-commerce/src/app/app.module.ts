@@ -1,8 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AuthService } from './service/auth.service';
-import { AuthGuard } from './service/auth.guard';
-import { JwtModule } from '@auth0/angular-jwt';
 import {HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -31,11 +28,8 @@ import {CdkTableModule} from '@angular/cdk/table';
 import { MatFormFieldModule, MatTableModule, MatInputModule, MatIconModule} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SobreComponent } from './sobre/sobre.component';
+import { LoginService } from './service/login.service';
 
-
-export function tokenGetter() {
-  return localStorage.getItem('access_token');
-}
 
 @NgModule({
   declarations: [
@@ -72,17 +66,9 @@ export function tokenGetter() {
     HttpClientModule,
     ModalModule.forRoot(),
     FormsModule,
-    JwtModule.forRoot({
-      config: {
-        tokenGetter: tokenGetter,
-        whitelistedDomains: ['http://localhost:3000'],
-        blacklistedRoutes: ['http://localhost:3000/cliente']
-      }
-    })
+
   ],
-  providers: [
-    AuthService,
-    AuthGuard],
+  providers: [LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

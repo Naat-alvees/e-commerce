@@ -26,49 +26,26 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors(corsOptions));
 
-const _bodyParser = require('body-parser');
-const jwt = require('jsonwebtoken');
-const expressJwt = require('express-jwt');
-
-
-
-app.use(_bodyParser.json());
-app.use(expressJwt({secret: 'todo-app-super-shared-secret'}).unless({path: ['/cliente']}));
-
-app.post('/cliente', function(req, res) {
-
-    
-  const body = req.body;
-
-  const login = cliente.find(login => login.email == body.email);
-  
-
-  if(!login || body.password != getAllCliente) return res.sendStatus(401);
-  
-  var token = jwt.sign({idCliente: login.idCliente}, 'todo-app-super-shared-secret', {expiresIn: '2h'});
-  res.send({token});
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Credentials", "true");
+    next();
 });
+
+app.post('/cliente', (req, res) => {
+    let email = req.body.email
+    let senha = req.body.senha
+
+    console.log(email)
+    console.log(senha)
+    let query = "SELECT * FROM cliente WHERE email = ? and senha = ?"
+
+    mc.query(query, [email, senha], function (error, results, fields) {
+        if (error) throw error;
+        res.json({error: false, message: "User with the username and password getted by req.params", data: results})
+    })
+})
 
 var routes = require('./routes/approutes'); //importing route
 routes(app); //register tnhe route
-
-
-// function getTodos(jwtString)
-// {
-//   var token = JWTDecode(jwtstring);
-//   if( Date.now() < token.nbf*1000) {
-//     throw new Error('Token not yet valid');
-//   }
-//   if( Date.now() > token.exp*1000) {
-//     throw new Error('Token has expired');
-//   }
-//   if( token.iss != 'todoapi') {
-//     throw new Error('Token not issued here');
-//   }
-
-//   var userID = token.uid;
-//   var todos = loadUserTodosFromDB(userID);
-
-//   return JSON.stringify(todos);
-// }
 

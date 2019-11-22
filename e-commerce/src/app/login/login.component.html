@@ -6,17 +6,16 @@
 
         <div class="card-body">
             <p>Faça seu login agora para acompanhar seus pedidos, ter acesso a ofertas exclusivas e muito mais.</p>
-            <h4 *ngIf="error">{{error}}</h4>
-            <form (ngSubmit)="submit()">
+            <form [formGroup]="login" (ngSubmit)="tLogin()" novalidate>
                 <div class="form-group">
                     <label for="email">Endereço de email</label>
-                    <input type="text" name="email" class="form-control" placeholder="Seu email" [(ngModel)]="email" required/>
+                    <input type="text"class="form-control" placeholder="Seu email" formControlName="email" required/>
                     <small id="emailHelp" class="form-text text-muted">Nunca vamos compartilhar seu email, com ninguém.</small>
                 </div>
 
                 <div class="form-group">
-                    <label for="password">Senha</label>
-                    <input type="password" name="password" class="form-control" placeholder="Senha" [(ngModel)]="password" required/>
+                    <label for="senha">Senha</label>
+                    <input type="password" class="form-control" placeholder="Senha" formControlName="senha" required/>
                 </div>
 
                 <!-- <div class="form-group">
