@@ -16,6 +16,7 @@ import { NovoProdutoComponent } from './novo-produto/novo-produto.component'
 import { SobreComponent } from './sobre/sobre.component'
 
 
+
 const routes: Routes = [
   {
     path:'carrinho',
@@ -28,6 +29,10 @@ const routes: Routes = [
   {
     path:'produtos',
     component: ProdutosComponent
+  },
+  { 
+    path: 'produtos/:categoria', 
+    component: ProdutosComponent 
   },
   {
     path:'adm-produtos',

@@ -1,34 +1,40 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginService } from '../service/login.service';
+import { FormGroup, FormControl } from '@angular/forms';
+import { Cliente } from 'src/model/cliente';
 
 @Component({
-    selector: 'app-login',
-    templateUrl: './login.component.html',
-    styleUrls: ['./login.component.css']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-    // email: string;
-    // hide = true;
-    // password: string;
-    // title = "auth-guard-demo";
-
-    // constructor(private _router: Router) {
-    //     if (this._auth.loggedIn) {
-    //         this._router.navigate(['home']);
-    //     }
-    // }
-
-    ngOnInit() {
+  public login: FormGroup = new FormGroup(
+    {
+      'email': new FormControl(""),
+      'senha': new FormControl("")
     }
+  )
+  constructor(private loginService: LoginService, private router: Router) { }
 
-    // login(): void {
-    //     if (this.email != '' && this.password != '') {
-    //         if (this._auth.login(this.email, this.password)) {
-    //             this._router.navigate(["home"]);
-    //         } else {
-    //             alert("Wrong username or password");
-    //         }
-    //     }
-    // }
+  public tLogin(): void {
+    this.loginService.login(this.login.value.email, this.login.value.senha).subscribe((cliente: Cliente) => {
+      if (cliente === undefined) {
+        console.log(this.login.value)
+        console.log(this.login.value)
+        alert("Falha ao realizar login!Email ou senha incorreta")
+        return
+      };
+
+      this.loginService.cliente = cliente
+      this.loginService.isLogged = true
+    })
+
+    
+  }
+  ngOnInit() {
+  }
+
 
 }

@@ -27,6 +27,15 @@ export class ApiService {
       );
   }
 
+  getProdutosByCategoria (categoria: String): Observable<Produto[]> {
+    const url = `${apiUrl}/categoria/${categoria}`;
+    return this.http.get<Produto[]>(url)
+      .pipe(
+        tap(produtos => console.log('leu os produtos')),
+        catchError(this.handleError('getProdutos', []))
+      );
+  }
+
   getProduto(id: number): Observable<Produto> {
     const url = `${apiUrl}/${id}`;
     return this.http.get<Produto>(url).pipe(
