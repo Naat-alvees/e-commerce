@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import {HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
@@ -21,13 +21,14 @@ import { NovoProdutoComponent } from './novo-produto/novo-produto.component';
 import { AdmClienteComponent } from './adm-cliente/adm-cliente.component';
 import { AdmProdutosComponent } from './adm-produtos/adm-produtos.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+
 
 
 import {CdkTableModule} from '@angular/cdk/table';
 import { MatFormFieldModule, MatTableModule, MatInputModule, MatIconModule} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SobreComponent } from './sobre/sobre.component';
+import { LoginService } from './service/login.service';
 
 
 @NgModule({
@@ -64,9 +65,11 @@ import { SobreComponent } from './sobre/sobre.component';
     FormsModule, 
     ReactiveFormsModule,
     HttpClientModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    FormsModule,
+
   ],
-  providers: [],
+  providers: [LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

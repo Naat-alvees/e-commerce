@@ -3,11 +3,14 @@ import { Observable, of, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { catchError, tap, map } from 'rxjs/operators';
 import { Produto } from 'src/model/produto';
+import { Fotos } from 'src/model/fotos';
+import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
 const apiUrl = 'http://localhost:3000/produto';
+const apiUrlFotos = 'http://localhost:3000/fotos';
 
 @Injectable({
   providedIn: 'root'
@@ -44,6 +47,17 @@ export class ApiService {
       // tslint:disable-next-line:no-shadowed-variable
       tap((produto: Produto) => console.log(`adicionou o produto com w/ id=${produto.idproduto}`)),
       catchError(this.handleError<Produto>('addProduto'))
+    );
+    
+  }
+
+  addFotos(fotos): Observable<Fotos> {
+    console.log("Teste")
+    console.log(fotos.idproduto)
+    return this.http.post<Fotos>(apiUrlFotos, fotos, httpOptions).pipe(
+      // tslint:disable-next-line:no-shadowed-variable
+      tap((fotos: Fotos) => console.log(`adicionou fotos com w/ id=${fotos}`)),
+      catchError(this.handleError<Fotos>('addFotos'))
     );
   }
 

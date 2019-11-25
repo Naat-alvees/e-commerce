@@ -16,6 +16,7 @@ import { NovoProdutoComponent } from './novo-produto/novo-produto.component'
 import { SobreComponent } from './sobre/sobre.component'
 
 
+
 const routes: Routes = [
   {
     path:'carrinho',
