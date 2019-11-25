@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../service/api.service';
+import { ProdutoService } from '../service/produto.service';
 import { Produto } from 'src/model/produto';
+import { Fotos } from 'src/model/fotos';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 
@@ -13,24 +14,31 @@ export class NovoProdutoComponent implements OnInit {
 
   produtoForm: FormGroup;
   isLoadingResults = false;
-  constructor(private router: Router, private api: ApiService, private formBuilder: FormBuilder) { }
+  reader = new FileReader();
+  arrayFotos: Array<Fotos> = new Array<Fotos>();
+  fotos: Fotos;
+  idProdutoFoto:number;
+
+  constructor(private router: Router, private produtoService: ProdutoService, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.produtoForm = this.formBuilder.group({
-   'titulo' : [null, Validators.required],
-   'descricao' : [null, [Validators.required, Validators.minLength(4)]],
-   'preco' : [null, Validators.required],
-   'qtdP' : [null, [Validators.required, Validators.min(1)]],
-   'qtdM' : [null, Validators.required],
-   'qtdG' : [null, Validators.required],
-   'categoria': [null, Validators.required]
- });
- }
+    'titulo' : [null, Validators.required],
+    'descricao' : [null, [Validators.required, Validators.minLength(4)]],
+    'preco' : [null, Validators.required],
+    'qtdP' : [null, [Validators.required, Validators.min(1)]],
+    'qtdM' : [null, Validators.required],
+    'qtdG' : [null, Validators.required],
+    'categoria': [null, Validators.required]
+    });
+  }
 
  addProduto(form: NgForm) {
-  console.log(form);
-  this.api.addProduto(form).subscribe(res => {
-    console.log(form)
+  this.produtoService.addProduto(form).subscribe(res => {
+    console.log(res)
+    this.idProdutoFoto = Number(res)
+    console.log(this.idProdutoFoto)
+    this.enviaFoto()
   }, (err) => {
     console.log(err);
   });
@@ -44,10 +52,36 @@ export class NovoProdutoComponent implements OnInit {
   this.produtoForm.controls['qtdP'].setErrors(null);
   this.produtoForm.controls['qtdM'].setValue("");
   this.produtoForm.controls['qtdM'].setErrors(null);
-  this.produtoForm.controls['qtdG'].setValue(0);
+  this.produtoForm.controls['qtdG'].setValue("");
   this.produtoForm.controls['qtdG'].setErrors(null);
   this.produtoForm.controls['categoria'].setValue(0);
   this.produtoForm.controls['categoria'].setErrors(null);
 }
 
+onFileChange(event) {
+  if(event.target.files && event.target.files.length > 0) {
+    for (let index = 0; index < event.target.files.length; index++) {
+      let reader = new FileReader();
+      let file = event.target.files[index];
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        this.fotos = new Fotos()
+        this.fotos.ft = reader.result
+        this.arrayFotos.push(this.fotos)
+      };
+    }
+    
+  }
+}
+
+enviaFoto(){
+  for (let i = 0; i < this.arrayFotos.length; i++) {
+    this.arrayFotos[i].idproduto = this.idProdutoFoto
+    this.produtoService.addFotos(this.arrayFotos[i]).subscribe(res => {
+    console.log(res)
+    }, (err) => {
+      console.log(err);
+    });
+  }
+}
 }
