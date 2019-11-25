@@ -24,18 +24,18 @@ export class CadastroComponent implements OnInit {
       'telefone' : [null, Validators.required],
       'rua' : [null,Validators.required],
       'numero' : [null,Validators.required],
-      'complemento' : [null,Validators.required],
+      'complemento' : [null],
       'bairro' : [null,Validators.required],
       'cidade' : [null,Validators.required],
       'estado' : [null,Validators.required],
-      'senha' : [null,Validators.required,crypto.getRandomValues.apply]
+      'senha' : [null,Validators.required]
     });
   }
 
   addCliente(form: NgForm) 
   {
     this.api.addCliente(form).subscribe(res => {
-        console.log(form);
+        console.log(res);
         }, (err) => {
           console.log(err);
         });
