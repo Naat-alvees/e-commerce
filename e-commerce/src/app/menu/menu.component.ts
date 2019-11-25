@@ -10,14 +10,16 @@ export class MenuComponent implements OnInit {
 
   private administrador: number = 0;
   private islogged: boolean = false
+
   constructor(private loginService: LoginService, private router: Router) { }
 
 
 
   public Logout():void{
     this.loginService.logout()
-    location.reload()
-    this.router.navigate([""])
+    // location.reload()
+    // this.router.navigate([""])
+    location.href = "http://localhost:4200/"
       
   }
 
