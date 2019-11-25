@@ -11,4 +11,5 @@ export class Cliente
     cidade:string;
     estado:string;
     senha:string;
+    administrador:number;
 }

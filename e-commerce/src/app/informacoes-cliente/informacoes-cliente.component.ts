@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./informacoes-cliente.component.css']
 })
 export class InformacoesClienteComponent implements OnInit {
-
+  cliente:any
   constructor() { }
 
   ngOnInit() {
+    this.cliente = JSON.parse(localStorage.getItem('cliente'))
   }
 
 }

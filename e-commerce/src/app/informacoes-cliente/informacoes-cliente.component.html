@@ -1,3 +1,5 @@
+<app-menu></app-menu>
+<app-menu-categorias></app-menu-categorias>
 <div class="card">
     <div class="card-header text-center">
       <h5>Minha Conta Clothers</h5>
@@ -8,35 +10,35 @@
       <hr>
       <h6>Informações de Contato</h6>
       <div>
-        <label>Nome</label>
+        <label>{{cliente.nome}}</label>
       </div>
       <div>
-        <label>E-mail</label>
+        <label>{{cliente.email}}</label>
       </div>
       <div>
-        <label>Telefone</label>
+        <label>{{cliente.telefone}}</label>
       </div>
       <br>
       <h5 class="card-title">Endereço</h5>
       <hr>
       <h6>Informações de Endereço</h6>
       <div>
-        <label>Rua</label>
+        <label>{{cliente.rua}}</label>
       </div>
       <div>
-        <label>Número</label>
+        <label>{{cliente.numero}}</label>
       </div>
       <div>
-        <label>Complemento</label>
+        <label>{{cliente.complemento}}</label>
       </div>
       <div>
-        <label>Bairro</label>
+        <label>{{cliente.bairro}}</label>
       </div>
       <div>
-        <label>Cidade</label>
+        <label>{{cliente.cidade}}</label>
       </div>
       <div>
-        <label>Estado</label>
+        <label>{{cliente.estado}}</label>
       </div>
       <div class="text-center">
         <button type="submit" class="btn btn-outline-dark mr-3" routerLink="/editar-cliente">Editar</button>
