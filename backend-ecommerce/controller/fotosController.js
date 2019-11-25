@@ -13,10 +13,7 @@ exports.list_all_fotos = function(req, res) {
 };
 
 exports.create_a_foto = function(req, res) {
-  
   var new_foto = new Fotos(req.body);
-  console.log(req.body)
-  console.log(new_foto)
   //handles null error 
    if(!new_foto.idproduto || !new_foto.foto){
         //console.log(new_foto)

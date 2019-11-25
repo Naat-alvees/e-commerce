@@ -15,7 +15,7 @@ const apiUrlFotos = 'http://localhost:3000/fotos';
 @Injectable({
   providedIn: 'root'
 })
-export class ApiService {
+export class ProdutoService {
 
   constructor(private http: HttpClient) { }
 
@@ -45,7 +45,7 @@ export class ApiService {
   addProduto (produto): Observable<Produto> {
     return this.http.post<Produto>(apiUrl, produto, httpOptions).pipe(
       // tslint:disable-next-line:no-shadowed-variable
-      tap((produto: Produto) => console.log(`adicionou o produto com w/ id=${produto.idproduto}`)),
+      tap((produto: Produto) => console.log(`adicionou o produto com w/ id=${produto}`)),
       catchError(this.handleError<Produto>('addProduto'))
     );
     
@@ -53,6 +53,7 @@ export class ApiService {
 
   addFotos(fotos): Observable<Fotos> {
     console.log("Teste")
+    console.log(fotos)
     console.log(fotos.idproduto)
     return this.http.post<Fotos>(apiUrlFotos, fotos, httpOptions).pipe(
       // tslint:disable-next-line:no-shadowed-variable

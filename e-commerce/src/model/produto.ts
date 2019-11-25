@@ -1,6 +1,6 @@
 import { Fotos } from 'src/model/fotos';
 export class Produto{
-    _id: number;
+    idproduto: number;
     titulo: string;
     descricao: string;
     preco: string;

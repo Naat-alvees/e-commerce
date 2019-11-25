@@ -1,7 +1,7 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit, TemplateRef, ɵConsole } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { ActivatedRoute } from '@angular/router';
-import { ApiService } from '../service/api.service';
+import { ProdutoService } from '../service/produto.service';
 import { Produto } from '../../model/produto';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
@@ -30,7 +30,7 @@ export class ProdutosComponent implements OnInit {
     'qtdG': new FormControl(null, [Validators.required]),
   });
 
-  constructor(private modalService: BsModalService, private apiService : ApiService, private route: ActivatedRoute) { }
+  constructor(private modalService: BsModalService, private produtoService : ProdutoService, private route: ActivatedRoute) { }
 
   ngOnInit(){
     this.route.params.subscribe((parametro: any) =>{
@@ -51,7 +51,9 @@ export class ProdutosComponent implements OnInit {
   }
 
   preencheFormularioEditar(produtoAtual: Produto){
+    console.log(produtoAtual.idproduto)
     this.id_produtoAtual = produtoAtual.idproduto;
+    console.log(this.id_produtoAtual)
     this.formularioEditar.patchValue({
       titulo: produtoAtual.titulo,
       descricao: produtoAtual.descricao,
@@ -63,7 +65,7 @@ export class ProdutosComponent implements OnInit {
   }
   
   editarProduto(): void{
-    this.apiService.updateProduto(this.id_produtoAtual, this.formularioEditar.value).subscribe( res => {
+    this.produtoService.updateProduto(this.id_produtoAtual, this.formularioEditar.value).subscribe( res => {
       this.carregaProdutos();
       this.modalEditar.hide();
     }, (err) => {
@@ -72,7 +74,7 @@ export class ProdutosComponent implements OnInit {
   }
 
   excluirProduto():void{
-    this.apiService.deleteProduto(this.id_produtoAtual).subscribe( res => {
+    this.produtoService.deleteProduto(this.id_produtoAtual).subscribe( res => {
       this.modalExcluir.hide();
       this.carregaProdutos();
     }, (err) => {
@@ -81,7 +83,7 @@ export class ProdutosComponent implements OnInit {
   }
 
   carregaProdutos(){
-    this.apiService.getProdutosByCategoria(this.categoria).subscribe(res => {
+    this.produtoService.getProdutosByCategoria(this.categoria).subscribe(res => {
       this.produtos = res;
     }, err => {
       console.log(err);
