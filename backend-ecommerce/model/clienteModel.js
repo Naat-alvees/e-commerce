@@ -55,8 +55,8 @@ Cliente.getAllCliente = function (result) {
             });   
 };
 Cliente.updateById = function(id, cliente, result){
-  sql.query("UPDATE cliente SET nome = ?, email = ?, telefone = ?, rua = ?, numero = ?, complemento = ?, bairro = ?, cidade = ?, estado = ?, senha = ? WHERE idcliente = ?", 
-                [cliente.nome, cliente.email, cliente.telefone, cliente.rua, cliente.numero, cliente.complemento, cliente.bairro, cliente.cidade, cliente.estado, cliente.senha, id], function (err, res) {
+  sql.query("UPDATE cliente SET nome = ?, email = ?, telefone = ?, rua = ?, numero = ?, complemento = ?, bairro = ?, cidade = ?, estado = ? WHERE idcliente = ?", 
+                [cliente.nome, cliente.email, cliente.telefone, cliente.rua, cliente.numero, cliente.complemento, cliente.bairro, cliente.cidade, cliente.estado, id], function (err, res) {
           if(err) {
               console.log("error: ", err);
                 result(null, err);

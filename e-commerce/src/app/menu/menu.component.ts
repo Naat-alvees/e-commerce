@@ -17,8 +17,6 @@ export class MenuComponent implements OnInit {
 
   public Logout():void{
     this.loginService.logout()
-    // location.reload()
-    // this.router.navigate([""])
     location.href = "http://localhost:4200/"
       
   }
