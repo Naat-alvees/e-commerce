@@ -29,7 +29,6 @@ import { MatFormFieldModule, MatTableModule, MatInputModule, MatIconModule} from
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SobreComponent } from './sobre/sobre.component';
 
-import { HttpClientModule } from '@angular/common/http'; 
 
 @NgModule({
   declarations: [
@@ -62,7 +61,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatInputModule,
     BrowserAnimationsModule,
     MatIconModule,
-    FormsModule, ReactiveFormsModule,
+    FormsModule, 
+    ReactiveFormsModule,
     HttpClientModule,
     ModalModule.forRoot()
   ],

@@ -65,15 +65,15 @@ Produto.getAllProduto = function (result) {
             });   
 };
 Produto.updateById = function(id, produto, result){
-  sql.query("UPDATE produto SET titulo = ?, descricao = ?, preco = ?, qtdP = ?, qtdM = ?, qtdG = ?, categoria = ? WHERE idproduto = ?", 
-                [produto.titulo, produto.descricao, produto.preco, produto.qtdP, produto.qtdM, produto.qtdG, produto.categoria, id], function (err, res) {
-          if(err) {
-              console.log("error: ", err);
-                result(null, err);
-             }
-           else{   
-             result(null, res);
-                }
+  sql.query("UPDATE produto SET titulo = ?, descricao = ?, preco = ?, qtdP = ?, qtdM = ?, qtdG = ? WHERE idproduto = ?", 
+                [produto.titulo, produto.descricao, produto.preco, produto.qtdP, produto.qtdM, produto.qtdG, id], function (err, res) {
+            if(err) {
+                console.log("error: ", err);
+                    result(null, err);
+            }
+            else{   
+                result(null, res);
+            }
             }); 
 };
 
