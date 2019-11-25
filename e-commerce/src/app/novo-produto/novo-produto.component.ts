@@ -29,15 +29,16 @@ export class NovoProdutoComponent implements OnInit {
     'qtdP' : [null, [Validators.required, Validators.min(1)]],
     'qtdM' : [null, Validators.required],
     'qtdG' : [null, Validators.required],
-    'categoria': [null, Validators.required]
+    'categoria': [null, Validators.required],
+    'fotos' : [null, Validators.required]
     });
   }
 
  addProduto(form: NgForm) {
   this.produtoService.addProduto(form).subscribe(res => {
-    console.log(res)
+    //console.log(res)
     this.idProdutoFoto = Number(res)
-    console.log(this.idProdutoFoto)
+    //console.log(this.idProdutoFoto)
     this.enviaFoto()
   }, (err) => {
     console.log(err);
@@ -56,6 +57,8 @@ export class NovoProdutoComponent implements OnInit {
   this.produtoForm.controls['qtdG'].setErrors(null);
   this.produtoForm.controls['categoria'].setValue(0);
   this.produtoForm.controls['categoria'].setErrors(null);
+  this.produtoForm.controls['fotos'].setValue("");
+  this.produtoForm.controls['fotos'].setErrors(null);
 }
 
 onFileChange(event) {
@@ -78,7 +81,7 @@ enviaFoto(){
   for (let i = 0; i < this.arrayFotos.length; i++) {
     this.arrayFotos[i].idproduto = this.idProdutoFoto
     this.produtoService.addFotos(this.arrayFotos[i]).subscribe(res => {
-    console.log(res)
+    //console.log(res)
     }, (err) => {
       console.log(err);
     });

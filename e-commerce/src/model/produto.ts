@@ -1,4 +1,3 @@
-import { Fotos } from 'src/model/fotos';
 export class Produto{
     idproduto: number;
     titulo: string;
@@ -7,6 +6,5 @@ export class Produto{
     qtdP: number;
     qtdM: number;
     qtdG: number;
-    fotos: Fotos = new Fotos();
     categoria: string;
 }

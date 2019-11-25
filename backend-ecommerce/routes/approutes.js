@@ -2,7 +2,7 @@
 module.exports = function(app) {
   var cliente = require('../controller/clienteController');
   var produto = require('../controller/produtoController');
-  var foto = require('../controller/fotosController')
+  var fotos = require('../controller/fotosController')
  
 
   // Cliente Routes
@@ -29,6 +29,6 @@ module.exports = function(app) {
     .get(produto.list_produto_categoria);
 
   app.route('/fotos')
-    .get(foto.list_all_fotos)
-    .post(foto.create_a_foto);
+    .get(fotos.list_all_fotos)
+    .post(fotos.create_a_foto);
 };
