@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
         this.loginService.isLogged = true
         localStorage.setItem('cliente',JSON.stringify(cliente))
         localStorage.setItem('tipoCliente',cliente.administrador.toString())
+        localStorage.setItem('estaLogado',JSON.stringify(this.loginService.isLogged))
         this.router.navigate([""])
 
       };
