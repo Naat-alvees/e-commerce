@@ -33,6 +33,19 @@ Fotos.getFotosById = function (fotosId, result) {
         });   
 };
 
+Fotos.getFotosByProduto = function (produtoId, result) {
+    sql.query("Select * from fotos where idproduto = ? ", produtoId, function (err, res) {             
+            if(err) {
+                console.log("error: ", err);
+                result(err, null);
+            }
+            else{
+                result(null, res);
+          
+            }
+        });   
+};
+
 Fotos.getAllFotos = function (result) {
         sql.query("Select * from fotos", function (err, res) {
 

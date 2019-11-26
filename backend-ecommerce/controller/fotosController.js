@@ -29,6 +29,7 @@ exports.create_a_foto = function(req, res) {
 };
 
 
+
 exports.read_a_fotos = function(req, res) {
   Fotos.getFotosById(req.params.fotosId, function(err, fotos) {
     if (err)
@@ -37,9 +38,8 @@ exports.read_a_fotos = function(req, res) {
   });
 };
 
-
-exports.update_a_fotos = function(req, res) {
-  Fotos.updateById(req.params.fotosId, new Fotos(req.body), function(err, fotos) {
+exports.read_a_fotos_produto = function(req, res) {
+  Fotos.getFotosByProduto(req.params.produtoId, function(err, fotos) {
     if (err)
       res.send(err);
     res.json(fotos);

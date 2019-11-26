@@ -66,7 +66,7 @@ onFileChange(event) {
       reader.readAsDataURL(file);
       reader.onload = () => {
         this.fotos = new Fotos()
-        this.fotos.ft = reader.result
+        this.fotos.foto = reader.result
         this.arrayFotos.push(this.fotos)
       };
     }

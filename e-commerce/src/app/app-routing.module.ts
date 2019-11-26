@@ -50,6 +50,10 @@ const routes: Routes = [
     path:'descricao-produto',
     component: DescricaoProdutoComponent
   },
+  {
+    path:'descricao-produto/:idproduto',
+    component: DescricaoProdutoComponent
+  },
   { 
     path: 'cadastro',
     component: CadastroComponent

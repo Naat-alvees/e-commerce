@@ -31,4 +31,8 @@ module.exports = function(app) {
   app.route('/fotos')
     .get(foto.list_all_fotos)
     .post(foto.create_a_foto);
-};
+
+  app.route('/fotos/produto/:produtoId')
+    .get(foto.read_a_fotos_produto);
+
+}
