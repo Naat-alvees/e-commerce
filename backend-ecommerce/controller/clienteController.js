@@ -12,18 +12,17 @@ exports.list_all_cliente = function(req, res) {
   });
 };
 
-
-
 exports.create_a_cliente = function(req, res) {
   var new_cliente = new Cliente(req.body);
-  //handles null error 
+  console.log(new_cliente); 
    if(!new_cliente.nome || !new_cliente.email || !new_cliente.telefone || !new_cliente.rua || !new_cliente.numero || !new_cliente.bairro || !new_cliente.cidade || !new_cliente.estado || !new_cliente.senha){
-
+        
         res.status(400).send({ error:true, message: 'Campo(s) vazio(s)'});
 
     }else{
         Cliente.createCliente(new_cliente, function(err, cliente) {
-            if (err)
+          console.log(new_cliente)  
+          if (err)
                 res.send(err);
             res.json(cliente);
         });
