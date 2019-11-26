@@ -28,6 +28,7 @@ import { MatFormFieldModule, MatTableModule, MatInputModule, MatIconModule} from
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SobreComponent } from './sobre/sobre.component';
 import { LoginService } from './service/login.service';
+import { PesquisarComponent } from './pesquisar/pesquisar.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { LoginService } from './service/login.service';
     AdmClienteComponent,
     FinalizarPedidoComponent,
     AdmProdutosComponent,
-    SobreComponent
+    SobreComponent,
+    PesquisarComponent
   ],
   imports: [
     BrowserModule,
