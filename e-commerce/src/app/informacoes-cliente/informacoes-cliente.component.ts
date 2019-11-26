@@ -11,6 +11,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class InformacoesClienteComponent implements OnInit {
   cliente:any
+  testeCliente:Cliente =  new Cliente()
   idCliente:number
   public modalEditar: BsModalRef;
 
@@ -30,9 +31,9 @@ export class InformacoesClienteComponent implements OnInit {
   constructor(private apiService:ApiService,private modalService: BsModalService) { }
 
   ngOnInit() {
+    
     this.cliente = JSON.parse(localStorage.getItem('cliente'))
     this.idCliente = this.cliente['idcliente']
-    console.log(this.cliente['nome'])
   }
 
   openModalEditar(template: TemplateRef<any>) {
@@ -41,10 +42,7 @@ export class InformacoesClienteComponent implements OnInit {
   }
 
   preencheFormularioEditar(){
-    console.log(this.cliente)
-    
-    // this.id_produtoAtual = produtoAtual.idproduto;
-    // console.log(this.id_produtoAtual)
+
     this.formularioEditar.patchValue({
       nome: this.cliente['nome'],
       email: this.cliente['email'],
@@ -60,11 +58,8 @@ export class InformacoesClienteComponent implements OnInit {
 
   editarCliente(): void{
     this.apiService.updateCliente(this.idCliente, this.formularioEditar.value).subscribe( res => {
-      console.log(res)
       this.apiService.getCliente(this.idCliente).subscribe(res => {
-        console.log("|||||||||||||||||||||")
-        console.log(res)
-        localStorage.setItem('cliente',JSON.stringify(res))
+        localStorage.setItem('cliente',JSON.stringify(res[0]))
         this.modalEditar.hide();
         this.ngOnInit()
       })
