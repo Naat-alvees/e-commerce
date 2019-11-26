@@ -35,6 +35,7 @@ const apiUrl = 'http://localhost:3000/cliente';
     }
   
     addCliente (cliente): Observable<Cliente> {
+      console.log(cliente);
       return this.http.post<Cliente>(apiUrl, cliente, httpOptions).pipe(
         // tslint:disable-next-line:no-shadowed-variable
         tap((cliente: Cliente) => console.log(`adicionou o cliente com w/ id=${cliente}`)),
