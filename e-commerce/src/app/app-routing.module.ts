@@ -7,13 +7,13 @@ import { ProdutosComponent} from './produtos/produtos.component'
 import { DescricaoProdutoComponent} from './descricao-produto/descricao-produto.component'
 import { CarrinhoComponent } from './carrinho/carrinho.component';
 import { InformacoesClienteComponent } from './informacoes-cliente/informacoes-cliente.component';
-import { EditarClienteComponent } from './editar-cliente/editar-cliente.component';
 import { EditarSenhaClienteComponent } from './editar-senha-cliente/editar-senha-cliente.component';
 import { FinalizarPedidoComponent } from './finalizar-pedido/finalizar-pedido.component'
 import { AdmClienteComponent } from './adm-cliente/adm-cliente.component'
 import { AdmProdutosComponent } from './adm-produtos/adm-produtos.component'
 import { NovoProdutoComponent } from './novo-produto/novo-produto.component'
 import { SobreComponent } from './sobre/sobre.component'
+import { PesquisarComponent} from './pesquisar/pesquisar.component'
 
 
 
@@ -50,6 +50,10 @@ const routes: Routes = [
     path:'descricao-produto',
     component: DescricaoProdutoComponent
   },
+  {
+    path:'descricao-produto/:idproduto',
+    component: DescricaoProdutoComponent
+  },
   { 
     path: 'cadastro',
     component: CadastroComponent
@@ -63,16 +67,16 @@ const routes: Routes = [
     component: InformacoesClienteComponent
   },
   {
-    path: 'editar-cliente',
-    component: EditarClienteComponent
-  },
-  {
     path: 'editar-senha-cliente',
     component: EditarSenhaClienteComponent
   },
   {
     path: 'finalizar-pedido',
     component: FinalizarPedidoComponent
+  },
+  {
+    path: 'pesquisar/:pesquisa',
+    component: PesquisarComponent
   },
   {
     path: '',

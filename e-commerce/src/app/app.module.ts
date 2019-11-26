@@ -10,7 +10,6 @@ import { CadastroComponent } from './cadastro/cadastro.component';
 import { HomeComponent } from './home/home.component';
 import { ProdutosComponent } from './produtos/produtos.component';
 import { InformacoesClienteComponent } from './informacoes-cliente/informacoes-cliente.component';
-import { EditarClienteComponent } from './editar-cliente/editar-cliente.component';
 import { EditarSenhaClienteComponent } from './editar-senha-cliente/editar-senha-cliente.component';
 import { RodapeComponent } from './rodape/rodape.component';
 import { DescricaoProdutoComponent } from './descricao-produto/descricao-produto.component';
@@ -28,6 +27,7 @@ import { MatFormFieldModule, MatTableModule, MatInputModule, MatIconModule} from
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SobreComponent } from './sobre/sobre.component';
 import { LoginService } from './service/login.service';
+import { PesquisarComponent } from './pesquisar/pesquisar.component';
 
 
 @NgModule({
@@ -42,7 +42,6 @@ import { LoginService } from './service/login.service';
     ProdutosComponent,
     DescricaoProdutoComponent,
     InformacoesClienteComponent,
-    EditarClienteComponent,
     EditarSenhaClienteComponent,
     RodapeComponent ,
     CarrinhoComponent,
@@ -50,7 +49,8 @@ import { LoginService } from './service/login.service';
     AdmClienteComponent,
     FinalizarPedidoComponent,
     AdmProdutosComponent,
-    SobreComponent
+    SobreComponent,
+    PesquisarComponent
   ],
   imports: [
     BrowserModule,

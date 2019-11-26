@@ -1,161 +1,173 @@
 <app-menu></app-menu>
 <app-menu-categorias></app-menu-categorias>
 <div class="card">
-    <div class="card-header text-center">
-      <h5>Minha Conta Clothers</h5>
-    </div>
+  <div class="card-header text-center">
+    <h5>Minha Conta Clothers</h5>
+  </div>
 
-    <div class="card-body">
-      <h5 class="card-title">Informações da Conta</h5>
-      <hr>
-      <h6>Informações de Contato</h6>
-      <div>
-        <label>{{cliente.nome}}</label>
-      </div>
-      <div>
-        <label>{{cliente.email}}</label>
-      </div>
-      <div>
-        <label>{{cliente.telefone}}</label>
-      </div>
-      <br>
-      <h5 class="card-title">Endereço</h5>
-      <hr>
-      <h6>Informações de Endereço</h6>
-      <div>
-        <label>{{cliente.rua}}</label>
-      </div>
-      <div>
-        <label>{{cliente.numero}}</label>
-      </div>
-      <div>
-        <label>{{cliente.complemento}}</label>
-      </div>
-      <div>
-        <label>{{cliente.bairro}}</label>
-      </div>
-      <div>
-        <label>{{cliente.cidade}}</label>
-      </div>
-      <div>
-        <label>{{cliente.estado}}</label>
-      </div>
-      <div class="text-center">
-        <button type="button" class="btn btn-outline-dark mr-3" (click)="openModalEditar(template)">Editar</button>
-        <button type="button" class="btn btn-outline-dark" routerLink="/editar-senha-cliente" >Alterar Senha</button>
-      </div>
+  <div class="card-body">
+    <h5 class="card-title">Informações da Conta</h5>
+    <hr>
+    <h6>Informações de Contato</h6>
+    <div>
+      <label>{{cliente.nome}}</label>
     </div>
-    <div class="card-footer text-muted"></div>
+    <div>
+      <label>{{cliente.email}}</label>
+    </div>
+    <div>
+      <label>{{cliente.telefone}}</label>
+    </div>
+    <br>
+    <h5 class="card-title">Endereço</h5>
+    <hr>
+    <h6>Informações de Endereço</h6>
+    <div>
+      <label>{{cliente.rua}}</label>
+    </div>
+    <div>
+      <label>{{cliente.numero}}</label>
+    </div>
+    <div>
+      <label>{{cliente.complemento}}</label>
+    </div>
+    <div>
+      <label>{{cliente.bairro}}</label>
+    </div>
+    <div>
+      <label>{{cliente.cidade}}</label>
+    </div>
+    <div>
+      <label>{{cliente.estado}}</label>
+    </div>
+    <div class="text-center">
+      <button type="button" class="btn btn-outline-dark mr-3" (click)="openModalEditar(template)">Editar</button>
+      <button type="button" class="btn btn-outline-dark" (click)="openModalAlterarSenha(template1)">Alterar Senha</button>
+    </div>
+  </div>
+  <div class="card-footer text-muted"></div>
 </div>
 
 
 <!-- Código modal -->
 <ng-template #template>
   <div class="modal-header">
-      <h4 class="modal-title pull-left">Editar Informações</h4>
-      <button type="button" class="close pull-right" aria-label="Close" (click)="modalEditar.hide()">
+    <h4 class="modal-title pull-left">Editar Informações</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalEditar.hide()">
       <span aria-hidden="true">&times;</span>
-      </button>
+    </button>
   </div>
   <div class="modal-body">
-      <form [formGroup]="formularioEditar" (ngSubmit)="editarCliente()" novalidate>
-        <div class="form-group">
-          <label for="nome">Nome</label>
-          <input type="text" class="form-control" id="nome" placeholder="Seu nome" formControlName="nome">
+    <form [formGroup]="formularioEditar" (ngSubmit)="editarCliente()" novalidate>
+      <div class="form-group">
+        <label for="nome">Nome</label>
+        <input type="text" class="form-control" id="nome" placeholder="Seu nome" formControlName="nome">
       </div>
 
       <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Seu email" formControlName="email">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Seu email"
+          formControlName="email">
       </div>
 
       <div class="form-group">
-              <label for="telefone">Telefone</label>
-              <input type="text" class="form-control" id="telefone" placeholder="(99) 99999-9999" formControlName="telefone">
+        <label for="telefone">Telefone</label>
+        <input type="text" class="form-control" id="telefone" placeholder="(99) 99999-9999" formControlName="telefone">
       </div>
-      
+
       <div class="form-group">
-          <label for="rua">Rua</label>
-          <input type="text" class="form-control" id="rua" placeholder="Rua dos Bobos" formControlName="rua">
+        <label for="rua">Rua</label>
+        <input type="text" class="form-control" id="rua" placeholder="Rua dos Bobos" formControlName="rua">
       </div>
 
       <div class="form-group formato">
-          <label for="numero">Número</label>
-          <input type="text" class="form-control" id="numero" placeholder="nº 0" formControlName="numero">   
+        <label for="numero">Número</label>
+        <input type="text" class="form-control" id="numero" placeholder="nº 0" formControlName="numero">
       </div>
       <div class="form-group formato2">
-          <label for="complemento">Complemento</label>
-          <input type="text" class="form-control" id="complemento" placeholder="Complemento" formControlName="complemento">
+        <label for="complemento">Complemento</label>
+        <input type="text" class="form-control" id="complemento" placeholder="Complemento"
+          formControlName="complemento">
       </div>
 
       <div class="form-group formato3">
-          <label for="bairro">Bairro</label>
-          <input type="text" class="form-control" id="bairro" placeholder="Bairro" formControlName="bairro">
+        <label for="bairro">Bairro</label>
+        <input type="text" class="form-control" id="bairro" placeholder="Bairro" formControlName="bairro">
       </div>
 
       <div class="form-group formato4">
-          <label for="cidade">Cidade</label>
-          <input type="text" class="form-control" id="cidade" placeholder="Cidade" formControlName="cidade">
-          </div>
+        <label for="cidade">Cidade</label>
+        <input type="text" class="form-control" id="cidade" placeholder="Cidade" formControlName="cidade">
+      </div>
 
       <div class="form-group formato5">
-          <label for="estado">Estado</label>
-          <select class="form-control" id="estado" formControlName="estado">
-              <option value="AC">Acre</option>
-              <option value="AL">Alagoas</option>
-              <option value="AP">Amapá</option>
-              <option value="AM">Amazonas</option>
-              <option value="BA">Bahia</option>
-              <option value="CE">Ceará</option>
-              <option value="DF">Distrito Federal</option>
-              <option value="ES">Espírito Santo</option>
-              <option value="GO">Goiás</option>
-              <option value="MA">Maranhão</option>
-              <option value="MT">Mato Grosso</option>
-              <option value="MS">Mato Grosso do Sul</option>
-              <option value="MG">Minas Gerais</option>
-              <option value="PA">Pará</option>
-              <option value="PB">Paraíba</option>
-              <option value="PR">Paraná</option>
-              <option value="PE">Pernambuco</option>
-              <option value="PI">Piauí</option>
-              <option value="RJ">Rio de Janeiro</option>
-              <option value="RN">Rio Grande do Norte</option>
-              <option value="RS">Rio Grande do Sul</option>
-              <option value="RO">Rondônia</option>
-              <option value="RR">Roraima</option>
-              <option value="SC">Santa Catarina</option>
-              <option value="SP">São Paulo</option>
-              <option value="SE">Sergipe</option>
-              <option value="TO">Tocantins</option>
-          </select>
-      </div>
-  
-
-          <div class="modal-footer">
-                  <button type="submit" value="submit" class="btn btn-success">Salvar</button>
-              </div>
-      </form>  
-  </div>
-  
-</ng-template>
-  
-<!-- <ng-template #template1>
-  <div class="modal-content">
-      <div class="modal-header">
-          <h5 class="modal-title" >Alterar Senha</h5>
-          <button type="button" class="close pull-right" aria-label="Close" (click)="modalExcluir.hide()">
-              <span aria-hidden="true">&times;</span>
-          </button> 
+        <label for="estado">Estado</label>
+        <select class="form-control" id="estado" formControlName="estado">
+          <option value="AC">Acre</option>
+          <option value="AL">Alagoas</option>
+          <option value="AP">Amapá</option>
+          <option value="AM">Amazonas</option>
+          <option value="BA">Bahia</option>
+          <option value="CE">Ceará</option>
+          <option value="DF">Distrito Federal</option>
+          <option value="ES">Espírito Santo</option>
+          <option value="GO">Goiás</option>
+          <option value="MA">Maranhão</option>
+          <option value="MT">Mato Grosso</option>
+          <option value="MS">Mato Grosso do Sul</option>
+          <option value="MG">Minas Gerais</option>
+          <option value="PA">Pará</option>
+          <option value="PB">Paraíba</option>
+          <option value="PR">Paraná</option>
+          <option value="PE">Pernambuco</option>
+          <option value="PI">Piauí</option>
+          <option value="RJ">Rio de Janeiro</option>
+          <option value="RN">Rio Grande do Norte</option>
+          <option value="RS">Rio Grande do Sul</option>
+          <option value="RO">Rondônia</option>
+          <option value="RR">Roraima</option>
+          <option value="SC">Santa Catarina</option>
+          <option value="SP">São Paulo</option>
+          <option value="SE">Sergipe</option>
+          <option value="TO">Tocantins</option>
+        </select>
       </div>
 
-      <div class="modal-body">
-          <p>Você tem certeza que deseja excluir este produto?</p>
-      </div>
 
       <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" (click)="modalExcluir.hide()">Cancelar</button>
-          <button type="button" class="btn btn-danger" (click)="excluirProduto()" >Excluir</button>
-        </div>
+        <button type="submit" value="submit" class="btn btn-success">Salvar</button>
+      </div>
+    </form>
   </div>
-</ng-template> -->
+
+</ng-template>
+
+<ng-template #template1>
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">Alterar Senha</h5>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalAlterarSenha.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <form [formGroup]="formularioAlterarSenha" (ngSubmit)="AlterarSenha()" novalidate>
+
+        <div class="form-group">
+          <label for="inputNovaSenha">Nova senha</label>
+          <input type="password" class="form-control" id="inputNovaSenha" placeholder="Nova senha" formControlName="novaSenha">
+        </div>
+
+        <div class="form-group">
+          <label for="inputConfirmaSenha">Confirmar senha</label>
+          <input type="password" class="form-control" id="inputConfirmaSenha" placeholder="Confirmar senha" formControlName="confirmarSenha">
+        </div>
+      </form>
+    </div>
+
+    <div class="modal-footer">
+        <button type="submit" value="submit" class="btn btn-success">Salvar</button>
+    </div>
+  </div>
+</ng-template>

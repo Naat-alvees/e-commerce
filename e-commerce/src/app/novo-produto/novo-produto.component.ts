@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,TemplateRef } from '@angular/core';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { ProdutoService } from '../service/produto.service';
 import { Produto } from 'src/model/produto';
 import { Fotos } from 'src/model/fotos';
@@ -11,6 +12,7 @@ import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
   styleUrls: ['./novo-produto.component.css']
 })
 export class NovoProdutoComponent implements OnInit {
+  public modalSalvar: BsModalRef;
 
   produtoForm: FormGroup;
   isLoadingResults = false;
@@ -19,7 +21,7 @@ export class NovoProdutoComponent implements OnInit {
   fotos: Fotos;
   idProdutoFoto:number;
 
-  constructor(private router: Router, private produtoService: ProdutoService, private formBuilder: FormBuilder) { }
+  constructor(private router: Router, private produtoService: ProdutoService, private formBuilder: FormBuilder,private modalService: BsModalService) { }
 
   ngOnInit() {
     this.produtoForm = this.formBuilder.group({
@@ -34,9 +36,10 @@ export class NovoProdutoComponent implements OnInit {
     });
   }
 
- addProduto(form: NgForm) {
+ addProduto(form: NgForm, template: TemplateRef<any>) {
   this.produtoService.addProduto(form).subscribe(res => {
     //console.log(res)
+    this.modalSalvar = this.modalService.show(template, {class: 'modal-dialog-centered'});
     this.idProdutoFoto = Number(res)
     //console.log(this.idProdutoFoto)
     this.enviaFoto()
@@ -69,7 +72,7 @@ onFileChange(event) {
       reader.readAsDataURL(file);
       reader.onload = () => {
         this.fotos = new Fotos()
-        this.fotos.ft = reader.result
+        this.fotos.foto = reader.result
         this.arrayFotos.push(this.fotos)
       };
     }
@@ -86,5 +89,9 @@ enviaFoto(){
       console.log(err);
     });
   }
+}
+
+openModalExcluir(template: TemplateRef<any>) {
+  
 }
 }

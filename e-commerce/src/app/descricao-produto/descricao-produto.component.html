@@ -31,22 +31,20 @@
 						</div>
 						<div class="col-4" style="padding-left: 20px; padding-right: 20px;">
 							<div style="margin-top: 10px;">
-								<h3>Nome do Produto</h3>
+								<h3> {{ produto.titulo }}</h3>
 							</div>
 							<div style="margin-top: 20px;">
-								<p>Descrição do produto precisa ter muitas informacoes importantes sobre o produtoppppppppppppppppppppppppppppppppppppppppp</p>
+								<p> {{ produto.descricao }} </p>
 							</div>
 							<div class="d-flex justify-content-center">
-								<h1>R$45.00</h1>
+								<h1>R$ {{ produto.preco }}</h1>
 							</div>
 							<div>
 								<h6>Tamanho:</h6>
 								<select class="form-control" id="exampleFormControlSelect1">
-									<option>PP</option>
 									<option>P</option>
 									<option>M</option>
 									<option>G</option>
-									<option>GG</option>
 								</select>
 							</div>
 							<div>

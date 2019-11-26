@@ -12,29 +12,30 @@ var Produto = function(produto){
     this.categoria = produto.categoria;
 };
 Produto.createProduto = function (newProduto, result) {    
-        sql.query("INSERT INTO produto set ?", newProduto, function (err, res) {
-                
-                if(err) {
-                    console.log("error: ", err);
-                    result(err, null);
-                }
-                else{
-                    // console.log(res.insertId);
-                    result(null, res.insertId);
-                }
-            });           
+    sql.query("INSERT INTO produto set ?", newProduto, function (err, res) {
+            
+        if(err) {
+            console.log("error: ", err);
+            result(err, null);
+        }
+        else{
+            // console.log(res.insertId);
+            result(null, res.insertId);
+        }
+    });           
 };
+
 Produto.getProdutoByCategoria = function (nomeCategoria, result) {
-        sql.query("Select * from produto where categoria = ? ", nomeCategoria, function (err, res) {             
-                if(err) {
-                    console.log("error: ", err);
-                    result(err, null);
-                }
-                else{
-                    result(null, res);
-              
-                }
-            });   
+    sql.query("Select * from produto where categoria = ? ", nomeCategoria, function (err, res) {             
+            if(err) {
+                console.log("error: ", err);
+                result(err, null);
+            }
+            else{
+                result(null, res);
+        
+            }
+        });   
 };
 
 Produto.getProdutoById = function (produtoId, result) {
@@ -48,6 +49,20 @@ Produto.getProdutoById = function (produtoId, result) {
           
             }
         });   
+};
+
+Produto.getProdutoPesquisado = function (stringPesquisada, result) {
+    sql.query("SELECT * FROM produto WHERE titulo LIKE '%" +stringPesquisada+ "%'", function (err, res) {             
+        if(err) {
+            console.log("error: ", err);
+            result(err, null);
+        }
+        else{
+            // console.log()
+            result(null, res);
+        
+        }
+    });   
 };
 
 Produto.getAllProduto = function (result) {
