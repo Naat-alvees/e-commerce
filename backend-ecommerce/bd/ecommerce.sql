@@ -18,31 +18,107 @@ USE `ecommerce`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Dumping data for table `cliente`
+-- Table structure for table `cliente`
 --
 
-LOCK TABLES `cliente` WRITE;
-/*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
-UNLOCK TABLES;
+DROP TABLE IF EXISTS `cliente`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `cliente` (
+  `idcliente` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `email` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `telefone` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `rua` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `numero` int(11) NOT NULL,
+  `complemento` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `bairro` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `cidade` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `estado` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `senha` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `administrador` tinyint(4) DEFAULT '0',
+  PRIMARY KEY (`idcliente`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `fotos`
+-- Table structure for table `fotos`
 --
 
-LOCK TABLES `fotos` WRITE;
-/*!40000 ALTER TABLE `fotos` DISABLE KEYS */;
-/*!40000 ALTER TABLE `fotos` ENABLE KEYS */;
-UNLOCK TABLES;
+DROP TABLE IF EXISTS `fotos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `fotos` (
+  `idfotos` int(11) NOT NULL AUTO_INCREMENT,
+  `idproduto` int(11) NOT NULL,
+  `foto` blob NOT NULL,
+  PRIMARY KEY (`idfotos`),
+  KEY `fotos_fk_produto` (`idproduto`) /*!80000 INVISIBLE */,
+  CONSTRAINT `fotos_fk_produto` FOREIGN KEY (`idproduto`) REFERENCES `produto` (`idproduto`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `produto`
+-- Table structure for table `pedido`
 --
 
-LOCK TABLES `produto` WRITE;
-/*!40000 ALTER TABLE `produto` DISABLE KEYS */;
-/*!40000 ALTER TABLE `produto` ENABLE KEYS */;
-UNLOCK TABLES;
+DROP TABLE IF EXISTS `pedido`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `pedido` (
+  `idpedido` int(11) NOT NULL AUTO_INCREMENT,
+  `idproduto` int(11) NOT NULL,
+  `idcliente` int(11) NOT NULL,
+  `statusPedido` tinyint(1) NOT NULL,
+  `formaPagamento` varchar(45) DEFAULT NULL,
+  `numeroCartao` varchar(16) DEFAULT NULL,
+  `nomeCartao` varchar(45) DEFAULT NULL,
+  `vencimento` varchar(7) DEFAULT NULL,
+  `codSeguranca` int(11) DEFAULT NULL,
+  PRIMARY KEY (`idpedido`),
+  KEY `pedido_fk_produto_idx` (`idproduto`),
+  KEY `pedido_fk_cliente_idx` (`idcliente`),
+  CONSTRAINT `pedido_fk_cliente` FOREIGN KEY (`idcliente`) REFERENCES `cliente` (`idcliente`),
+  CONSTRAINT `pedido_fk_produto` FOREIGN KEY (`idproduto`) REFERENCES `produto` (`idproduto`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `produto`
+--
+
+DROP TABLE IF EXISTS `produto`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `produto` (
+  `idproduto` int(11) NOT NULL AUTO_INCREMENT,
+  `titulo` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `descricao` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `preco` decimal(10,2) NOT NULL,
+  `qtdP` int(11) NOT NULL DEFAULT '0',
+  `qtdM` int(11) NOT NULL DEFAULT '0',
+  `qtdG` int(11) NOT NULL DEFAULT '0',
+  `categoria` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  PRIMARY KEY (`idproduto`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `Tgr_Deleta_produto` BEFORE DELETE ON `produto` FOR EACH ROW BEGIN
+    DELETE FROM pedido WHERE statusPedido=0 AND idproduto = OLD.idproduto;
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Dumping events for database 'ecommerce'
@@ -61,4 +137,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-11-15 16:10:33
+-- Dump completed on 2019-11-26 17:56:19

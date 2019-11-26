@@ -21,7 +21,14 @@ exports.list_produto_categoria = function(req, res) {
   });
 };
 
-
+exports.list_pesquisa = function(req, res) {
+  Produto.getProdutoPesquisado(req.params.stringPesquisa, function(err, produto) {
+    if (err)
+      res.send(err);
+      // console.log('res', post);
+    res.send(produto);
+  });
+};
 
 exports.create_a_produto = function(req, res) {
   var new_produto = new Produto(req.body);

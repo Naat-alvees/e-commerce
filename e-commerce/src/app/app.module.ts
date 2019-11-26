@@ -10,7 +10,6 @@ import { CadastroComponent } from './cadastro/cadastro.component';
 import { HomeComponent } from './home/home.component';
 import { ProdutosComponent } from './produtos/produtos.component';
 import { InformacoesClienteComponent } from './informacoes-cliente/informacoes-cliente.component';
-import { EditarClienteComponent } from './editar-cliente/editar-cliente.component';
 import { EditarSenhaClienteComponent } from './editar-senha-cliente/editar-senha-cliente.component';
 import { RodapeComponent } from './rodape/rodape.component';
 import { DescricaoProdutoComponent } from './descricao-produto/descricao-produto.component';
@@ -43,7 +42,6 @@ import { PesquisarComponent } from './pesquisar/pesquisar.component';
     ProdutosComponent,
     DescricaoProdutoComponent,
     InformacoesClienteComponent,
-    EditarClienteComponent,
     EditarSenhaClienteComponent,
     RodapeComponent ,
     CarrinhoComponent,

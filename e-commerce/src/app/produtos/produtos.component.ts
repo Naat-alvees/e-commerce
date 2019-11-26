@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ProdutoService } from '../service/produto.service';
 import { Produto } from '../../model/produto';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-produtos',
@@ -16,7 +17,7 @@ export class ProdutosComponent implements OnInit {
   public modalExcluir: BsModalRef;
 
   public categoria: String;
-  public administrador: boolean = true;
+  public administrador: boolean = false;
   public produtos: Produto[];
 
   public id_produtoAtual: number;
@@ -30,7 +31,7 @@ export class ProdutosComponent implements OnInit {
     'qtdG': new FormControl(null, [Validators.required]),
   });
 
-  constructor(private modalService: BsModalService, private produtoService : ProdutoService, private route: ActivatedRoute) { }
+  constructor(private modalService: BsModalService, private produtoService : ProdutoService, private route: ActivatedRoute, private sanitizer : DomSanitizer) { }
 
   ngOnInit(){
     this.route.params.subscribe((parametro: any) =>{
@@ -85,6 +86,34 @@ export class ProdutosComponent implements OnInit {
   carregaProdutos(){
     this.produtoService.getProdutosByCategoria(this.categoria).subscribe(res => {
       this.produtos = res;
+      for (let i = 0; i < this.produtos.length; i++) {
+        this.produtoService.getFotosProduto(this.produtos[i].idproduto).subscribe(res => {
+          console.log("Produto id: "+this.produtos[i].idproduto)
+          this.produtos[i].fotos = res;
+          console.log(this.produtos[i].fotos[0].foto)
+
+          let TYPED_ARRAY = new Uint8Array(this.produtos[i].fotos[0].foto.data);
+          const STRING_CHAR = String.fromCharCode.apply(null, TYPED_ARRAY);
+
+          let base64String = btoa(STRING_CHAR);
+
+          // this.domSanitizer.bypassSecurityTrustUrl(‘data:image/jpg;base64, ‘ + base64String);
+
+          // this.produtos[i].fotos[0].urlFoto  = new Blob( [ this.produtos[i].fotos[0].foto.data ], { type: "image/jpeg" } );
+          
+
+          // var reader = new FileReader();
+          // var base64data
+          // reader.readAsDataURL(blob); 
+          // reader.onloadend = function() {
+          //   base64data = reader.result;     
+          // }
+          
+          this.produtos[i].fotos[0].urlFoto = this.sanitizer.bypassSecurityTrustUrl('data:image/png;base64,' + base64String);
+        }, err => {
+          console.log(err);
+        });
+      }
     }, err => {
       console.log(err);
     });

@@ -7,7 +7,6 @@ import { ProdutosComponent} from './produtos/produtos.component'
 import { DescricaoProdutoComponent} from './descricao-produto/descricao-produto.component'
 import { CarrinhoComponent } from './carrinho/carrinho.component';
 import { InformacoesClienteComponent } from './informacoes-cliente/informacoes-cliente.component';
-import { EditarClienteComponent } from './editar-cliente/editar-cliente.component';
 import { EditarSenhaClienteComponent } from './editar-senha-cliente/editar-senha-cliente.component';
 import { FinalizarPedidoComponent } from './finalizar-pedido/finalizar-pedido.component'
 import { AdmClienteComponent } from './adm-cliente/adm-cliente.component'
@@ -51,6 +50,10 @@ const routes: Routes = [
     path:'descricao-produto',
     component: DescricaoProdutoComponent
   },
+  {
+    path:'descricao-produto/:idproduto',
+    component: DescricaoProdutoComponent
+  },
   { 
     path: 'cadastro',
     component: CadastroComponent
@@ -62,10 +65,6 @@ const routes: Routes = [
   {
     path: 'informacoes-cliente',
     component: InformacoesClienteComponent
-  },
-  {
-    path: 'editar-cliente',
-    component: EditarClienteComponent
   },
   {
     path: 'editar-senha-cliente',
