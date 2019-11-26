@@ -12,21 +12,21 @@ var Cliente = function(cliente){
     this.bairro = cliente.bairro;
     this.cidade = cliente.cidade;
     this.estado = cliente.estado;
-    this.senha = cliente.senha;
-    
+    this.senha = cliente.senha;    
 };
 Cliente.createCliente = function (newCliente, result) {    
-        sql.query("INSERT INTO cliente set ?", newCliente, function (err, res) {
-                
-                if(err) {
-                    console.log("error: ", err);
-                    result(err, null);
-                }
-                else{
-                    // console.log(res.insertId);
-                    result(null, res.insertId);
-                }
-            });           
+    sql.query(
+        "INSERT INTO cliente (nome, email, telefone, rua, numero, complemento, bairro, cidade, estado, senha) VALUES ('" + newCliente.nome + "' ,'"+newCliente.email+"', '"+newCliente.telefone+"', '"+newCliente.rua+"', '"+newCliente.numero+"', '"+newCliente.complemento+"', '"+newCliente.bairro+"', '"+newCliente.cidade+"', '"+newCliente.estado+"', md5('"+newCliente.senha+"'))", function (err, res) {
+            
+            if(err) {
+                console.log("error: ", err);
+                result(err, null);
+            }
+            else{
+                // console.log(res.insertId);
+                result(null, res.insertId);
+            }
+        });           
 };
 Cliente.getClienteById = function (clienteId, result) {
         sql.query("Select * from cliente where idcliente = ? ", clienteId, function (err, res) {             
