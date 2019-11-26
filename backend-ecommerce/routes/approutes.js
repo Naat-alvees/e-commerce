@@ -29,6 +29,10 @@ module.exports = function(app) {
     .get(produto.list_produto_categoria);
 
   app.route('/fotos')
-    .get(fotos.list_all_fotos)
-    .post(fotos.create_a_foto);
-};
+    .get(foto.list_all_fotos)
+    .post(foto.create_a_foto);
+
+  app.route('/fotos/produto/:produtoId')
+    .get(foto.read_a_fotos_produto);
+
+}
