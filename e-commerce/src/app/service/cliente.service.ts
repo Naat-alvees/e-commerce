@@ -52,8 +52,7 @@ const apiUrl = 'http://localhost:3000/cliente';
     }
   
     deleteCliente (id): Observable<Cliente> {
-      const url = `${apiUrl}/delete/${id}`;
-  
+      const url = `${apiUrl}/${id}`;
       return this.http.delete<Cliente>(url, httpOptions).pipe(
         tap(_ => console.log(`remove o cliente com id=${id}`)),
         catchError(this.handleError<Cliente>('deleteCliente'))
