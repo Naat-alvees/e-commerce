@@ -19,7 +19,7 @@ export class LoginService {
   public login(email: string, senha: string): Observable<Cliente> {
     const body = new HttpParams().set('email', email).set('senha', senha);
     console.log(body.toString())
-    return this.http.post<Cliente>("http://localhost:3000/cliente",
+    return this.http.post<Cliente>("http://localhost:3000/login",
       body.toString(), {
       headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
     }).pipe(retry(1), map((answer: any) => {

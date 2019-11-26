@@ -11,7 +11,9 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class InformacoesClienteComponent implements OnInit {
   cliente:any
+  idCliente:number
   public modalEditar: BsModalRef;
+
 
   public formularioEditar: FormGroup = new FormGroup({
         'nome': new FormControl(null, [Validators.required]),
@@ -29,6 +31,7 @@ export class InformacoesClienteComponent implements OnInit {
 
   ngOnInit() {
     this.cliente = JSON.parse(localStorage.getItem('cliente'))
+    this.idCliente = this.cliente['idcliente']
     console.log(this.cliente['nome'])
   }
 
@@ -56,8 +59,16 @@ export class InformacoesClienteComponent implements OnInit {
   }
 
   editarCliente(): void{
-    this.apiService.updateCliente(this.cliente['idcliente'], this.formularioEditar.value).subscribe( res => {
-      this.modalEditar.hide();
+    this.apiService.updateCliente(this.idCliente, this.formularioEditar.value).subscribe( res => {
+      console.log(res)
+      this.apiService.getCliente(this.idCliente).subscribe(res => {
+        console.log("|||||||||||||||||||||")
+        console.log(res)
+        localStorage.setItem('cliente',JSON.stringify(res))
+        this.modalEditar.hide();
+        this.ngOnInit()
+      })
+      
     }, (err) => {
       console.log(err);
     });
