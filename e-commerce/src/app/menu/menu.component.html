@@ -9,8 +9,8 @@
             </div>
             <div class="col-lg-6 d-flex justify-content-center ">
                 <form class="form-inline" [formGroup]="pesquisarForm" (ngSubmit)="addProduto(pesquisarForm.value)">
-                    <input class="form-control pesquisar" type="search" placeholder="Search" aria-label="Search" formControlName="pesquisar">
-                    <button class="btn btn-procurar"><img src="../../assets/procurar.png"  alt=""></button>
+                    <input class="form-control pesquisar" type="input" placeholder="Search" aria-label="Search" formControlName="pesquisar">
+                    <button class="btn btn-procurar" [disabled]="!pesquisarForm.valid"><img src="../../assets/procurar.png"  alt="" ></button>
                 </form> 
             </div>
             <div class="col-lg-3 d-flex justify-content-end align-items-center ">

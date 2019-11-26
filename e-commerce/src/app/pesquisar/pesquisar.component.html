@@ -1,5 +1,26 @@
 <app-menu></app-menu>
 <app-menu-categorias></app-menu-categorias>
 <div class="container">
-    <p>RESULTADO DE BUSCA PARA "{{pesquisa}}"</p>
+    <h3 class="estilizarFonte">Resultado da busca para "{{pesquisa}}"</h3>
+    <h5 class="estilizarFonte" *ngIf="quantidadeProdutos == 0">Nenhum resultado encontrado</h5>
+    <div class="row">
+        <div *ngFor="let produto of produtos" class="col-4">
+            <div class="card" style="width: 22rem; margin-top: 20px; ">
+                <!-- <a [routerLink] = "['/descricao-produto', produto.idproduto]"><img src="produto.fotos[0].urlFoto" class="card-img-top" alt="..."></a> -->
+                <div class="card-body">
+                    <a [routerLink] = "['/descricao-produto', produto.idproduto]"><h5 class="card-title mb-1"> {{ produto.titulo }}</h5></a>
+                    <p class="text-muted mb-1">{{ produto.descricao }}</p>
+                    <h5 class=""> R$ {{ produto.preco }}</h5>
+                    <div *ngIf = "!administrador">
+                        <button type="button"  class="btn btn-success">Comprar agora</button> 
+                        <button type="button" class="btn btn-danger espaco">Add na sacola</button> 
+                    </div>
+                    <div *ngIf = "administrador">
+                        <button type="button" class="btn btn-success" (click)="openModalEditar(template, produto)">Editar</button> 
+                        <button type="button" class="btn btn-danger espaco" (click)="openModalExcluir(template1, produto)">Excluir</button> 
+                    </div>
+                </div>
+            </div>
+        </div>   
+    </div>
 </div>

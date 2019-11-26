@@ -10,6 +10,7 @@ const httpOptions = {
 };
 const apiUrl = 'http://localhost:3000/produto';
 const apiUrlFotos = 'http://localhost:3000/fotos';
+const apiUrlPesquisar = 'http://localhost:3000';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,14 @@ export class ProdutoService {
 
   getProdutosByCategoria (categoria: String): Observable<Produto[]> {
     const url = `${apiUrl}/categoria/${categoria}`;
+    return this.http.get<Produto[]>(url)
+      .pipe(
+        catchError(this.handleError('getProdutos', []))
+      );
+  }
+
+  getProdutosFiltro (stringPesquisa: String): Observable<Produto[]> {
+    const url = `${apiUrlPesquisar}/pesquisa/${stringPesquisa}`;
     return this.http.get<Produto[]>(url)
       .pipe(
         catchError(this.handleError('getProdutos', []))
