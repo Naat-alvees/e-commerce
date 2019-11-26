@@ -32,7 +32,7 @@ app.use(function(req, res, next) {
     next();
 });
 
-app.post('/cliente', (req, res) => {
+app.post('/login', (req, res) => {
     let email = req.body.email
     let senha = req.body.senha
 

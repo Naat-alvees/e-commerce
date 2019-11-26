@@ -1,45 +1,71 @@
+<app-menu></app-menu>
+<app-menu-categorias></app-menu-categorias>
 <div class="container">
     <div class="row">
         <mat-form-field>
-            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtro">
         </mat-form-field>
         
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
             <!-- Position Column -->
-            <ng-container matColumnDef="position">
-                <th mat-header-cell *matHeaderCellDef> No. </th>
-                <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+            <ng-container matColumnDef="idproduto">
+                <th mat-header-cell *matHeaderCellDef>ID</th>
+                <td mat-cell *matCellDef="let element"> {{element.idproduto}} </td>
             </ng-container>
         
             <!-- Name Column -->
-            <ng-container matColumnDef="name">
-                <th mat-header-cell *matHeaderCellDef> Name </th>
-                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            <ng-container matColumnDef="titulo">
+                <th mat-header-cell *matHeaderCellDef>Nome</th>
+                <td mat-cell *matCellDef="let element"> {{element.titulo}} </td>
             </ng-container>
         
             <!-- Weight Column -->
-            <ng-container matColumnDef="weight">
-                <th mat-header-cell *matHeaderCellDef> Weight </th>
-                <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+            <ng-container matColumnDef="descricao">
+                <th mat-header-cell *matHeaderCellDef>Descrição</th>
+                <td mat-cell *matCellDef="let element"> {{element.descricao}} </td>
             </ng-container>
         
             <!-- Symbol Column -->
-            <ng-container matColumnDef="symbol">
-                <th mat-header-cell *matHeaderCellDef> Symbol </th>
-                <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+            <ng-container matColumnDef="preco">
+                <th mat-header-cell *matHeaderCellDef>Preço por produto</th>
+                <td mat-cell *matCellDef="let element"> {{element.preco}} </td>
+            </ng-container>
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="qtdP">
+                <th mat-header-cell *matHeaderCellDef>Quantidade P</th>
+                <td mat-cell *matCellDef="let element"> {{element.qtdP}} </td>
+            </ng-container>
+        
+            <!-- Name Column -->
+            <ng-container matColumnDef="qtdM">
+                <th mat-header-cell *matHeaderCellDef>Quantidade M</th>
+                <td mat-cell *matCellDef="let element"> {{element.qtdM}} </td>
+            </ng-container>
+        
+            <!-- Weight Column -->
+            <ng-container matColumnDef="qtdG">
+                <th mat-header-cell *matHeaderCellDef>Quantidade G</th>
+                <td mat-cell *matCellDef="let element"> {{element.qtdG}} </td>
+            </ng-container>
+        
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="categoria">
+                <th mat-header-cell *matHeaderCellDef>Categoria</th>
+                <td mat-cell *matCellDef="let element"> {{element.categoria}} </td>
             </ng-container>
 
             <ng-container matColumnDef="edit">
                 <th mat-header-cell *matHeaderCellDef></th>
                 <td mat-cell *matCellDef="let element">
-                    <button type="button" class="btn btn-outline-success btn-sm">Editar</button>
+                    <button type="button" class="btn btn-outline-success btn-sm" (click)="openModalEditar(template, element)">Editar</button>
                 </td>
             </ng-container>
 
             <ng-container matColumnDef="delete">
                 <th mat-header-cell *matHeaderCellDef></th>
                 <td mat-cell *matCellDef="let element">
-                    <button type="button" class="btn btn-outline-danger btn-sm">Excluir</button>
+                    <button type="button" class="btn btn-outline-danger btn-sm" (click)="openModalExcluir(template1, element)">Excluir</button>
                 </td>
             </ng-container>
         
@@ -49,4 +75,69 @@
     </div>
 </div>
     
-      
+<!-- Código modal -->
+<ng-template #template>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Editar Produto</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalEditar.hide()">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="formularioEditar" (ngSubmit)="editarProduto()" novalidate>
+            <div class="form-group">
+                <label for="formGroupExampleInput">Nome</label>
+                <input type="text" class="form-control"  formControlName="titulo" placeholder="Nome do Produto">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput">Descrição</label>
+                <textarea class="form-control"  formControlName="descricao"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput">Preço</label>
+                <input type="text" class="form-control"  formControlName="preco" placeholder="Preço do Produto">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput">Quantidade</label>
+                <div class="row">
+                    <div class="col-4">
+                        <label for="formGroupExampleInput">P</label>
+                        <input type="text" class="form-control"  formControlName="qtdP">
+                    </div>
+                    <div class="col-4">
+                        <label for="formGroupExampleInput">M</label>
+                        <input type="text" class="form-control"  formControlName="qtdM">
+                    </div>
+                    <div class="col-4">
+                        <label for="formGroupExampleInput">G</label>
+                        <input type="text" class="form-control"  formControlName="qtdG">
+                    </div>
+                </div> 
+            </div>
+            <div class="modal-footer">
+                    <button type="submit" value="submit" class="btn btn-success">Salvar</button>
+                </div>
+        </form>  
+    </div>
+    
+</ng-template>
+    
+<ng-template #template1>
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" >Excluir Produto</h5>
+            <button type="button" class="close pull-right" aria-label="Close" (click)="modalExcluir.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button> 
+        </div>
+
+        <div class="modal-body">
+            <p>Você tem certeza que deseja excluir este produto?</p>
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="modalExcluir.hide()">Cancelar</button>
+            <button type="button" class="btn btn-danger" (click)="excluirProduto()" >Excluir</button>
+          </div>
+    </div>
+</ng-template>    

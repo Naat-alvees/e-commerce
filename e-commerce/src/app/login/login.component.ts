@@ -17,22 +17,32 @@ export class LoginComponent implements OnInit {
     }
   )
   constructor(private loginService: LoginService, private router: Router) { }
+  
 
   public tLogin(): void {
     this.loginService.login(this.login.value.email, this.login.value.senha).subscribe((cliente: Cliente) => {
+        
+      console.log(cliente)
       if (cliente === undefined) {
-        console.log(this.login.value)
-        console.log(this.login.value)
+        
+        this.loginService.isLogged = false
         alert("Falha ao realizar login!Email ou senha incorreta")
         return
+      }else{
+        this.loginService.cliente = cliente
+        this.loginService.isLogged = true
+        localStorage.setItem('cliente',JSON.stringify(cliente))
+        localStorage.setItem('tipoCliente',cliente.administrador.toString())
+        localStorage.setItem('estaLogado',JSON.stringify(this.loginService.isLogged))
+        this.router.navigate([""])
+
       };
-
-      this.loginService.cliente = cliente
-      this.loginService.isLogged = true
-    })
-
-    
+    }) 
   }
+
+  
+  
+
   ngOnInit() {
   }
 

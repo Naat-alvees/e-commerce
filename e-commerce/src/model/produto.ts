@@ -1,4 +1,3 @@
-import { Fotos } from 'src/model/fotos';
 export class Produto{
     idproduto: number;
     titulo: string;

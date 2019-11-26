@@ -2,7 +2,7 @@
 module.exports = function(app) {
   var cliente = require('../controller/clienteController');
   var produto = require('../controller/produtoController');
-  var foto = require('../controller/fotosController')
+  var fotos = require('../controller/fotosController')
  
 
   // Cliente Routes

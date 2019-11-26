@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,TemplateRef } from '@angular/core';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { ProdutoService } from '../service/produto.service';
 import { Produto } from 'src/model/produto';
 import { Fotos } from 'src/model/fotos';
@@ -11,6 +12,7 @@ import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
   styleUrls: ['./novo-produto.component.css']
 })
 export class NovoProdutoComponent implements OnInit {
+  public modalSalvar: BsModalRef;
 
   produtoForm: FormGroup;
   isLoadingResults = false;
@@ -19,7 +21,7 @@ export class NovoProdutoComponent implements OnInit {
   fotos: Fotos;
   idProdutoFoto:number;
 
-  constructor(private router: Router, private produtoService: ProdutoService, private formBuilder: FormBuilder) { }
+  constructor(private router: Router, private produtoService: ProdutoService, private formBuilder: FormBuilder,private modalService: BsModalService) { }
 
   ngOnInit() {
     this.produtoForm = this.formBuilder.group({
@@ -29,15 +31,17 @@ export class NovoProdutoComponent implements OnInit {
     'qtdP' : [null, [Validators.required, Validators.min(1)]],
     'qtdM' : [null, Validators.required],
     'qtdG' : [null, Validators.required],
-    'categoria': [null, Validators.required]
+    'categoria': [null, Validators.required],
+    'fotos' : [null, Validators.required]
     });
   }
 
- addProduto(form: NgForm) {
+ addProduto(form: NgForm, template: TemplateRef<any>) {
   this.produtoService.addProduto(form).subscribe(res => {
-    console.log(res)
+    //console.log(res)
+    this.modalSalvar = this.modalService.show(template, {class: 'modal-dialog-centered'});
     this.idProdutoFoto = Number(res)
-    console.log(this.idProdutoFoto)
+    //console.log(this.idProdutoFoto)
     this.enviaFoto()
   }, (err) => {
     console.log(err);
@@ -56,6 +60,8 @@ export class NovoProdutoComponent implements OnInit {
   this.produtoForm.controls['qtdG'].setErrors(null);
   this.produtoForm.controls['categoria'].setValue(0);
   this.produtoForm.controls['categoria'].setErrors(null);
+  this.produtoForm.controls['fotos'].setValue("");
+  this.produtoForm.controls['fotos'].setErrors(null);
 }
 
 onFileChange(event) {
@@ -78,10 +84,14 @@ enviaFoto(){
   for (let i = 0; i < this.arrayFotos.length; i++) {
     this.arrayFotos[i].idproduto = this.idProdutoFoto
     this.produtoService.addFotos(this.arrayFotos[i]).subscribe(res => {
-    console.log(res)
+    //console.log(res)
     }, (err) => {
       console.log(err);
     });
   }
+}
+
+openModalExcluir(template: TemplateRef<any>) {
+  
 }
 }

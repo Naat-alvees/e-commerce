@@ -29,9 +29,9 @@
                 <div class="dropdown" style="float:right;">
                     <button class="btn"><img src="../../assets/user.png" width="50px"alt=""></button>
                     <div class="dropdown-content" style="z-index:4;">
-                        <a routerLink="/login">Login</a>
-                        <a routerLink="/informacoes-cliente">Minha Conta</a>
-                        <a routerLink="#">Logout</a>
+                        <a routerLink="/login" *ngIf = "!islogged">Login</a>
+                        <a routerLink="/informacoes-cliente" *ngIf = "islogged">Minha Conta</a>
+                        <a routerLink="" (click)="Logout()">Logout</a>
                     </div>
                 </div>
             </div>

@@ -1,3 +1,5 @@
+<app-menu></app-menu>
+<app-menu-categorias></app-menu-categorias>
 <div class="container">
         <div class="card">
             <div class="card-header text-center">
@@ -5,7 +7,7 @@
             </div>
 
             <div class="card-body">
-                <form [formGroup]="produtoForm" (ngSubmit)="addProduto(produtoForm.value)">
+                <form [formGroup]="produtoForm" (ngSubmit)="addProduto(produtoForm.value,template1)">
                     <div class="form-group">
                         <label for="formGroupExampleInput">Nome Produto</label>
                         <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Nome Produto" formControlName="titulo">
@@ -47,7 +49,7 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlFile1">Selecionar imagens</label>
-                        <input type="file" class="form-control-file" id="exampleFormControlFile1" multiple="multiple" (change)="onFileChange($event)">
+                        <input type="file" class="form-control-file" id="exampleFormControlFile1" multiple="multiple" (change)="onFileChange($event)" formControlName="fotos">
                     </div>
 
                     <div class="text-center">
@@ -58,6 +60,25 @@
             <div class="card-footer text-muted"></div>
         </div>
     </div>
+
+    <ng-template #template1>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" >Produto Salvo</h5>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="modalSalvar.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button> 
+            </div>
+    
+            <div class="modal-body">
+                <p>Produto Salvo com sucesso!</p>
+            </div>
+    
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" (click)="modalSalvar.hide()">OK</button>
+              </div>
+        </div>
+    </ng-template>
     
     
     
