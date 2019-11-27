@@ -17,7 +17,7 @@ export class NovoProdutoComponent implements OnInit {
   produtoForm: FormGroup;
   isLoadingResults = false;
   reader = new FileReader();
-  arrayFotos: Array<Fotos> = new Array<Fotos>();
+  arrayFotos: Array<Fotos>;
   fotos: Fotos;
   idProdutoFoto:number;
 
@@ -65,6 +65,8 @@ export class NovoProdutoComponent implements OnInit {
 }
 
 onFileChange(event) {
+  this.arrayFotos  = new Array<Fotos>();
+  console.log("Tamanho: ", event.target.files.length)
   if(event.target.files && event.target.files.length > 0) {
     for (let index = 0; index < event.target.files.length; index++) {
       let reader = new FileReader();
@@ -74,6 +76,7 @@ onFileChange(event) {
         this.fotos = new Fotos()
         this.fotos.foto = reader.result
         this.arrayFotos.push(this.fotos)
+        console.log(this.arrayFotos)
       };
     }
     
