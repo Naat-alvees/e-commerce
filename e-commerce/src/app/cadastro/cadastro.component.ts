@@ -11,6 +11,9 @@ import { Cliente } from 'src/model/cliente';
 })
 
 export class CadastroComponent implements OnInit { 
+  public phoneModel = ''
+  public mask = ['(', /[1-9]/, /\d/, ')', ' ', /[1-9]/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+  
   clienteForm: FormGroup; 
   isLoadingResults = false; 
      
@@ -19,7 +22,7 @@ constructor(private router: Router, private api: ApiService, private formBuilder
 ngOnInit() { 
     this.clienteForm = this.formBuilder.group({ 
     'nome' : [null, Validators.required], 
-    'email' : [null, Validators.required], 
+    'email' : [null, Validators.email], 
     'telefone' : [null, Validators.required], 
     'rua' : [null,Validators.required], 
     'numero' : [null,Validators.required], 
