@@ -71,7 +71,7 @@ export class InformacoesClienteComponent implements OnInit {
     this.apiService.updateCliente(this.idCliente, this.formularioEditar.value).subscribe( res => {
       this.apiService.getCliente(this.idCliente).subscribe(res => {
         localStorage.setItem('cliente',JSON.stringify(res[0]))
-        this.modalAlterarSenha.hide();
+        this.modalEditar.hide()
         this.ngOnInit()
       })
       
@@ -82,16 +82,16 @@ export class InformacoesClienteComponent implements OnInit {
 
   AlterarSenha(): void{
 
-    this.apiService.updateCliente(this.idCliente, this.formularioAlterarSenha.value).subscribe( res => {
-      this.apiService.getCliente(this.idCliente).subscribe(res => {
-        localStorage.setItem('cliente',JSON.stringify(res[0]))
-        this.modalEditar.hide();
-        this.ngOnInit()
-      })
+    // this.apiService.updateCliente(this.idCliente, this.formularioAlterarSenha.value).subscribe( res => {
+    //   this.apiService.getCliente(this.idCliente).subscribe(res => {
+    //     localStorage.setItem('cliente',JSON.stringify(res[0]))
+    //     this.modalAlterarSenha.hide()
+    //     this.ngOnInit()
+    //   })
       
-    }, (err) => {
-      console.log(err);
-    });
+    // }, (err) => {
+    //   console.log(err);
+    // });
   }
 
 }
