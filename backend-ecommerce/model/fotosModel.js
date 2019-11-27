@@ -4,7 +4,7 @@ var sql = require('./db.js');
 //Task object constructor
 var Fotos = function(fotos){
     this.idproduto = fotos.idproduto;
-    this.foto = fotos.ft;
+    this.foto = fotos.foto;
 };
 Fotos.createFotos = function (newFotos, result) {    
         sql.query("INSERT INTO fotos set ?", newFotos, function (err, res) {
