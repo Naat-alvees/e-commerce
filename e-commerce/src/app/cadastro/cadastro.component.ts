@@ -23,7 +23,7 @@ ngOnInit() {
     'telefone' : [null, Validators.required], 
     'rua' : [null,Validators.required], 
     'numero' : [null,Validators.required], 
-    'complemento' : [null,Validators.required], 
+    'complemento' : [null], 
     'bairro' : [null,Validators.required], 
     'cidade' : [null,Validators.required], 
     'estado' : [null,Validators.required], 
