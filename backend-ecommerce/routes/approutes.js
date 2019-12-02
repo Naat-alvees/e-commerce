@@ -2,7 +2,8 @@
 module.exports = function(app) {
   var cliente = require('../controller/clienteController');
   var produto = require('../controller/produtoController');
-  var foto = require('../controller/fotosController')
+  var foto = require('../controller/fotosController');
+  var pedido = require('../controller/pedidoController');
  
 
   // Cliente Routes
@@ -10,12 +11,12 @@ module.exports = function(app) {
     .get(cliente.list_all_cliente)
     .post(cliente.create_a_cliente);
    
-   app.route('/cliente/:clienteId')
+  app.route('/cliente/:clienteId')
     .get(cliente.read_a_cliente)
     .put(cliente.update_a_cliente)
     .delete(cliente.delete_a_cliente);
 
-    // Produto Routes
+  // Produto Routes
   app.route('/produto')
     .get(produto.list_all_produto)
     .post(produto.create_a_produto);
@@ -38,4 +39,14 @@ module.exports = function(app) {
   app.route('/fotos/produto/:produtoId')
     .get(foto.read_a_fotos_produto);
 
+  // Rotas pedido
+
+  app.route('/pedido')
+    .get(pedido.listar_produtos_sacola)
+    .post(pedido.add_produto_sacola)
+    .delete(pedido.delete_produto_carrinho)
+    .put(pedido.finaliza_pedido);
+
+  app.route('/pedido/:idCliente')
+    .get(pedido.listar_pedidosFinalizados);
 }
