@@ -38,9 +38,8 @@ app.post('/login', (req, res) => {
 
     console.log(email)
     console.log(senha)
-    let query = "SELECT * FROM cliente WHERE email = ? and senha = ?"
 
-    mc.query(query, [email, senha], function (error, results, fields) {
+    mc.query("SELECT * FROM cliente WHERE email='"+email+"'and senha=md5('"+senha+"')", function (error, results, fields) {
         if (error) throw error;
         res.json({error: false, message: "User with the username and password getted by req.params", data: results})
     })

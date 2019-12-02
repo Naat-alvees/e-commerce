@@ -20,6 +20,7 @@ import { NovoProdutoComponent } from './novo-produto/novo-produto.component';
 import { AdmClienteComponent } from './adm-cliente/adm-cliente.component';
 import { AdmProdutosComponent } from './adm-produtos/adm-produtos.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TextMaskModule } from 'angular2-text-mask';
 
 
 import {CdkTableModule} from '@angular/cdk/table';
@@ -66,6 +67,7 @@ import { PesquisarComponent } from './pesquisar/pesquisar.component';
     HttpClientModule,
     ModalModule.forRoot(),
     FormsModule,
+    TextMaskModule
 
   ],
   providers: [LoginService],
