@@ -29,6 +29,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SobreComponent } from './sobre/sobre.component';
 import { LoginService } from './service/login.service';
 import { PesquisarComponent } from './pesquisar/pesquisar.component';
+import { ListarPedidosComponent } from './listar-pedidos/listar-pedidos.component';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { PesquisarComponent } from './pesquisar/pesquisar.component';
     FinalizarPedidoComponent,
     AdmProdutosComponent,
     SobreComponent,
-    PesquisarComponent
+    PesquisarComponent,
+    ListarPedidosComponent
   ],
   imports: [
     BrowserModule,

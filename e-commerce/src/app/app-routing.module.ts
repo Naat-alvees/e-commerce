@@ -14,7 +14,7 @@ import { AdmProdutosComponent } from './adm-produtos/adm-produtos.component'
 import { NovoProdutoComponent } from './novo-produto/novo-produto.component'
 import { SobreComponent } from './sobre/sobre.component'
 import { PesquisarComponent} from './pesquisar/pesquisar.component'
-
+import {ListarPedidosComponent} from './listar-pedidos/listar-pedidos.component'
 
 
 const routes: Routes = [
@@ -81,7 +81,11 @@ const routes: Routes = [
   {
     path: '',
     component: HomeComponent
-  }
+  },
+  {
+    path: 'listar-pedidos',
+    component: ListarPedidosComponent
+  },
 ];
 
 @NgModule({
