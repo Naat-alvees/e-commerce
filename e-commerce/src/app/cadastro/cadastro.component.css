@@ -44,7 +44,10 @@
     float: left;
     width: 50%;
 }
-
+input[type=number]::-webkit-inner-spin-button { 
+    -webkit-appearance: none;
+    
+}
 input.ng-invalid.ng-touched{
     border: 1px solid red;
 }

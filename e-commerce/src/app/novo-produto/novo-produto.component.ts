@@ -26,11 +26,11 @@ export class NovoProdutoComponent implements OnInit {
   ngOnInit() {
     this.produtoForm = this.formBuilder.group({
     'titulo' : [null, Validators.required],
-    'descricao' : [null, [Validators.required, Validators.minLength(4)]],
+    'descricao' : [null, Validators.compose([Validators.required, Validators.minLength(4)])],
     'preco' : [null, Validators.required],
-    'qtdP' : [null, [Validators.required, Validators.min(1)]],
-    'qtdM' : [null, Validators.required],
-    'qtdG' : [null, Validators.required],
+    'qtdP' : [null, Validators.compose([Validators.required, Validators.min(1)])],
+    'qtdM' : [null, Validators.compose([Validators.required, Validators.min(1)])],
+    'qtdG' : [null, Validators.compose([Validators.required,  Validators.min(1)])],
     'categoria': [null, Validators.required],
     'fotos' : [null, Validators.required]
     });
