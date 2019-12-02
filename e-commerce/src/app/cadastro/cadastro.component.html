@@ -10,13 +10,13 @@
             <form [formGroup]="clienteForm" (ngSubmit)="addCliente(clienteForm.value)">
                 <div class="form-group">
                     <label for="formGroupExampleInput">Nome</label>
-                    <input [class.is-invalid] = "clienteForm.get('nome').invalid && clienteForm.get('nome').touched" type="text" class="form-control ng-touched ng-dirty ng-valid" id="formGroupExampleInput" placeholder="Nome" formControlName = "nome" ng-reflect-name="nome">
+                    <input [class.is-invalid] = "clienteForm.get('nome').invalid && clienteForm.get('nome').touched" type="text" class="form-control" id="formGroupExampleInput" placeholder="Nome" formControlName = "nome">
                     <small *ngIf="!clienteForm.get('nome').valid && clienteForm.get('nome').touched" class="form-text text-danger">Campo obrigatório</small>
                 </div>
 
                 <div class="form-group">
                     <label for="exampleInputEmail1">Email</label>
-                    <input  [class.is-invalid] = "clienteForm.get('email').invalid && clienteForm.get('email').touched" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="joao@gmail.com"  formControlName = "email" ng-reflect-name="email">
+                    <input  [class.is-invalid] = "clienteForm.get('email').invalid && clienteForm.get('email').touched" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="joao@gmail.com"  formControlName = "email">
                     <div *ngIf="(clienteForm.get('email').invalid && clienteForm.get('email').touched) || clienteForm.get('email').dirty">
                         <small *ngIf="clienteForm.get('email').errors?.required" class="text-danger">Campo obrigatório</small>
                         <!--question mark(?) is a safe navigation operator-->
@@ -26,19 +26,19 @@
 
                 <div class="form-group">
                     <label for="inputFone">Telefone</label>
-                    <input  [class.is-invalid] = "clienteForm.get('telefone').invalid && clienteForm.get('telefone').touched" type="text" class="form-control ng-touched ng-dirty ng-valid" id="inputFone" placeholder="(DDD) 9****-****" [textMask]="{mask: mask}" [(ngModel)]="myModel" formControlName = "telefone" ng-reflect-name="telefone">
+                    <input  [class.is-invalid] = "clienteForm.get('telefone').invalid && clienteForm.get('telefone').touched" type="text" class="form-control" id="inputFone" placeholder="(DDD) 9****-****" [textMask]="{mask: mask}" [(ngModel)]="myModel" formControlName = "telefone">
                     <small *ngIf="!clienteForm.get('telefone').valid && clienteForm.get('telefone').touched" class="form-text text-danger">Campo obrigatório</small>
                 </div>
 
                 <div class="form-group">
                     <label for="inputRua">Rua</label>
-                    <input [class.is-invalid] = "clienteForm.get('rua').invalid && clienteForm.get('rua').touched" type="text" class="form-control ng-touched ng-dirty ng-valid" id="inputRua" placeholder="Rua dos Bobos" formControlName = "rua" ng-reflect-name="rua">
+                    <input [class.is-invalid] = "clienteForm.get('rua').invalid && clienteForm.get('rua').touched" type="text" class="form-control" id="inputRua" placeholder="Rua dos Bobos" formControlName = "rua">
                     <small *ngIf="!clienteForm.get('rua').valid && clienteForm.get('rua').touched" class="form-text text-danger">Campo obrigatório</small>
                 </div>
 
                 <div class="form-group formato">
                     <label for="inputNumero">Número</label>
-                    <input [class.is-invalid] = "clienteForm.get('numero').invalid && clienteForm.get('numero').touched" type="text" class="form-control ng-touched ng-dirty ng-valid" id="inputNumero" placeholder="nº 0" formControlName = "numero" ng-reflect-name="numero">   
+                    <input [class.is-invalid] = "clienteForm.get('numero').invalid && clienteForm.get('numero').touched" type="number" class="form-control" id="inputNumero" placeholder="nº 0" formControlName = "numero">   
                     <small *ngIf="!clienteForm.get('numero').valid && clienteForm.get('numero').touched" class="form-text text-danger">Campo obrigatório</small>
                 </div>
 
@@ -49,19 +49,19 @@
 
                 <div class="form-group formato3">
                     <label for="inputBairro">Bairro</label>
-                    <input [class.is-invalid] = "clienteForm.get('bairro').invalid && clienteForm.get('bairro').touched" type="text" class="form-control ng-touched ng-dirty ng-valid" id="inputBairro" placeholder="Bairro" formControlName = "bairro" ng-reflect-name="bairro">
+                    <input [class.is-invalid] = "clienteForm.get('bairro').invalid && clienteForm.get('bairro').touched" type="text" class="form-control" id="inputBairro" placeholder="Bairro" formControlName = "bairro">
                     <small *ngIf="!clienteForm.get('bairro').valid && clienteForm.get('bairro').touched" class="form-text text-danger">Campo obrigatório</small>
                 </div>
 
                 <div class="form-group formato4">
                     <label for="inputCidade">Cidade</label>
-                    <input [class.is-invalid] = "clienteForm.get('cidade').invalid && clienteForm.get('cidade').touched" type="text" class="form-control ng-touched ng-dirty ng-valid" id="inputCidade" placeholder="Cidade" formControlName = "cidade" ng-reflect-name="cidade">
+                    <input [class.is-invalid] = "clienteForm.get('cidade').invalid && clienteForm.get('cidade').touched" type="text" class="form-control" id="inputCidade" placeholder="Cidade" formControlName = "cidade">
                     <small *ngIf="!clienteForm.get('cidade').valid && clienteForm.get('cidade').touched" class="form-text text-danger">Campo obrigatório</small>
                 </div>
 
                 <div class="form-group formato5">
                     <label for="inputEstado">Estado</label>
-                    <select [class.is-invalid] = "clienteForm.get('estado').invalid && clienteForm.get('estado').touched" class="form-control ng-touched ng-dirty ng-valid" id="inputEstado" formControlName = "estado" ng-reflect-name="estado">
+                    <select [class.is-invalid] = "clienteForm.get('estado').invalid && clienteForm.get('estado').touched" class="form-control" id="inputEstado" formControlName = "estado">
                         <option value="AC">Acre</option>
                         <option value="AL">Alagoas</option>
                         <option value="AP">Amapá</option>
@@ -95,7 +95,7 @@
 
                 <div class="form-group">
                     <label for="exampleInputPassword1">Senha</label>
-                    <input  [class.is-invalid] = "clienteForm.get('senha').invalid && clienteForm.get('senha').touched" type="password" class="form-control ng-touched ng-dirty ng-valid" id="exampleInputPassword1" placeholder="Senha" formControlName = "senha" ng-reflect-name="senha">
+                    <input  [class.is-invalid] = "clienteForm.get('senha').invalid && clienteForm.get('senha').touched" type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha" formControlName = "senha">
                     <small *ngIf="!clienteForm.get('senha').valid && clienteForm.get('senha').touched" class="form-text text-danger">Campo obrigatório</small>
                 </div>
 
