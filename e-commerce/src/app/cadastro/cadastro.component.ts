@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core'; 
+import { Component, OnInit, TemplateRef } from '@angular/core'; 
 import { Router } from '@angular/router'; 
 import { FormBuilder, FormGroup, FormControl, NgForm, Validators } from '@angular/forms'; 
 import { ApiService } from '../service/cliente.service'; 
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { Cliente } from 'src/model/cliente'; 
 
 @Component({
@@ -14,8 +15,10 @@ export class CadastroComponent implements OnInit {
   public mask = ['(', /[1-9]/, /\d/, ')', ' ', /[1-9]/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
   clienteForm: FormGroup; 
   isLoadingResults = false; 
+
+  public modalSalvar: BsModalRef;
      
-constructor(private router: Router, private api: ApiService, private formBuilder: FormBuilder){ } 
+constructor(private router: Router, private api: ApiService, private formBuilder: FormBuilder,private modalService: BsModalService){ } 
 
 ngOnInit() { 
     this.clienteForm = this.formBuilder.group({ 
@@ -32,10 +35,11 @@ ngOnInit() {
   }); 
 } 
 
-addCliente(form: NgForm)  
+addCliente(form: NgForm, template: TemplateRef<any>)  
 { 
   this.api.addCliente(form).subscribe(res => { 
-      console.log(form); 
+      this.modalSalvar = this.modalService.show(template, {class: 'modal-dialog-centered'});
+      //console.log(form); 
       }, (err) => { 
         console.log(err); 
       }); 
