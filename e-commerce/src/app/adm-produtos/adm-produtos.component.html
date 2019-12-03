@@ -87,35 +87,57 @@
         <form [formGroup]="formularioEditar" (ngSubmit)="editarProduto()" novalidate>
             <div class="form-group">
                 <label for="formGroupExampleInput">Nome</label>
-                <input type="text" class="form-control"  formControlName="titulo" placeholder="Nome do Produto">
+                <input [class.is-invalid] = "formularioEditar.get('titulo').invalid && formularioEditar.get('titulo').touched" type="text" class="form-control"  formControlName="titulo" placeholder="Nome do Produto">
+                <small *ngIf="!formularioEditar.get('titulo').valid && formularioEditar.get('titulo').touched" class="form-text text-danger">Campo obrigatório</small>
             </div>
             <div class="form-group">
                 <label for="formGroupExampleInput">Descrição</label>
-                <textarea class="form-control"  formControlName="descricao"></textarea>
+                <textarea [class.is-invalid] = "formularioEditar.get('descricao').invalid && formularioEditar.get('descricao').touched" type="textarea" ng-minlength="4" class="form-control"  formControlName="descricao"></textarea>
+                <div *ngIf="(formularioEditar.get('descricao').invalid && formularioEditar.get('descricao').touched) || formularioEditar.get('descricao').dirty">
+                    <small *ngIf="formularioEditar.get('descricao').errors?.required" class="text-danger">Campo obrigatório</small>
+                    <!--question mark(?) is a safe navigation operator-->
+                    <small *ngIf=" formularioEditar.get('descricao').hasError('minlength')" class="text-danger">Descrição pequena</small>
+                </div>
             </div>
             <div class="form-group">
                 <label for="formGroupExampleInput">Preço</label>
-                <input type="text" class="form-control"  formControlName="preco" placeholder="Preço do Produto">
+                <input [class.is-invalid] = "formularioEditar.get('preco').invalid && formularioEditar.get('preco').touched" type="number" class="form-control"  formControlName="preco" placeholder="12.34">
+                <small *ngIf="!formularioEditar.get('preco').valid && formularioEditar.get('preco').touched" class="form-text text-danger">Campo obrigatório</small>
             </div>
             <div class="form-group">
                 <label for="formGroupExampleInput">Quantidade</label>
                 <div class="row">
                     <div class="col-4">
                         <label for="formGroupExampleInput">P</label>
-                        <input type="text" class="form-control"  formControlName="qtdP">
+                        <input [class.is-invalid] = "formularioEditar.get('qtdP').invalid && formularioEditar.get('qtdP').touched" type="number" class="form-control"  formControlName="qtdP">
+                        <div *ngIf="(formularioEditar.get('qtdP').invalid && formularioEditar.get('qtdP').touched) || formularioEditar.get('qtdP').dirty">
+                            <small *ngIf="formularioEditar.get('qtdP').errors?.required" class="text-danger">Campo obrigatório</small>
+                            <!--question mark(?) is a safe navigation operator-->
+                            <small *ngIf="formularioEditar.get('qtdP').errors?.min" class="text-danger">Informe uma quantidade válida</small>
+                        </div>
                     </div>
                     <div class="col-4">
                         <label for="formGroupExampleInput">M</label>
-                        <input type="text" class="form-control"  formControlName="qtdM">
+                        <input [class.is-invalid] = "formularioEditar.get('qtdM').invalid && formularioEditar.get('qtdM').touched" type="number" class="form-control"  formControlName="qtdM">
+                        <div *ngIf="(formularioEditar.get('qtdM').invalid && formularioEditar.get('qtdM').touched) || formularioEditar.get('qtdM').dirty">
+                            <small *ngIf="formularioEditar.get('qtdM').errors?.required" class="text-danger">Campo obrigatório</small>
+                            <!--question mark(?) is a safe navigation operator-->
+                            <small *ngIf="formularioEditar.get('qtdM').errors?.min" class="text-danger">Informe uma quantidade válida</small>
+                        </div>
                     </div>
                     <div class="col-4">
                         <label for="formGroupExampleInput">G</label>
-                        <input type="text" class="form-control"  formControlName="qtdG">
+                        <input [class.is-invalid] = "formularioEditar.get('qtdG').invalid && formularioEditar.get('qtdG').touched" type="number" class="form-control"  formControlName="qtdG">
+                        <div *ngIf="(formularioEditar.get('qtdG').invalid && formularioEditar.get('qtdG').touched) || formularioEditar.get('qtdG').dirty">
+                            <small *ngIf="formularioEditar.get('qtdG').errors?.required" class="text-danger">Campo obrigatório</small>
+                            <!--question mark(?) is a safe navigation operator-->
+                            <small *ngIf="formularioEditar.get('qtdG').errors?.min" class="text-danger">Informe uma quantidade válida</small>
+                        </div>
                     </div>
                 </div> 
             </div>
             <div class="modal-footer">
-                    <button type="submit" value="submit" class="btn btn-success">Salvar</button>
+                    <button type="submit" value="submit" class="btn btn-success" [disabled]="!formularioEditar.valid">Salvar</button>
                 </div>
         </form>  
     </div>
