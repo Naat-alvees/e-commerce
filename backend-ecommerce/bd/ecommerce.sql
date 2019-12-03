@@ -38,7 +38,7 @@ CREATE TABLE `cliente` (
   `senha` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `administrador` tinyint(4) DEFAULT '0',
   PRIMARY KEY (`idcliente`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -66,21 +66,23 @@ DROP TABLE IF EXISTS `pedido`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `pedido` (
-  `idpedido` int(11) NOT NULL AUTO_INCREMENT,
+  `idpedido` int(11) NOT NULL,
   `idproduto` int(11) NOT NULL,
   `idcliente` int(11) NOT NULL,
-  `statusPedido` tinyint(1) NOT NULL,
+  `statusPedido` tinyint(1) DEFAULT '0',
   `formaPagamento` varchar(45) DEFAULT NULL,
   `numeroCartao` varchar(16) DEFAULT NULL,
   `nomeCartao` varchar(45) DEFAULT NULL,
   `vencimento` varchar(7) DEFAULT NULL,
   `codSeguranca` int(11) DEFAULT NULL,
-  PRIMARY KEY (`idpedido`),
+  `tamanho` varchar(1) DEFAULT NULL,
+  `quantidade` int(11) DEFAULT NULL,
+  `precoFinal` decimal(8,2) DEFAULT NULL,
   KEY `pedido_fk_produto_idx` (`idproduto`),
   KEY `pedido_fk_cliente_idx` (`idcliente`),
   CONSTRAINT `pedido_fk_cliente` FOREIGN KEY (`idcliente`) REFERENCES `cliente` (`idcliente`),
   CONSTRAINT `pedido_fk_produto` FOREIGN KEY (`idproduto`) REFERENCES `produto` (`idproduto`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -100,7 +102,7 @@ CREATE TABLE `produto` (
   `qtdG` int(11) NOT NULL DEFAULT '0',
   `categoria` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   PRIMARY KEY (`idproduto`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -137,4 +139,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-11-26 17:56:19
+-- Dump completed on 2019-12-02 20:20:51

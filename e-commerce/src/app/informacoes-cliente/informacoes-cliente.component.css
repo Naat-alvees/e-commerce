@@ -28,3 +28,19 @@ a:hover {
     color: #17A589;
     text-decoration: none;
   }
+
+input[type=number]::-webkit-inner-spin-button { 
+    -webkit-appearance: none;
+}
+input.ng-invalid.ng-touched{
+    border: 1px solid red;
+}
+select.ng-invalid.ng-touched{
+    border: 1px solid red;
+}
+input.ng-valid.ng-touched{
+    border: 1px solid green;
+}
+select.ng-valid.ng-touched{
+    border: 1px solid green;
+}

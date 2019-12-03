@@ -34,11 +34,11 @@ export class AdmProdutosComponent implements OnInit {
 
   public formularioEditar: FormGroup = new FormGroup({
     'titulo': new FormControl(null, [Validators.required]),
-    'descricao': new FormControl(null, [Validators.required]),
+    'descricao': new FormControl(null, Validators.compose([Validators.required, Validators.minLength(4)])),
     'preco': new FormControl(null, [Validators.required]),
-    'qtdP': new FormControl(null, [Validators.required]),
-    'qtdM': new FormControl(null, [Validators.required]),
-    'qtdG': new FormControl(null, [Validators.required]),
+    'qtdP': new FormControl(null, Validators.compose([Validators.required, Validators.min(1)])),
+    'qtdM': new FormControl(null, Validators.compose([Validators.required, Validators.min(1)])),
+    'qtdG': new FormControl(null, Validators.compose([Validators.required, Validators.min(1)])),
   });
 
   displayedColumns: string[] = ['idproduto', 'titulo', 'descricao', 'preco', 'qtdP', 'qtdM', 'qtdG', 'categoria', 'edit', 'delete'];

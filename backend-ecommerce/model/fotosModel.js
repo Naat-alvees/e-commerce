@@ -34,14 +34,14 @@ Fotos.getFotosById = function (fotosId, result) {
 };
 
 Fotos.getFotosByProduto = function (produtoId, result) {
-    sql.query("Select * from fotos where idproduto = ? ", produtoId, function (err, res) {             
+    sql.query("Select CONVERT(foto USING utf8) as data from fotos where idproduto = ? ", produtoId, function (err, res) {             
             if(err) {
                 console.log("error: ", err);
                 result(err, null);
             }
             else{
+                console.log(res)
                 result(null, res);
-          
             }
         });   
 };

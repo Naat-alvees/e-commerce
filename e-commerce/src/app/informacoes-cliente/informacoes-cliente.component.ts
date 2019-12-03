@@ -11,6 +11,7 @@ import { LoginService } from '../service/login.service';
   styleUrls: ['./informacoes-cliente.component.css']
 })
 export class InformacoesClienteComponent implements OnInit {
+  public mask = ['(', /[1-9]/, /\d/, ')', ' ', /[1-9]/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
   cliente:any
   idCliente:number
   idClienteAtual:number
@@ -22,11 +23,11 @@ export class InformacoesClienteComponent implements OnInit {
 
   public formularioEditar: FormGroup = new FormGroup({
         'nome': new FormControl(null, [Validators.required]),
-        'email': new FormControl(null, [Validators.required]),
+        'email': new FormControl(null, Validators.compose([Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")])),
         'telefone': new FormControl(null, [Validators.required]),
         'rua': new FormControl(null, [Validators.required]),
         'numero': new FormControl(null, [Validators.required]),
-        'complemento': new FormControl(null, [Validators.required]),
+        'complemento': new FormControl(null),
         'bairro': new FormControl(null, [Validators.required]),
         'cidade': new FormControl(null, [Validators.required]),
         'estado': new FormControl(null, [Validators.required]),

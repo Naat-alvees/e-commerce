@@ -22,6 +22,7 @@ export class ProdutosComponent implements OnInit {
 
   public id_produtoAtual: number;
 
+
   public formularioEditar: FormGroup = new FormGroup({
     'titulo': new FormControl(null, [Validators.required]),
     'descricao': new FormControl(null, [Validators.required]),
@@ -90,26 +91,8 @@ export class ProdutosComponent implements OnInit {
         this.produtoService.getFotosProduto(this.produtos[i].idproduto).subscribe(res => {
           console.log("Produto id: "+this.produtos[i].idproduto)
           this.produtos[i].fotos = res;
-          console.log(this.produtos[i].fotos[0].foto)
-
-          let TYPED_ARRAY = new Uint8Array(this.produtos[i].fotos[0].foto.data);
-          const STRING_CHAR = String.fromCharCode.apply(null, TYPED_ARRAY);
-
-          let base64String = btoa(STRING_CHAR);
-
-          // this.domSanitizer.bypassSecurityTrustUrl(‘data:image/jpg;base64, ‘ + base64String);
-
-          // this.produtos[i].fotos[0].urlFoto  = new Blob( [ this.produtos[i].fotos[0].foto.data ], { type: "image/jpeg" } );
+          // console.log(this.produtos[i].fotos[0].data)
           
-
-          // var reader = new FileReader();
-          // var base64data
-          // reader.readAsDataURL(blob); 
-          // reader.onloadend = function() {
-          //   base64data = reader.result;     
-          // }
-          
-          this.produtos[i].fotos[0].urlFoto = this.sanitizer.bypassSecurityTrustUrl('data:image/png;base64,' + base64String);
         }, err => {
           console.log(err);
         });

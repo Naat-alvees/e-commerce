@@ -32,6 +32,8 @@
                         <a routerLink="/login" *ngIf = "!islogged">Entrar</a>
                         <a routerLink="/informacoes-cliente" *ngIf = "islogged">Minha Conta</a>
                         <a routerLink="" (click)="Logout()">Sair</a>
+                        <a routerLink="/listar-pedidos" *ngIf = "islogged">Meus Pedidos</a>
+                        <a routerLink="" (click)="Logout()">Logout</a>
                     </div>
                 </div>
             </div>

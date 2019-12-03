@@ -20,6 +20,7 @@ import { NovoProdutoComponent } from './novo-produto/novo-produto.component';
 import { AdmClienteComponent } from './adm-cliente/adm-cliente.component';
 import { AdmProdutosComponent } from './adm-produtos/adm-produtos.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TextMaskModule } from 'angular2-text-mask';
 
 
 import {CdkTableModule} from '@angular/cdk/table';
@@ -28,6 +29,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SobreComponent } from './sobre/sobre.component';
 import { LoginService } from './service/login.service';
 import { PesquisarComponent } from './pesquisar/pesquisar.component';
+import { ListarPedidosComponent } from './listar-pedidos/listar-pedidos.component';
 
 
 @NgModule({
@@ -50,7 +52,8 @@ import { PesquisarComponent } from './pesquisar/pesquisar.component';
     FinalizarPedidoComponent,
     AdmProdutosComponent,
     SobreComponent,
-    PesquisarComponent
+    PesquisarComponent,
+    ListarPedidosComponent
   ],
   imports: [
     BrowserModule,
@@ -66,6 +69,7 @@ import { PesquisarComponent } from './pesquisar/pesquisar.component';
     HttpClientModule,
     ModalModule.forRoot(),
     FormsModule,
+    TextMaskModule
 
   ],
   providers: [LoginService],

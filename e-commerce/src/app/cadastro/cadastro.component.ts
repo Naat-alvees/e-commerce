@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core'; 
 import { Router } from '@angular/router'; 
-import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms'; 
+import { FormBuilder, FormGroup, FormControl, NgForm, Validators } from '@angular/forms'; 
 import { ApiService } from '../service/cliente.service'; 
 import { Cliente } from 'src/model/cliente'; 
- 
+
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.component.html',
@@ -11,6 +11,7 @@ import { Cliente } from 'src/model/cliente';
 })
 
 export class CadastroComponent implements OnInit { 
+  public mask = ['(', /[1-9]/, /\d/, ')', ' ', /[1-9]/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
   clienteForm: FormGroup; 
   isLoadingResults = false; 
      
@@ -18,16 +19,16 @@ constructor(private router: Router, private api: ApiService, private formBuilder
 
 ngOnInit() { 
     this.clienteForm = this.formBuilder.group({ 
-    'nome' : [null, Validators.required], 
-    'email' : [null, Validators.required], 
-    'telefone' : [null, Validators.required], 
-    'rua' : [null,Validators.required], 
-    'numero' : [null,Validators.required], 
-    'complemento' : [null], 
-    'bairro' : [null,Validators.required], 
-    'cidade' : [null,Validators.required], 
-    'estado' : [null,Validators.required], 
-    'senha' : [null,Validators.required] 
+    'nome' : ['', Validators.required], 
+    'email' : ['', Validators.compose([Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")])], 
+    'telefone' : ['', Validators.required], 
+    'rua' : ['',Validators.required], 
+    'numero' : ['',Validators.required], 
+    'complemento' : [''], 
+    'bairro' : ['',Validators.required], 
+    'cidade' : ['',Validators.required], 
+    'estado' : ['',Validators.required], 
+    'senha' : ['',Validators.required] 
   }); 
 } 
 

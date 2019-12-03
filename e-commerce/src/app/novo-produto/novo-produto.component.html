@@ -10,46 +10,70 @@
                 <form [formGroup]="produtoForm" (ngSubmit)="addProduto(produtoForm.value,template1)">
                     <div class="form-group">
                         <label for="formGroupExampleInput">Nome Produto</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Nome Produto" formControlName="titulo">
+                        <input [class.is-invalid] = "produtoForm.get('titulo').invalid && produtoForm.get('titulo').touched" type="text" class="form-control" id="formGroupExampleInput" placeholder="Nome Produto" formControlName="titulo">
+                        <small *ngIf="!produtoForm.get('titulo').valid && produtoForm.get('titulo').touched" class="form-text text-danger">Campo obrigatório</small>
                     </div>
                     <div class="form-group">
                         <label for="formGroupExampleInput">Descrição</label>
-                        <textarea class="form-control" id="validationTextarea" required formControlName="descricao"></textarea>
+                        <textarea [class.is-invalid] = "produtoForm.get('descricao').invalid && produtoForm.get('descricao').touched" type="textarea" ng-minlength="4" class="form-control" id="validationTextarea" formControlName="descricao"></textarea>
+                        <div *ngIf="(produtoForm.get('descricao').invalid && produtoForm.get('descricao').touched) || produtoForm.get('descricao').dirty">
+                            <small *ngIf="produtoForm.get('descricao').errors?.required" class="text-danger">Campo obrigatório</small>
+                            <!--question mark(?) is a safe navigation operator-->
+                            <small *ngIf=" produtoForm.get('descricao').hasError('minlength')" class="text-danger">Descrição pequena</small>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="formGroupExampleInput">Preço</label>
-                        <input type="number" class="form-control" id="formGroupExampleInput" placeholder="Preço do Produto" formControlName="preco">
+                        <input [class.is-invalid] = "produtoForm.get('preco').invalid && produtoForm.get('preco').touched" type="number" class="form-control" id="formGroupExampleInput" placeholder="12.34" formControlName="preco">
+                        <small *ngIf="!produtoForm.get('preco').valid && produtoForm.get('preco').touched" class="form-text text-danger">Campo obrigatório</small>
                     </div>
                     <div class="form-group">
                         <label for="formGroupExampleInput">Quantidade</label>
                         <div class="row">
                             <div class="col-4">
                                 <label for="formGroupExampleInput">P</label>
-                                <input type="number" class="form-control" id="formGroupExampleInput" formControlName="qtdP">
+                                <input [class.is-invalid] = "produtoForm.get('qtdP').invalid && produtoForm.get('qtdP').touched" type="number" class="form-control" id="formGroupExampleInput" formControlName="qtdP">
+                                <div *ngIf="(produtoForm.get('qtdP').invalid && produtoForm.get('qtdP').touched) || produtoForm.get('qtdP').dirty">
+                                    <small *ngIf="produtoForm.get('qtdP').errors?.required" class="text-danger">Campo obrigatório</small>
+                                    <!--question mark(?) is a safe navigation operator-->
+                                    <small *ngIf="produtoForm.get('qtdP').errors?.min" class="text-danger">Informe uma quantidade válida</small>
+                                </div>
                             </div>
                             <div class="col-4">
                                 <label for="formGroupExampleInput">M</label>
-                                <input type="number" class="form-control" id="formGroupExampleInput" formControlName="qtdM">
+                                <input [class.is-invalid] = "produtoForm.get('qtdM').invalid && produtoForm.get('qtdM').touched" type="number" class="form-control" id="formGroupExampleInput" formControlName="qtdM">
+                                <div *ngIf="(produtoForm.get('qtdM').invalid && produtoForm.get('qtdM').touched) || produtoForm.get('qtdM').dirty">
+                                    <small *ngIf="produtoForm.get('qtdM').errors?.required" class="text-danger">Campo obrigatório</small>
+                                    <!--question mark(?) is a safe navigation operator-->
+                                    <small *ngIf="produtoForm.get('qtdM').errors?.min" class="text-danger">Informe uma quantidade válida</small>
+                                </div>
                             </div>
                             <div class="col-4">
                                 <label for="formGroupExampleInput">G</label>
-                                <input type="number" class="form-control" id="formGroupExampleInput" formControlName="qtdG">
+                                <input [class.is-invalid] = "produtoForm.get('qtdG').invalid && produtoForm.get('qtdG').touched" type="number" class="form-control" id="formGroupExampleInput" formControlName="qtdG">
+                                <div *ngIf="(produtoForm.get('qtdG').invalid && produtoForm.get('qtdG').touched) || produtoForm.get('qtdG').dirty">
+                                    <small *ngIf="produtoForm.get('qtdG').errors?.required" class="text-danger">Campo obrigatório</small>
+                                    <!--question mark(?) is a safe navigation operator-->
+                                    <small *ngIf="produtoForm.get('qtdG').errors?.min" class="text-danger">Informe uma quantidade válida</small>
+                                </div>
                             </div>
                         </div> 
                     </div>
                     <div class="form-group">
                         <label for="inputState">Categorias</label>
-                        <select id="inputState" class="form-control" formControlName="categoria">
+                        <select [class.is-invalid] = "produtoForm.get('categoria').invalid && produtoForm.get('categoria').touched" id="inputState" class="form-control" formControlName="categoria">
                           <option selected value="Feminino">Feminino</option>
                           <option value="Masculino">Masculino</option>
                           <option value="Infantil">Infantil</option>
                           <option value="Esporte Fino">Esporte Fino</option>
                           <option value="Esporte">Esporte</option>
                         </select>
+                        <small *ngIf="!produtoForm.get('categoria').valid && produtoForm.get('categoria').touched" class="form-text text-danger">Campo obrigatório</small>
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlFile1">Selecionar imagens</label>
-                        <input type="file" class="form-control-file" id="exampleFormControlFile1" multiple="multiple" (change)="onFileChange($event)" formControlName="fotos">
+                        <input [class.is-invalid] = "produtoForm.get('fotos').invalid && produtoForm.get('fotos').touched" type="file" class="form-control-file" id="exampleFormControlFile1" multiple="multiple" (change)="onFileChange($event)" formControlName="fotos">
+                        <small *ngIf="!produtoForm.get('fotos').valid && produtoForm.get('fotos').touched" class="form-text text-danger">Campo obrigatório</small>
                     </div>
 
                     <div class="text-center">
