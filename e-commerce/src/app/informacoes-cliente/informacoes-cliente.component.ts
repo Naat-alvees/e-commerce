@@ -2,7 +2,8 @@ import { Component, OnInit,TemplateRef} from '@angular/core';
 import { ApiService} from '../service/cliente.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { Cliente } from '../../model/cliente';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { LoginService } from '../service/login.service';
 
 @Component({
   selector: 'app-informacoes-cliente',
@@ -13,9 +14,11 @@ export class InformacoesClienteComponent implements OnInit {
   public mask = ['(', /[1-9]/, /\d/, ')', ' ', /[1-9]/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
   cliente:any
   idCliente:number
+  idClienteAtual:number
+  
 
   public modalEditar: BsModalRef;
-  public modalAlterarSenha: BsModalRef;
+  public modalExcluir: BsModalRef;
 
 
   public formularioEditar: FormGroup = new FormGroup({
@@ -30,13 +33,7 @@ export class InformacoesClienteComponent implements OnInit {
         'estado': new FormControl(null, [Validators.required]),
   });
 
-  public formularioAlterarSenha: FormGroup = new FormGroup({
-        'novaSenha': new FormControl(null, [Validators.required]),
-        'confirmarSenha': new FormControl(null, [Validators.required])
-
-  });
-
-  constructor(private apiService:ApiService,private modalService: BsModalService) { }
+  constructor(private loginService: LoginService,private apiService:ApiService,private modalService: BsModalService) { }
 
   ngOnInit() {
     
@@ -49,8 +46,9 @@ export class InformacoesClienteComponent implements OnInit {
     this.preencheFormularioEditar()
   }
 
-  openModalAlterarSenha(template: TemplateRef<any>) {
-    this.modalAlterarSenha = this.modalService.show(template, {class: 'modal-dialog-centered'});
+  openModalExcluirConta(template: TemplateRef<any>) {
+    this.modalExcluir = this.modalService.show(template, {class: 'modal-dialog-centered'});
+    this.idClienteAtual = this.cliente['idcliente']
   }
 
   preencheFormularioEditar(){
@@ -68,6 +66,7 @@ export class InformacoesClienteComponent implements OnInit {
     });
   }
 
+
   editarCliente(): void{
     this.apiService.updateCliente(this.idCliente, this.formularioEditar.value).subscribe( res => {
       this.apiService.getCliente(this.idCliente).subscribe(res => {
@@ -81,18 +80,21 @@ export class InformacoesClienteComponent implements OnInit {
     });
   }
 
-  AlterarSenha(): void{
+  excluirConta(): void{
+    this.apiService.deleteCliente(this.idClienteAtual).subscribe(res =>{
+      this.modalExcluir.hide()
+      localStorage.setItem('estaLogado',JSON.stringify(false))
+      this.Logout()
+    }, (err) => {
+      console.log(err);
+    });
 
-    // this.apiService.updateCliente(this.idCliente, this.formularioAlterarSenha.value).subscribe( res => {
-    //   this.apiService.getCliente(this.idCliente).subscribe(res => {
-    //     localStorage.setItem('cliente',JSON.stringify(res[0]))
-    //     this.modalAlterarSenha.hide()
-    //     this.ngOnInit()
-    //   })
+  }
+
+  Logout():void{
+    this.loginService.logout()
+    location.href = "http://localhost:4200/"
       
-    // }, (err) => {
-    //   console.log(err);
-    // });
   }
 
 }

@@ -36,8 +36,6 @@ app.post('/login', (req, res) => {
     let email = req.body.email
     let senha = req.body.senha
 
-    console.log(email)
-    console.log(senha)
 
     mc.query("SELECT * FROM cliente WHERE email='"+email+"'and senha=md5('"+senha+"')", function (error, results, fields) {
         if (error) throw error;

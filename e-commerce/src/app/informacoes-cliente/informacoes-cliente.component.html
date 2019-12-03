@@ -42,7 +42,7 @@
     </div>
     <div class="text-center">
       <button type="button" class="btn btn-outline-dark mr-3" (click)="openModalEditar(template)">Editar</button>
-      <button type="button" class="btn btn-outline-dark" (click)="openModalAlterarSenha(template1)">Alterar Senha</button>
+      <button type="button" class="btn btn-outline-dark" (click)="openModalExcluirConta(template1)">Deletar conta</button>
     </div>
   </div>
   <div class="card-footer text-muted"></div>
@@ -157,29 +157,19 @@
 <ng-template #template1>
   <div class="modal-content">
     <div class="modal-header">
-      <h5 class="modal-title">Alterar Senha</h5>
-      <button type="button" class="close pull-right" aria-label="Close" (click)="modalAlterarSenha.hide()">
-        <span aria-hidden="true">&times;</span>
-      </button>
+        <h5 class="modal-title" >Excluir Produto</h5>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalExcluir.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button> 
     </div>
 
     <div class="modal-body">
-      <form [formGroup]="formularioAlterarSenha" (ngSubmit)="AlterarSenha()" novalidate>
-
-        <div class="form-group">
-          <label for="inputNovaSenha">Nova senha</label>
-          <input type="password" class="form-control" id="inputNovaSenha" placeholder="Nova senha" formControlName="novaSenha">
-        </div>
-
-        <div class="form-group">
-          <label for="inputConfirmaSenha">Confirmar senha</label>
-          <input type="password" class="form-control" id="inputConfirmaSenha" placeholder="Confirmar senha" formControlName="confirmarSenha">
-        </div>
-      </form>
+        <p>Você tem certeza que deseja excluir este produto?</p>
     </div>
 
     <div class="modal-footer">
-        <button type="submit" value="submit" class="btn btn-success">Salvar</button>
-    </div>
-  </div>
+        <button type="button" class="btn btn-secondary" (click)="modalExcluir.hide()">Cancelar</button>
+        <button type="button" class="btn btn-danger" (click)="excluirConta()" >Excluir</button>
+      </div>
+</div>
 </ng-template>

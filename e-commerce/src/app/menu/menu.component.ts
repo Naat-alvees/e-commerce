@@ -32,7 +32,6 @@ export class MenuComponent implements OnInit {
   ngOnInit() {
     this.administrador = parseInt(localStorage.getItem('tipoCliente'))
     this.islogged = JSON.parse(localStorage.getItem('estaLogado'))
-    console.log(this.islogged);
   }
 
   addProduto(form: NgForm):void{
