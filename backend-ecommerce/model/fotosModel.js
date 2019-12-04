@@ -40,7 +40,7 @@ Fotos.getFotosByProduto = function (produtoId, result) {
                 result(err, null);
             }
             else{
-                console.log(res)
+                //console.log(res)
                 result(null, res);
             }
         });   

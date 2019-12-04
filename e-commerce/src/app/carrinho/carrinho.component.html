@@ -11,28 +11,26 @@
 	</div>
 	<div class="row mt-3">
 		<div class="col-8">
-			<div class="card mb-3 shadow-sm"><!--  Inicio produto -->
+			<div class="card mb-3 shadow-sm" *ngFor = "let produto of produtos"><!--  Inicio produto -->
 				<div class="row">
 					<div class="col-2">
 						<div class="p-3">
-							<img src="../../assets/camiseta.jpg" width="100px" height="100px" alt="">
+							<img [src]="produto.data" width="100px" height="100px" alt="">
 						</div>
 					</div>
 					<div class="col-9">
 						<div class="p-2">
 							<div>
-								<h5> Uma camiseta bonita</h5>
+								<h5>{{produto.titulo}}</h5>
 							</div>
 							<div>
-								<p>
-									<b>Tamanho: </b> P
-								</p>
+								<h6>Tamanho:</h6>
 							</div>
 						</div>
 					</div>
 					<div class="col-1">
 						<div class="p-2 formLink">
-							<img src="../../assets/icon-excluir.png" alt="">
+							<img src="../../assets/icon-excluir.png" alt="" (click) = excluirProdutoSacola(produto)>
 						</div>
 							
 					</div>
@@ -44,73 +42,25 @@
 							Quantidade: 
 						</span>
 						<span class="formLink">
-							<img src="../../assets/icons-menos.png" alt="">
+							<img src="../../assets/icons-menos.png" alt="" (click) = diminuiQuantidade(produto)>
 						</span>
 						<span>
-							<label class="borda-qnt rounded">2</label>
+							<input type="number" min="1" [max]="10">
+							<!-- <label class="borda-qnt rounded" *ngIf= 'produto.quantidadeEscolhida == null'>1</label>
+							<label class="borda-qnt rounded" *ngIf= '!produto.quantidadeEscolhida == null'>{{produto.quantidadeEscolhida}}</label> -->
 						</span>
 						<span class="formLink">
-							<img src="../../assets/icons-mais.png" alt="">
+							<img src="../../assets/icons-mais.png" alt="" (click) = aumentaQuantidade(produto)>
 						</span>
 					</div>
 					<div class="col-6">	
 						<div class="d-flex justify-content-end mr-2">
-							<h3>R$ 30,00</h3>
+							<h3>R$ {{produto.preco}}</h3>
 						</div>
 					</div>
 				</div>
 
 			</div><!--  Fim produto -->
-			<div class="card">
-					<div class="row">
-						<div class="col-2">
-							<div class="p-3">
-								<img src="../../assets/camiseta.jpg" width="100px" height="100px" alt="">
-							</div>
-						</div>
-						<div class="col-9">
-							<div class="p-2">
-								<div>
-									<h5> Uma camiseta bonita</h5>
-								</div>
-								<div>
-									<p>
-										<b>Tamanho: </b> P
-									</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-1">
-							<div class="p-2 formLink">
-								<img src="../../assets/icon-excluir.png" alt="">
-							</div>
-								
-						</div>
-					</div>
-					<hr>
-					<div class="row p-3">
-						<div class="col-6">
-							<span class="text-secondary">
-								Quantidade: 
-							</span>
-							<span class="formLink">
-								<img src="../../assets/icons-menos.png" alt="">
-							</span>
-							<span>
-								<label class="borda-qnt rounded">2</label>
-							</span>
-							<span class="formLink">
-								<img src="../../assets/icons-mais.png" alt="">
-							</span>
-						</div>
-						<div class="col-6">	
-							<div class="d-flex justify-content-end mr-2">
-								<h3>R$ 30,00</h3>
-							</div>
-						</div>
-					</div>
-	
-				</div><!--  Fim produto -->
 		</div>
 		<div class="col-4">
 			<div class="resumo-compra rounded p-2">

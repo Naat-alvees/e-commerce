@@ -94,7 +94,4 @@ enviaFoto(){
   }
 }
 
-openModalExcluir(template: TemplateRef<any>) {
-  
-}
 }

@@ -4,8 +4,9 @@ import { ActivatedRoute } from '@angular/router';
 import { ProdutoService } from '../service/produto.service';
 import { Produto } from '../../model/produto';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import {PedidoService} from '../service/pedido.service'
+import {Pedido} from '../../model/pedido'
 
 
 @Component({
@@ -34,7 +35,7 @@ export class ProdutosComponent implements OnInit {
     'qtdG': new FormControl(null, [Validators.required]),
   });
 
-  constructor(private router: Router, private modalService: BsModalService, private produtoService : ProdutoService, private route: ActivatedRoute, private sanitizer : DomSanitizer) { }
+  constructor(private router: Router, private modalService: BsModalService, private produtoService : ProdutoService, private route: ActivatedRoute, private pedidoService: PedidoService) { }
 
   ngOnInit(){
     this.route.params.subscribe((parametro: any) =>{
@@ -93,7 +94,7 @@ export class ProdutosComponent implements OnInit {
         this.produtoService.getFotosProduto(this.produtos[i].idproduto).subscribe(res => {
           //console.log("Produto id: "+this.produtos[i].idproduto)
           this.produtos[i].fotos = res;
-          // console.log(this.produtos[i].fotos[0].data)
+          console.log(this.produtos[i].fotos[0].data)
           
         }, err => {
           console.log(err);
@@ -104,15 +105,14 @@ export class ProdutosComponent implements OnInit {
     });
   }
 
-  verificaLogin(){
+  // addProdutoSacola(produto: Produto){
     
-    if(JSON.parse(localStorage.getItem('estaLogado'))){
-      console.log("Estou logado")
-      this.router.navigate(['/carrinho'])
-    }
-    else{
-      console.log("Não estou logado")
-      this.router.navigate(['/login'])
-    }
-  }
+  //   if(JSON.parse(localStorage.getItem('estaLogado'))){
+  //     this.router.navigate(['/carrinho'])
+  //   }
+  //   else{
+  //     console.log("Não estou logado")
+  //     this.router.navigate(['/login'])
+  //   }
+  // }
 }

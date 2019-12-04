@@ -42,11 +42,13 @@ module.exports = function(app) {
   // Rotas pedido
 
   app.route('/pedido')
-    .get(pedido.listar_produtos_sacola)
     .post(pedido.add_produto_sacola)
     .delete(pedido.delete_produto_carrinho)
     .put(pedido.finaliza_pedido);
 
-  app.route('/pedido/:idCliente')
+  app.route('/pedido/finalizado/:idCliente')
     .get(pedido.listar_pedidosFinalizados);
+
+  app.route('/pedido/:idCliente')
+    .get(pedido.listar_produtos_sacola);
 }

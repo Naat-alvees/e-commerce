@@ -11,8 +11,7 @@
                     <p class="text-muted mb-1">{{ produto.descricao }}</p>
                     <h5 class=""> R$ {{ produto.preco }}</h5>
                     <div *ngIf = "!administrador">
-                        <button type="button"  class="btn btn-success" (click)=verificaLogin()>Comprar agora</button> 
-                        <button type="button" class="btn btn-danger espaco" (click)=verificaLogin()>Add na sacola</button> 
+                        <button type="button"  class="btn btn-success" [routerLink] = "['/descricao-produto', produto.idproduto]">Comprar agora</button> 
                     </div>
                     <div *ngIf = "administrador">
                         <button type="button" class="btn btn-success" (click)="openModalEditar(template, produto)">Editar</button> 

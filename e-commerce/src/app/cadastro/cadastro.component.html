@@ -7,7 +7,7 @@
         </div>
 
         <div class="card-body">
-            <form [formGroup]="clienteForm" (ngSubmit)="addCliente(clienteForm.value)">
+            <form [formGroup]="clienteForm" (ngSubmit)="addCliente(clienteForm.value,template1)">
                 <div class="form-group">
                     <label for="formGroupExampleInput">Nome</label>
                     <input [class.is-invalid] = "clienteForm.get('nome').invalid && clienteForm.get('nome').touched" type="text" class="form-control" id="formGroupExampleInput" placeholder="Nome" formControlName = "nome">
@@ -109,3 +109,22 @@
     </div>
 
 </div>
+
+<ng-template #template1>
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" >Cliente Salvo</h5>
+            <button type="button" class="close pull-right" aria-label="Close" (click)="modalSalvar.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button> 
+        </div>
+
+        <div class="modal-body">
+            <p>Cliente Salvo com sucesso!</p>
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-success" (click)="modalSalvar.hide()">OK</button>
+          </div>
+    </div>
+</ng-template>

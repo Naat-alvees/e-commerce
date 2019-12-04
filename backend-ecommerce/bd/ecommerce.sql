@@ -1,4 +1,4 @@
-CREATE DATABASE  IF NOT EXISTS `ecommerce` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE  IF NOT EXISTS `ecommerce` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `ecommerce`;
 -- MySQL dump 10.13  Distrib 8.0.17, for Win64 (x86_64)
 --
@@ -23,19 +23,19 @@ USE `ecommerce`;
 
 DROP TABLE IF EXISTS `cliente`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `cliente` (
   `idcliente` int(11) NOT NULL AUTO_INCREMENT,
-  `nome` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `email` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `telefone` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `rua` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `nome` varchar(45) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `email` varchar(45) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `telefone` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `rua` varchar(45) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `numero` int(11) NOT NULL,
-  `complemento` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `bairro` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `cidade` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `estado` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `senha` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `complemento` varchar(45) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `bairro` varchar(45) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `cidade` varchar(45) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `estado` varchar(2) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `senha` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `administrador` tinyint(4) DEFAULT '0',
   PRIMARY KEY (`idcliente`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
@@ -47,7 +47,7 @@ CREATE TABLE `cliente` (
 
 DROP TABLE IF EXISTS `fotos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `fotos` (
   `idfotos` int(11) NOT NULL AUTO_INCREMENT,
   `idproduto` int(11) NOT NULL,
@@ -64,7 +64,7 @@ CREATE TABLE `fotos` (
 
 DROP TABLE IF EXISTS `pedido`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `pedido` (
   `idpedido` int(11) NOT NULL,
   `idproduto` int(11) NOT NULL,
@@ -82,7 +82,7 @@ CREATE TABLE `pedido` (
   KEY `pedido_fk_cliente_idx` (`idcliente`),
   CONSTRAINT `pedido_fk_cliente` FOREIGN KEY (`idcliente`) REFERENCES `cliente` (`idcliente`),
   CONSTRAINT `pedido_fk_produto` FOREIGN KEY (`idproduto`) REFERENCES `produto` (`idproduto`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -91,25 +91,25 @@ CREATE TABLE `pedido` (
 
 DROP TABLE IF EXISTS `produto`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `produto` (
   `idproduto` int(11) NOT NULL AUTO_INCREMENT,
-  `titulo` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `descricao` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `titulo` varchar(45) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `descricao` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `preco` decimal(10,2) NOT NULL,
   `qtdP` int(11) NOT NULL DEFAULT '0',
   `qtdM` int(11) NOT NULL DEFAULT '0',
   `qtdG` int(11) NOT NULL DEFAULT '0',
-  `categoria` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `categoria` varchar(45) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   PRIMARY KEY (`idproduto`)
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
