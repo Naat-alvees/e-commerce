@@ -32,7 +32,7 @@
 						<div class="col-4" style="padding-left: 20px; padding-right: 20px;">
 							<div style="margin-top: 10px;">
 								<h3> {{ produto.titulo }}</h3>
-							</div>
+							</div>   
 							<div style="margin-top: 20px;">
 								<p> {{ produto.descricao }} </p>
 							</div>
@@ -40,11 +40,11 @@
 								<h1>R$ {{ produto.preco }}</h1>
 							</div>
 							<div>
-								<h6>Tamanho:</h6>
-								<select class="form-control" id="exampleFormControlSelect1">
-									<option>P</option>
-									<option>M</option>
-									<option>G</option>
+								<h6>Tamanho: </h6> 
+								<select class="form-control" (change) = escolheTamanho($event.target.value)>
+									<option value="P">P</option>
+									<option value="M">M</option>
+									<option value="G">G</option>
 								</select>
 							</div>
 							<div>

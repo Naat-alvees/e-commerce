@@ -60,11 +60,7 @@ export class ProdutoService {
   }
 
   addFotos(fotos): Observable<Fotos> {
-    // console.log("Teste")
-    // console.log(fotos)
-    // console.log(fotos.idproduto)
     return this.http.post<Fotos>(apiUrlFotos, fotos, httpOptions).pipe(
-      // tslint:disable-next-line:no-shadowed-variable
       tap((fotos: Fotos) => console.log(`adicionou fotos com w/ id=${fotos}`)),
       catchError(this.handleError<Fotos>('addFotos'))
     );
@@ -77,7 +73,13 @@ export class ProdutoService {
         catchError(this.handleError('getProdutos', []))
       );
   }
-  
+
+  getFotoPrincipalProduto (idProduto: number): Observable<Fotos> {
+    const url = `${apiUrlFotos}/${idProduto}`;
+    return this.http.get<Fotos>(url).pipe(
+        catchError(this.handleError<Fotos>('getProdutos'))
+      );
+  }
 
   updateProduto(id, produto): Observable<any> {
     const url = `${apiUrl}/${id}`;

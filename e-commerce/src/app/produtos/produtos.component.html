@@ -4,7 +4,7 @@
     <div class="row">
         <div *ngFor="let produto of produtos" class="col-4">
             <div class="card" style="width: 22rem; margin-top: 20px; ">
-                <a [routerLink] = "['/descricao-produto', produto.idproduto]"><img [src]=  "produto.fotos[0].data"  class="card-img-top" alt="..."></a>
+                <a [routerLink] = "['/descricao-produto', produto.idproduto]"><img [src]=  "produto.fotoPrincipal.data"  class="card-img-top" alt="..."></a>
                 
                 <div class="card-body">
                     <a [routerLink] = "['/descricao-produto', produto.idproduto]"><h5 class="card-title mb-1"> {{ produto.titulo }}</h5></a>

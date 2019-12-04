@@ -24,7 +24,10 @@
 								<h5>{{produto.titulo}}</h5>
 							</div>
 							<div>
-								<h6>Tamanho:</h6>
+								<h6 class="tamanhoInline mr-1">Tamanho: </h6><p class="tamanhoInline ">{{ produto.tamanhoEscolhido }}</p>
+							</div>
+							<div>
+								<h6>Preço unitário:</h6><p> R$ {{ produto.preco }}</p>
 							</div>
 						</div>
 					</div>
@@ -45,9 +48,8 @@
 							<img src="../../assets/icons-menos.png" alt="" (click) = diminuiQuantidade(produto)>
 						</span>
 						<span>
-							<input type="number" min="1" [max]="10">
-							<!-- <label class="borda-qnt rounded" *ngIf= 'produto.quantidadeEscolhida == null'>1</label>
-							<label class="borda-qnt rounded" *ngIf= '!produto.quantidadeEscolhida == null'>{{produto.quantidadeEscolhida}}</label> -->
+							<!-- <input class="borda-qnt rounded" type="number" min="1" max="10" value="1"> -->
+							<label class="borda-qnt rounded" >{{produto.quantidadeEscolhida}}</label>
 						</span>
 						<span class="formLink">
 							<img src="../../assets/icons-mais.png" alt="" (click) = aumentaQuantidade(produto)>
@@ -55,7 +57,7 @@
 					</div>
 					<div class="col-6">	
 						<div class="d-flex justify-content-end mr-2">
-							<h3>R$ {{produto.preco}}</h3>
+							<h3>R$ {{produto.preco * produto.quantidadeEscolhida}}</h3>
 						</div>
 					</div>
 				</div>
@@ -66,15 +68,15 @@
 			<div class="resumo-compra rounded p-2">
 				<div>
 					<span class="span-format">Quantidade itens</span>
-					<span class="text-right span-format"><h5>3</h5></span>
+					<span class="text-right span-format"><h5>{{ quantidadeProduto }}</h5></span>
 				</div>
 				<hr>
 				<div class="">
 					<span class="span-format">Valor total</span>
-					<span class="text-right span-format"><h5>R$ 30,00</h5></span>
+					<span class="text-right span-format"><h5>R$ {{ soma }}</h5></span>
 				</div>
 				<div class="mt-4">
-					<button class="btn btn-success btn-block" routerLink = '/finalizar-pedido'>CONTINUAR</button>
+					<button class="btn btn-success btn-block" (click) = continuarPedido()>CONTINUAR</button>
 					<button class="btn btn-outline-info btn-block" routerLink = '/'>ESCOLHER MAIS PRODUTOS</button>
 				</div>
 				

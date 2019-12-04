@@ -33,11 +33,14 @@ module.exports = function(app) {
     .get(produto.list_pesquisa);
 
   app.route('/fotos')
-    .get(foto.list_all_fotos)
     .post(foto.create_a_foto);
+
+  app.route('/fotos/:produtoId')
+    .get(foto.read_a_foto_principal_produto);
 
   app.route('/fotos/produto/:produtoId')
     .get(foto.read_a_fotos_produto);
+
 
   // Rotas pedido
 
@@ -46,8 +49,10 @@ module.exports = function(app) {
     .delete(pedido.delete_produto_carrinho)
     .put(pedido.finaliza_pedido);
 
+  
   app.route('/pedido/finalizado/:idCliente')
-    .get(pedido.listar_pedidosFinalizados);
+    .get(pedido.listar_pedidosFinalizados)
+    .put(pedido.atualiza_quantidade_produto);
 
   app.route('/pedido/:idCliente')
     .get(pedido.listar_produtos_sacola);

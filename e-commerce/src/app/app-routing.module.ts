@@ -15,6 +15,7 @@ import { NovoProdutoComponent } from './novo-produto/novo-produto.component'
 import { SobreComponent } from './sobre/sobre.component'
 import { PesquisarComponent} from './pesquisar/pesquisar.component'
 import {ListarPedidosComponent} from './listar-pedidos/listar-pedidos.component'
+import { PedidoFinalizadoComponent } from './pedido-finalizado/pedido-finalizado.component';
 
 
 const routes: Routes = [
@@ -53,6 +54,10 @@ const routes: Routes = [
   {
     path:'descricao-produto/:idproduto',
     component: DescricaoProdutoComponent
+  },
+  {
+    path:'pedido-finalizado/:mensagem',
+    component: PedidoFinalizadoComponent
   },
   { 
     path: 'cadastro',

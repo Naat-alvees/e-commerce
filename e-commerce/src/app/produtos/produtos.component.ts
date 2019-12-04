@@ -91,10 +91,9 @@ export class ProdutosComponent implements OnInit {
     this.produtoService.getProdutosByCategoria(this.categoria).subscribe(res => {
       this.produtos = res;
       for (let i = 0; i < this.produtos.length; i++) {
-        this.produtoService.getFotosProduto(this.produtos[i].idproduto).subscribe(res => {
-          //console.log("Produto id: "+this.produtos[i].idproduto)
-          this.produtos[i].fotos = res;
-          console.log(this.produtos[i].fotos[0].data)
+        this.produtoService.getFotoPrincipalProduto(this.produtos[i].idproduto).subscribe(res => {
+          this.produtos[i].fotoPrincipal = res;
+          // console.log(this.produtos[i].fotoPrincipal.data)
           
         }, err => {
           console.log(err);
@@ -105,14 +104,5 @@ export class ProdutosComponent implements OnInit {
     });
   }
 
-  // addProdutoSacola(produto: Produto){
-    
-  //   if(JSON.parse(localStorage.getItem('estaLogado'))){
-  //     this.router.navigate(['/carrinho'])
-  //   }
-  //   else{
-  //     console.log("Não estou logado")
-  //     this.router.navigate(['/login'])
-  //   }
-  // }
+ 
 }

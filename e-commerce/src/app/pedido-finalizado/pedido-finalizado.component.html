@@ -1,0 +1,40 @@
+<app-menu></app-menu>
+<app-menu-categorias></app-menu-categorias>
+<div class="container">
+    <div *ngIf = "mensagem == 'Sucesso'">
+        <div class="d-flex justify-content-center mt-5">
+            
+                <img src="../../assets/sucesso.png" width="100px" alt="">
+              
+        </div>
+        <div class="d-flex justify-content-center mt-3">
+            <h1 class="text-success">Tudo certo!</h1>
+            
+        </div> 
+        <div class="d-flex justify-content-center mt-3">
+            <h3 class="text-muted">Seu pedido foi finalizado com sucesso.</h3>
+        </div>
+        <div class="d-flex justify-content-center mt-3">
+            <button type="button" class="btn btn-success" routerLink = '/listar-pedidos'>MEUS PEDIDOS</button>
+
+        </div>
+        
+    </div>
+    <div *ngIf = "mensagem == 'Erro'">
+        <div class="d-flex justify-content-center mt-5">
+        
+                <img src="../../assets/erro.png"  width="100px" alt="">
+                
+        </div>
+        <div class="d-flex justify-content-center mt-3">
+                <h1 class="text-danger">Ops!</h1>
+        </div> 
+        <div class="d-flex justify-content-center mt-3">
+            <h3 class="text-muted">Não foi possível finalizar seu pedido.</h3>
+        </div>
+        <div class="d-flex justify-content-center mt-3">
+            <button type="button" class="btn btn-secondary" routerLink = '/carrinho'>VOLTAR À SACOLA</button>
+        </div>
+        
+    </div>
+</div>

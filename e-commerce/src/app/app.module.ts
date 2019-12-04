@@ -30,6 +30,7 @@ import { SobreComponent } from './sobre/sobre.component';
 import { LoginService } from './service/login.service';
 import { PesquisarComponent } from './pesquisar/pesquisar.component';
 import { ListarPedidosComponent } from './listar-pedidos/listar-pedidos.component';
+import { PedidoFinalizadoComponent } from './pedido-finalizado/pedido-finalizado.component';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { ListarPedidosComponent } from './listar-pedidos/listar-pedidos.componen
     AdmProdutosComponent,
     SobreComponent,
     PesquisarComponent,
-    ListarPedidosComponent
+    ListarPedidosComponent,
+    PedidoFinalizadoComponent
   ],
   imports: [
     BrowserModule,

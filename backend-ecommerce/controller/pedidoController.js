@@ -11,7 +11,6 @@ exports.listar_pedidosFinalizados = function(req, res) {
 };
 
 exports.listar_produtos_sacola = function(req, res) {
-  //console.log(req.body)
     Pedido.getProdutosSacola(req.params.idCliente,function(err, produto) {
       if (err)
         res.send(err);
@@ -34,10 +33,23 @@ exports.add_produto_sacola = function(req, res) {
     }
 };
 
+// idProduto, idCliente, tamanho, quantidade
+exports.atualiza_quantidade_produto = function(req, res) {
+  var new_pedido = new Pedido(req.body);
+  if(!new_pedido.idCliente || !new_pedido.idProduto || !new_pedido.quantidade || !new_pedido.tamanho){
+      res.status(400).send({ error:true, message: 'Campo(s) vazio(s)'});
+  }else{
+      Pedido.atualizaQuantidade(new_pedido, function(err, produto) {
+          if (err)
+            res.send(err);
+          res.json(produto);
+      });
+  }
+};
 
 exports.finaliza_pedido = function(req, res) {
     var new_pedido = new Pedido(req.body);
-    if(!new_pedido.idCliente || !new_pedido.formaPagamento || !new_pedido.quantidade ){
+    if(!new_pedido.idCliente || !new_pedido.formaPagamento ){
         res.status(400).send({ error:true, message: 'Campo(s) vazio(s)'});
 
     }else{

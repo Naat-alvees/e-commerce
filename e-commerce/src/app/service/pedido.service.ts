@@ -45,6 +45,14 @@ const httpOptions = {
             catchError(this.handleError<Pedido>('deleteProdutoSacola'))
           );
     }
+
+    atualizarQuantidadeProdutos(pedido): Observable<Pedido> {
+      console.log(pedido)
+      const url = `${apiUrl}/finalizado/${pedido.idCliente}`;
+      return this.http.put(url, pedido, httpOptions).pipe(
+          catchError(this.handleError<any>('finalizaPedido'))
+      );
+    }
   
     // idcliente, formaPagamento, quantidade
     finalizarPedido(pedido): Observable<Pedido> {

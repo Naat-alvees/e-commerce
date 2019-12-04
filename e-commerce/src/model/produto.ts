@@ -3,12 +3,13 @@ export class Produto{
     idproduto: number;
     titulo: string;
     descricao: string;
-    preco: string;
+    preco: number;
     qtdP: number;
     qtdM: number;
     qtdG: number;
     fotos: Array<Fotos>;
+    fotoPrincipal: Fotos;
     categoria: string;
-    quantidaEscolhida: number = 1;
+    quantidadeEscolhida: number = 1;
     tamanhoEscolhido: string;
 }

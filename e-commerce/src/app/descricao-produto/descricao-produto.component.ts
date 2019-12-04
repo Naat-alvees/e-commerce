@@ -15,12 +15,13 @@ export class DescricaoProdutoComponent implements OnInit {
 
   public id_produto: number;
   public produto: Produto = new Produto();
+  public tamEscolhido: string;
 
   constructor(private route: ActivatedRoute, private produtoService: ProdutoService, private pedidoService: PedidoService, private router: Router) { }
 
   ngOnInit() {
     this.id_produto = this.route.snapshot.params['idproduto'];
-    this.produto.tamanhoEscolhido = 'P'
+    this.tamEscolhido = "P"
     //Le o produto 
     this.produtoService.getProduto(this.id_produto).subscribe(res => {
       this.produto = res[0];
@@ -31,19 +32,20 @@ export class DescricaoProdutoComponent implements OnInit {
   }
 
   addProdutoSacola(){
+    console.log(this.produto)
     if(JSON.parse(localStorage.getItem('estaLogado'))){
       //console.log(localStorage.getItem('idCliente'))
       let pedido: Pedido = new Pedido();
       pedido.idCliente = Number(localStorage.getItem('idCliente'));
       pedido.idProduto = this.id_produto;
-      pedido.tamanho = this.produto.tamanhoEscolhido
+      pedido.tamanho = this.tamEscolhido
       console.log(pedido)
       this.pedidoService.addProdutoSacola(pedido).subscribe(res => {
- 
+        this.router.navigate(['/carrinho'])
       }, (err) => {
         console.log(err);
       });
-      this.router.navigate(['/carrinho'])
+      
     }
     else{
       console.log("Não estou logado")
@@ -52,7 +54,7 @@ export class DescricaoProdutoComponent implements OnInit {
   }
 
   escolheTamanho(tamanho){
-    this.produto.tamanhoEscolhido = tamanho;
+    this.tamEscolhido = tamanho;
   }
 
 }

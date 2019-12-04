@@ -62,7 +62,7 @@ Pedido.removerProdutoSacola = function(pedido, result){
 };
 
 Pedido.getProdutosSacola = function (idCliente, result) {
-    sql.query("SELECT titulo, descricao, preco, qtdP, qtdM, qtdG, CONVERT(foto USING utf8) as data FROM pedido ped INNER JOIN produto prod ON ped.idproduto=prod.idproduto INNER JOIN fotos ft ON ft.idproduto = prod.idproduto WHERE idcliente = ? AND statusPedido = 0", idCliente, function (err, res) {             
+    sql.query("SELECT ped.quantidade as quantidadeEscolhida, ped.idproduto, titulo, descricao, preco, ped.tamanho as tamanhoEscolhido, qtdP, qtdM, qtdG, CONVERT(foto USING utf8) as data FROM pedido ped INNER JOIN produto prod ON ped.idproduto=prod.idproduto INNER JOIN fotos ft ON ft.idproduto = prod.idproduto WHERE idcliente = ? AND statusPedido = 0 and ft.fotoPrincipal = 1", idCliente, function (err, res) {             
         if(err) {
             console.log("error: ", err);
             result(err, null);
@@ -74,9 +74,21 @@ Pedido.getProdutosSacola = function (idCliente, result) {
     });   
 };
 
+Pedido.atualizaQuantidade = function(pedido, result){
+    sql.query("UPDATE pedido SET quantidade = ? WHERE idcliente = ? AND idproduto= ? AND statusPedido = 0 AND tamanho= ?", [pedido.quantidade, pedido.idCliente, pedido.idProduto, pedido.tamanho] , function (err, res) {
+        if(err) {
+            console.log("error: ", err);
+                result(null, err);
+        }
+        else{   
+            result(null, res);
+        }
+    }); 
+}
+
 Pedido.finalizarPedido = function(pedido, result){
     if(pedido.formaPagamento == "B"){
-        sql.query("UPDATE pedido INNER JOIN produto ON pedido.idproduto=produto.idproduto SET idpedido=(idpedido+1), pedido.statusPedido = 1, quantidade = ?, pedido.formaPagamento = 'B', pedido.precoFinal = produto.preco WHERE idcliente = ? AND statusPedido = 0", [pedido.quantidade, pedido.idCliente] , function (err, res) {
+        sql.query("UPDATE pedido INNER JOIN produto ON pedido.idproduto=produto.idproduto SET idpedido=(idpedido+1), pedido.statusPedido = 1, pedido.formaPagamento = 'B', pedido.precoFinal = produto.preco WHERE idcliente = ? AND statusPedido = 0", [pedido.idCliente] , function (err, res) {
             if(err) {
                 console.log("error: ", err);
                     result(null, err);
@@ -86,7 +98,7 @@ Pedido.finalizarPedido = function(pedido, result){
             }
         }); 
     } else {
-        sql.query("UPDATE pedido INNER JOIN produto ON pedido.idproduto=produto.idproduto SET idpedido=(idpedido+1), pedido.statusPedido = 1, quantidade = ?,formaPagamento = 'C', numeroCartao = ?, nomeCartao = ?, vencimento = ?, codSeguranca = ?, pedido.precoFinal = produto.preco WHERE idcliente = ? AND statusPedido = 0;", [pedido.quantidade, pedido.numeroCartao, pedido.nomeCartao, pedido.vencimento, codSeguranca, idCliente] , function (err, res) {
+        sql.query("UPDATE pedido INNER JOIN produto ON pedido.idproduto=produto.idproduto SET idpedido=(idpedido+1), pedido.statusPedido = 1,formaPagamento = 'C', numeroCartao = ?, nomeCartao = ?, vencimento = ?, codSeguranca = ?, pedido.precoFinal = produto.preco WHERE idcliente = ? AND statusPedido = 0;", [pedido.numeroCartao, pedido.nomeCartao, pedido.vencimento, codSeguranca, idCliente] , function (err, res) {
             if(err) {
                 console.log("error: ", err);
                     result(null, err);
