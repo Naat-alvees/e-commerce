@@ -38,6 +38,7 @@ export class MenuComponent implements OnInit {
     this.islogged = JSON.parse(localStorage.getItem('estaLogado'))
     
     if(this.islogged == true){
+
       this.nome = JSON.parse(localStorage.getItem('cliente'))
       this.idCliente = this.nome['idcliente']
       this.exibirNome();
@@ -51,10 +52,11 @@ export class MenuComponent implements OnInit {
 
   exibirNome(): void{
       this.apiService.getCliente(this.idCliente).subscribe(res => {
-        localStorage.setItem('cliente',JSON.stringify(res[0]))
-        this.htmlStr = "<div *ngIf = 'islogged'> Olá " + this.nome['nome'] + "</div>"
-        this.ngOnInit()
-      }, (err) => {
+      localStorage.setItem('cliente',JSON.stringify(res[0]))
+      var nomeAtualizado = this.nome['nome'].split(" ");
+      this.htmlStr = "<div *ngIf = 'islogged'> Olá " + nomeAtualizado[0] + "</div>"
+      this.ngOnInit()
+    }, (err) => {
       console.log(err);
     });
   }
