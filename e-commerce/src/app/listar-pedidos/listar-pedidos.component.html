@@ -1,6 +1,5 @@
 <app-menu></app-menu>
 <app-menu-categorias></app-menu-categorias>
-
 <div class="container">
     <div class="row">
         <mat-form-field>
@@ -10,41 +9,40 @@
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
             <!-- Position Column -->
             <ng-container matColumnDef="idpedido">
-                <th mat-header-cell *matHeaderCellDef>ID</th>
-                <td mat-cell *matCellDef="let element"> Id pedido</td>
+                <th mat-header-cell *matHeaderCellDef>Número do pedido</th>
+                <td mat-cell *matCellDef="let element">{{element.idpedido}}</td>
             </ng-container>
         
             <!-- Name Column -->
             <ng-container matColumnDef="titulo">
                 <th mat-header-cell *matHeaderCellDef>Título</th>
-                <td mat-cell *matCellDef="let element">Título do produto</td>
+                <td mat-cell *matCellDef="let element">{{element.titulo}}</td>
             </ng-container>
 
             <!-- Symbol Column -->
-            <ng-container matColumnDef="preco">
+            <ng-container matColumnDef="precoFinal">
                 <th mat-header-cell *matHeaderCellDef>Preço do produto</th>
-                <td mat-cell *matCellDef="let element">Preço do produto</td>
+                <td mat-cell *matCellDef="let element">{{element.precoFinal}}</td>
             </ng-container>
 
             <!-- Position Column -->
             <ng-container matColumnDef="tamanho">
                 <th mat-header-cell *matHeaderCellDef>Tamanho</th>
-                <td mat-cell *matCellDef="let element">Tamanho</td>
+                <td mat-cell *matCellDef="let element">{{element.tamanho}}</td>
             </ng-container>
         
             <!-- Name Column -->
             <ng-container matColumnDef="quantidade">
                 <th mat-header-cell *matHeaderCellDef>Quantidade</th>
-                <td mat-cell *matCellDef="let element">Quantidade</td>
+                <td mat-cell *matCellDef="let element">{{element.quantidade}}</td>
             </ng-container>
 
              <!-- Name Column -->
              <ng-container matColumnDef="fotos">
                 <th mat-header-cell *matHeaderCellDef>Fotos</th>
-                <td mat-cell *matCellDef="let element">Fotos</td>
+                <td mat-cell *matCellDef="let element"><img [src]= "" alt="...">{{element.data}}</td>
             </ng-container>
 
-        
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>

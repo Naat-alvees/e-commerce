@@ -13,6 +13,7 @@
                     <button class="btn btn-procurar" [disabled]="!pesquisarForm.valid"><img src="../../assets/procurar.png"  alt="" ></button>
                 </form> 
             </div>
+            
             <div class="col-lg-3 d-flex justify-content-end align-items-center ">
                 <div *ngIf = "!administrador">
                     <button class="btn" routerLink = '/carrinho'><img src="../../assets/sacola-compra.png" width="35px"></button>
@@ -34,6 +35,10 @@
                         <a routerLink="/listar-pedidos" *ngIf = "islogged">Meus Pedidos</a>
                         <a routerLink="" (click)="Logout()">Sair</a>
                     </div>
+                </div>
+
+                <div *ngIf = "islogged">
+                    <label [innerHTML]="htmlStr" class="formatoNome"></label>
                 </div>
             </div>
         </div>

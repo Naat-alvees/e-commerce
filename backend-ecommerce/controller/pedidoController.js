@@ -4,6 +4,7 @@ var Pedido = require('../model/pedidoModel.js');
 
 exports.listar_pedidosFinalizados = function(req, res) {
   Pedido.listaPedidosFinalizados(req.params.idCliente,function(err, produto) {
+    console.log(produto[0].data);
     if (err)
       res.send(err);
     res.send(produto);

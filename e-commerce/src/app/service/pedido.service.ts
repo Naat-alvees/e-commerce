@@ -61,15 +61,15 @@ const httpOptions = {
         );
     }
   
-    listarPedidoFinalizado (idCliente): Observable<Pedido> {
-        const url = `${apiUrl}/finalizado/${idCliente}`;
-        return this.http.get<Pedido>(url).pipe(
-            catchError(this.handleError<Pedido>('listaPedido'))
+    listarPedidoFinalizado (idCliente): Observable<Pedido[]> {
+      console.log(idCliente);  
+      const url = `${apiUrl}/${idCliente}`;
+        
+        return this.http.get<Pedido[]>(url).pipe(
+            catchError(this.handleError<Pedido[]>('listaPedido'))
         );
-      
     }
   
-    
     private handleError<T> (operation = 'operation', result?: T) {
       return (error: any): Observable<T> => {
   

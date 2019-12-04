@@ -14,10 +14,14 @@
     border: none;
     cursor: pointer;
   }
-  
   .dropdown {
     position: relative;
     display: inline-block;
+  }
+
+  .formatoNome{
+    color: white;
+    font-size: 15px;
   }
   
   .dropdown-content {

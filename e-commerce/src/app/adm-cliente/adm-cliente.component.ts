@@ -7,7 +7,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 
 export interface PeriodicElement {
-  idcliente: number;
+    idcliente: number;
     nome: string;
     email: string;
     telefone: string;
@@ -91,18 +91,20 @@ export class AdmClienteComponent implements OnInit {
     });
   }
   
-  editarCliente(): void{
+  editarCliente(template: TemplateRef<any>): void{
     this.clienteService.updateCliente(this.id_clienteAtual, this.formularioEditar.value).subscribe( res => {
       this.modalEditar.hide();
+      this.modalEditar = this.modalService.show(template, {class: 'modal-dialog-centered'});
       this.carregaClientes();
     }, (err) => {
       console.log(err);
     });
   }
 
-  excluirCliente():void{
+  excluirCliente(template: TemplateRef<any>):void{
     this.clienteService.deleteCliente(this.id_clienteAtual).subscribe( res => {
       this.modalExcluir.hide();
+      this.modalExcluir = this.modalService.show(template, {class: 'modal-dialog-centered'});
       this.carregaClientes();
     }, (err) => {
       console.log(err);

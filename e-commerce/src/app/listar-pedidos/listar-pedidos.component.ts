@@ -1,12 +1,13 @@
 import { Component, OnInit, TemplateRef} from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-
+import {PedidoService} from '../service/pedido.service';
+import {Pedido} from '../../model/pedido';
+import { ApiService } from '../service/cliente.service';
 
 export interface PeriodicElement {
     idpedido: number;
     titulo: string;
-    preco: number;
+    precoFinal: number;
     tamanho: number;
     quantidade:number;
     fotos: string;
@@ -19,15 +20,28 @@ export interface PeriodicElement {
 })
 export class ListarPedidosComponent implements OnInit {
   
-  displayedColumns: string[] = ['idpedido', 'titulo', 'preco', 'tamanho', 'quantidade', 'fotos'];
+  public pedidos: Pedido[];
+  cliente:any
+  public id_clienteAtual: number;
+
+  displayedColumns: string[] = ['idpedido', 'titulo', 'precoFinal', 'tamanho', 'quantidade', 'fotos'];
   dataSource =  new MatTableDataSource();
 
-  constructor() { }
+  constructor(private clienteService: ApiService, private pedidoService: PedidoService) { }
 
   ngOnInit() {
+    this.cliente = JSON.parse(localStorage.getItem('cliente'));
+    this.id_clienteAtual = this.cliente['idcliente']
+    this.pedidoService.listarPedidoFinalizado(this.id_clienteAtual).subscribe(res => {
+      console.log(res[0])
+      this.dataSource.data = res;
+    }, err => {
+      console.log(err);
+    });
   }
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+
 }
