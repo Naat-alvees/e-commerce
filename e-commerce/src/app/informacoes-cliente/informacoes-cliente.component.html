@@ -58,7 +58,7 @@
     </button>
   </div>
   <div class="modal-body">
-    <form [formGroup]="formularioEditar" (ngSubmit)="editarCliente()" novalidate>
+    <form [formGroup]="formularioEditar" (ngSubmit)="editarCliente(template2)" novalidate>
       <div class="form-group">
         <label for="nome">Nome</label>
         <input [class.is-invalid] = "formularioEditar.get('nome').invalid && formularioEditar.get('nome').touched" type="text" class="form-control" id="nome" placeholder="Seu nome" formControlName="nome">
@@ -169,7 +169,45 @@
 
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" (click)="modalExcluir.hide()">Cancelar</button>
-        <button type="button" class="btn btn-danger" (click)="excluirConta()" >Excluir</button>
+        <button type="button" class="btn btn-danger" (click)="excluirConta(template3)" >Excluir</button>
       </div>
 </div>
+</ng-template>
+
+<ng-template #template2>
+  <div class="modal-content">
+      <div class="modal-header">
+          <h5 class="modal-title" >Informações Editadas</h5>
+          <button type="button" class="close pull-right" aria-label="Close" (click)="modalEditar.hide()">
+              <span aria-hidden="true">&times;</span>
+          </button> 
+      </div>
+
+      <div class="modal-body">
+          <p>Informações Editadas com sucesso!</p>
+      </div>
+
+      <div class="modal-footer">
+          <button type="button" class="btn btn-success" (click)="modalEditar.hide()">OK</button>
+        </div>
+  </div>
+</ng-template>
+
+<ng-template #template3>
+  <div class="modal-content">
+      <div class="modal-header">
+          <h5 class="modal-title" >Conta excluída</h5>
+          <button type="button" class="close pull-right" aria-label="Close" (click)="modalExcluir.hide()">
+              <span aria-hidden="true">&times;</span>
+          </button> 
+      </div>
+
+      <div class="modal-body">
+          <p>Conta excluída com sucesso!</p>
+      </div>
+
+      <div class="modal-footer">
+          <button type="button" class="btn btn-success" (click)="modalExcluir.hide()">OK</button>
+        </div>
+  </div>
 </ng-template>

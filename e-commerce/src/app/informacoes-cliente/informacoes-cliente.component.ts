@@ -67,11 +67,12 @@ export class InformacoesClienteComponent implements OnInit {
   }
 
 
-  editarCliente(): void{
+  editarCliente(template: TemplateRef<any>): void{
     this.apiService.updateCliente(this.idCliente, this.formularioEditar.value).subscribe( res => {
       this.apiService.getCliente(this.idCliente).subscribe(res => {
         localStorage.setItem('cliente',JSON.stringify(res[0]))
-        this.modalEditar.hide()
+        this.modalEditar.hide();
+        this.modalEditar = this.modalService.show(template, {class: 'modal-dialog-centered'});
         this.ngOnInit()
       })
       
@@ -80,8 +81,9 @@ export class InformacoesClienteComponent implements OnInit {
     });
   }
 
-  excluirConta(): void{
+  excluirConta(template: TemplateRef<any>): void{
     this.apiService.deleteCliente(this.idClienteAtual).subscribe(res =>{
+      //this.modalEditar = this.modalService.show(template, {class: 'modal-dialog-centered'});
       this.modalExcluir.hide()
       localStorage.setItem('estaLogado',JSON.stringify(false))
       this.Logout()
