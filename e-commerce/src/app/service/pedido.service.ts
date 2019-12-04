@@ -13,17 +13,16 @@ const httpOptions = {
   @Injectable({
     providedIn: 'root'
   })
-  export class ProdutoService {
+  export class PedidoService {
   
     constructor(private http: HttpClient) { }
   
     getProdutosSacola (idCliente): Observable<Produto[]> {
-        let params = new HttpParams().set("idCliente",idCliente);
-
-        return this.http.get<Produto[]>(apiUrl, {headers: new HttpHeaders({'Content-Type': 'application/json'}), params: params})
+      const url = `${apiUrl}/${idCliente}`;
+      return this.http.get<Produto[]>(url)
         .pipe(
-            catchError(this.handleError('getProdutos', []))
-          );
+          catchError(this.handleError('getProdutos', []))
+        );
             
     }
   
@@ -34,7 +33,15 @@ const httpOptions = {
     }
   
     removeProdutoSacola (pedido): Observable<Pedido> {
-        return this.http.delete<Pedido>(apiUrl, httpOptions).pipe(
+      console.log(pedido)
+      const options = {
+        headers: new HttpHeaders({'Content-Type': 'application/json'}),
+        body: {
+            idProduto: pedido.idProduto,
+            idCliente: pedido.idCliente, 
+          },
+      };
+        return this.http.delete<Pedido>(apiUrl, options).pipe(
             catchError(this.handleError<Pedido>('deleteProdutoSacola'))
           );
     }
@@ -47,7 +54,7 @@ const httpOptions = {
     }
   
     listarPedidoFinalizado (idCliente): Observable<Pedido> {
-        const url = `${apiUrl}/${idCliente}`;
+        const url = `${apiUrl}/finalizado/${idCliente}`;
         return this.http.get<Pedido>(url).pipe(
             catchError(this.handleError<Pedido>('listaPedido'))
         );

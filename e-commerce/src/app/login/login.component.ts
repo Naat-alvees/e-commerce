@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('cliente',JSON.stringify(cliente))
         localStorage.setItem('tipoCliente',cliente.administrador.toString())
         localStorage.setItem('estaLogado',JSON.stringify(this.loginService.isLogged))
+        localStorage.setItem('idCliente', cliente.idcliente.toString());
         this.router.navigate([""])
 
       };

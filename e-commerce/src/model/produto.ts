@@ -9,4 +9,6 @@ export class Produto{
     qtdG: number;
     fotos: Array<Fotos>;
     categoria: string;
+    quantidaEscolhida: number = 1;
+    tamanhoEscolhido: string;
 }

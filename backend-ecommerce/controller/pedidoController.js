@@ -11,7 +11,8 @@ exports.listar_pedidosFinalizados = function(req, res) {
 };
 
 exports.listar_produtos_sacola = function(req, res) {
-    Pedido.getProdutosSacola(req.body.idCliente,function(err, produto) {
+  //console.log(req.body)
+    Pedido.getProdutosSacola(req.params.idCliente,function(err, produto) {
       if (err)
         res.send(err);
       res.send(produto);
@@ -20,6 +21,7 @@ exports.listar_produtos_sacola = function(req, res) {
 
 exports.add_produto_sacola = function(req, res) {
   var new_pedido = new Pedido(req.body);
+  console.log(new_pedido)
    if(!new_pedido.idCliente || !new_pedido.idProduto || !new_pedido.tamanho){
         res.status(400).send({ error:true, message: 'Campo(s) vazio(s)'});
 
@@ -35,7 +37,7 @@ exports.add_produto_sacola = function(req, res) {
 
 exports.finaliza_pedido = function(req, res) {
     var new_pedido = new Pedido(req.body);
-    if(!new_pedido.idCliente || !new_pedido.formaPagamento || !new_pedido.quantidade){
+    if(!new_pedido.idCliente || !new_pedido.formaPagamento || !new_pedido.quantidade ){
         res.status(400).send({ error:true, message: 'Campo(s) vazio(s)'});
 
     }else{
@@ -50,7 +52,7 @@ exports.finaliza_pedido = function(req, res) {
 exports.delete_produto_carrinho= function(req, res) {
     var new_pedido = new Pedido(req.body);
     if(!new_pedido.idCliente || !new_pedido.idProduto){
-        console.log(new_produto)
+        console.log(new_pedido)
         res.status(400).send({ error:true, message: 'Campo(s) vazio(s)'});
 
     }else{
