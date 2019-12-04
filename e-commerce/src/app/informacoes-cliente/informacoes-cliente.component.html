@@ -78,7 +78,7 @@
 
       <div class="form-group">
         <label for="telefone">Telefone</label>
-        <input [class.is-invalid] = "formularioEditar.get('telefone').invalid && formularioEditar.get('telefone').touched" type="text" class="form-control" id="telefone" placeholder="(DDD) 9****-****" [textMask]="{mask: mask}" [(ngModel)]="myModel" formControlName="telefone">
+        <input [class.is-invalid] = "formularioEditar.get('telefone').invalid && formularioEditar.get('telefone').touched" type="text" class="form-control" id="telefone" placeholder="(DDD) 9****-****" [textMask]="{mask: mask}" formControlName="telefone">
         <small *ngIf="!formularioEditar.get('telefone').valid && formularioEditar.get('telefone').touched" class="form-text text-danger">Campo obrigatório</small>
       </div>
 
