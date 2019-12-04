@@ -99,7 +99,7 @@ Pedido.finalizarPedido = function(pedido, result){
 };
 
 Pedido.listaPedidosFinalizados = function (idCliente, result) {
-    sql.query("SELECT titulo, descricao, precoFinal, tamanho, quantidade, CONVERT(foto USING utf8) as data FROM pedido ped INNER JOIN produto prod ON ped.idproduto=prod.idproduto INNER JOIN fotos ft ON ft.idproduto = prod.idproduto WHERE idcliente = ? AND statusPedido = 1", idCliente, function (err, res) {             
+    sql.query("SELECT idpedido, titulo, descricao, precoFinal, tamanho, quantidade, CONVERT(foto USING utf8) as data FROM pedido ped INNER JOIN produto prod ON ped.idproduto=prod.idproduto INNER JOIN fotos ft ON ft.idproduto = prod.idproduto WHERE idcliente = ? AND statusPedido = 1", idCliente, function (err, res) {             
         if(err) {
             console.log("error: ", err);
             result(err, null);

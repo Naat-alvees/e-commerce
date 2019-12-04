@@ -7,7 +7,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 
 export interface PeriodicElement {
-  idcliente: number;
+    idcliente: number;
     nome: string;
     email: string;
     telefone: string;
