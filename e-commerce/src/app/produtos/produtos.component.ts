@@ -15,12 +15,14 @@ import {Pedido} from '../../model/pedido'
   styleUrls: ['./produtos.component.css']
 })
 export class ProdutosComponent implements OnInit {
+
+  
   
   public modalEditar: BsModalRef;
   public modalExcluir: BsModalRef;
 
   public categoria: String;
-  public administrador: boolean = false;
+  private administrador: number = 0;  
   public produtos: Produto[];
 
   public id_produtoAtual: number;
@@ -38,6 +40,7 @@ export class ProdutosComponent implements OnInit {
   constructor(private router: Router, private modalService: BsModalService, private produtoService : ProdutoService, private route: ActivatedRoute, private pedidoService: PedidoService) { }
 
   ngOnInit(){
+    this.administrador = parseInt(localStorage.getItem('tipoCliente'))
     this.route.params.subscribe((parametro: any) =>{
       this.categoria = parametro.categoria;
       this.carregaProdutos();

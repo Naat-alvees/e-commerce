@@ -41,7 +41,7 @@ export class MenuComponent implements OnInit {
 
       this.nome = JSON.parse(localStorage.getItem('cliente'))
       this.idCliente = this.nome['idcliente']
-      this.exibirNome();
+      //this.exibirNome();
     }
   }
 

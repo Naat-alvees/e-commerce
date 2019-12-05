@@ -29,7 +29,7 @@ const apiUrl = 'http://localhost:3000/cliente';
     getCliente(id: number): Observable<Cliente> {
       const url = `${apiUrl}/${id}`;
       return this.http.get<Cliente>(url).pipe(
-        tap(_ => console.log(`leu o cliente id=${id}`)),
+        //tap(_ => console.log(`leu o cliente id=${id}`)),
         catchError(this.handleError<Cliente>(`getCliente id=${id}`))
       );
     }

@@ -74,7 +74,7 @@ export class CarrinhoComponent implements OnInit {
     if(!(produto.quantidadeEscolhida-1 < 1)){
       produto.quantidadeEscolhida--;
       this.quantidadeProduto--;
-      this.soma += produto.preco;
+      this.soma -= produto.preco;
     }
     
   }
