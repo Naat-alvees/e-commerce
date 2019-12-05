@@ -24,7 +24,7 @@ export class ListarPedidosComponent implements OnInit {
   cliente:any
   public id_clienteAtual: number;
 
-  displayedColumns: string[] = ['idpedido', 'titulo', 'precoFinal', 'tamanho', 'quantidade', 'fotos'];
+  displayedColumns: string[] = ['fotos','idpedido', 'titulo', 'precoFinal', 'tamanho', 'quantidade'];
   dataSource =  new MatTableDataSource();
 
   constructor(private clienteService: ApiService, private pedidoService: PedidoService) { }

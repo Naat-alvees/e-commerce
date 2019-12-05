@@ -96,6 +96,7 @@ export class ProdutosComponent implements OnInit {
       for (let i = 0; i < this.produtos.length; i++) {
         this.produtoService.getFotoPrincipalProduto(this.produtos[i].idproduto).subscribe(res => {
           this.produtos[i].fotoPrincipal = res;
+          
           // console.log(this.produtos[i].fotoPrincipal.data)
           
         }, err => {

@@ -48,12 +48,7 @@
                 </td>
             </ng-container>
 
-            <ng-container matColumnDef="delete">
-                <th mat-header-cell *matHeaderCellDef></th>
-                <td mat-cell *matCellDef="let element">
-                    <button type="button" class="btn btn-outline-danger btn-sm" (click)="openModalExcluir(template1, element)">Excluir</button>
-                </td>
-            </ng-container>
+            
         
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
@@ -151,44 +146,7 @@
     </div>
 </ng-template>
     
-<ng-template #template1>
-    <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" >Excluir Cliente</h5>
-            <button type="button" class="close pull-right" aria-label="Close" (click)="modalExcluir.hide()">
-                <span aria-hidden="true">&times;</span>
-            </button> 
-        </div>
 
-        <div class="modal-body">
-            <p>Você tem certeza que deseja excluir este cliente?</p>
-        </div>
-
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" (click)="modalExcluir.hide()">Cancelar</button>
-            <button type="button" class="btn btn-danger" (click)="excluirCliente(template2)">Excluir</button>
-          </div>
-    </div>
-</ng-template>    
-
-<ng-template #template2>
-    <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title">Cliente excluído</h5>
-            <button type="button" class="close pull-right" aria-label="Close" (click)="modalExcluir.hide()">
-                <span aria-hidden="true">&times;</span>
-            </button> 
-        </div>
-
-        <div class="modal-body">
-            <p>Cliente excluído com sucesso!</p>
-        </div>
-
-        <div class="modal-footer">
-            <button type="button" class="btn btn-success" (click)="modalExcluir.hide()">OK</button>
-          </div>
-    </div>
-</ng-template> 
 
 <ng-template #template3>
     <div class="modal-content">

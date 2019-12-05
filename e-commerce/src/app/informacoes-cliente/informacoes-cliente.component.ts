@@ -18,8 +18,6 @@ export class InformacoesClienteComponent implements OnInit {
   
 
   public modalEditar: BsModalRef;
-  public modalExcluir: BsModalRef;
-
 
   public formularioEditar: FormGroup = new FormGroup({
         'nome': new FormControl(null, [Validators.required]),
@@ -46,10 +44,7 @@ export class InformacoesClienteComponent implements OnInit {
     this.preencheFormularioEditar()
   }
 
-  openModalExcluirConta(template: TemplateRef<any>) {
-    this.modalExcluir = this.modalService.show(template, {class: 'modal-dialog-centered'});
-    this.idClienteAtual = this.cliente['idcliente']
-  }
+  
 
   preencheFormularioEditar(){
 
@@ -81,17 +76,6 @@ export class InformacoesClienteComponent implements OnInit {
     });
   }
 
-  excluirConta(template: TemplateRef<any>): void{
-    this.apiService.deleteCliente(this.idClienteAtual).subscribe(res =>{
-      //this.modalEditar = this.modalService.show(template, {class: 'modal-dialog-centered'});
-      this.modalExcluir.hide()
-      localStorage.setItem('estaLogado',JSON.stringify(false))
-      this.Logout()
-    }, (err) => {
-      console.log(err);
-    });
-
-  }
 
   Logout():void{
     this.loginService.logout()

@@ -4,14 +4,14 @@
     <div class="row">
         <div *ngFor="let produto of produtos" class="col-4">
             <div class="card" style="width: 22rem; margin-top: 20px; ">
-                <a [routerLink] = "['/descricao-produto', produto.idproduto]"><img [src]=  "produto.fotoPrincipal.data"  class="card-img-top" alt="..."></a>
+                <a [routerLink] = "['/descricao-produto', produto.idproduto]"><img [src]=  "produto.fotoPrincipal.data"  class="card-img-top" width="80px" height="400px"></a>
                 
-                <div class="card-body">
+                <div class="card-body text-center">
                     <a [routerLink] = "['/descricao-produto', produto.idproduto]"><h5 class="card-title mb-1"> {{ produto.titulo }}</h5></a>
-                    <p class="text-muted mb-1">{{ produto.descricao }}</p>
+                    <!-- <p class="text-muted mb-1">{{ produto.descricao }}</p> -->
                     <h5 class=""> R$ {{ produto.preco }}</h5>
                     <div *ngIf = "!administrador">
-                        <button type="button"  class="btn btn-success" [routerLink] = "['/descricao-produto', produto.idproduto]">Comprar agora</button> 
+                        <button type="button"  class="btn btn-success" [routerLink] = "['/descricao-produto', produto.idproduto]">Ver detalhes</button> 
                     </div>
                     <div *ngIf = "administrador">
                         <button type="button" class="btn btn-success" (click)="openModalEditar(template, produto)">Editar</button> 

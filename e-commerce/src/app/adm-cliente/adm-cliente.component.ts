@@ -27,7 +27,6 @@ export interface PeriodicElement {
 export class AdmClienteComponent implements OnInit {
 
   public modalEditar: BsModalRef;
-  public modalExcluir: BsModalRef;
 
   public administrador: boolean = true;
   public clientes: Cliente[];
@@ -46,7 +45,7 @@ export class AdmClienteComponent implements OnInit {
     'estado': new FormControl(null, [Validators.required]),
   });
 
-  displayedColumns: string[] = ['idcliente', 'nome', 'email', 'telefone', 'cidade', 'estado', 'edit', 'delete'];
+  displayedColumns: string[] = ['idcliente', 'nome', 'email', 'telefone', 'cidade', 'estado', 'edit'];
   dataSource =  new MatTableDataSource();
 
   constructor(private clienteService: ApiService,private modalService: BsModalService) { }
@@ -69,10 +68,6 @@ export class AdmClienteComponent implements OnInit {
     this.preencheFormularioEditar(clienteAtual)
   }
 
-  openModalExcluir(template: TemplateRef<any>, clienteAtual: Cliente) {
-    this.modalExcluir = this.modalService.show(template, {class: 'modal-dialog-centered'});
-    this.id_clienteAtual = clienteAtual.idcliente;
-  }
 
   preencheFormularioEditar(clienteAtual: Cliente){
     console.log(clienteAtual.idcliente)
@@ -101,15 +96,7 @@ export class AdmClienteComponent implements OnInit {
     });
   }
 
-  excluirCliente(template: TemplateRef<any>):void{
-    this.clienteService.deleteCliente(this.id_clienteAtual).subscribe( res => {
-      this.modalExcluir.hide();
-      this.modalExcluir = this.modalService.show(template, {class: 'modal-dialog-centered'});
-      this.carregaClientes();
-    }, (err) => {
-      console.log(err);
-    });
-  }
+  
 
   carregaClientes(){
     this.clienteService.getClientes().subscribe(res => {

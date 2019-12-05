@@ -25,7 +25,13 @@ export class DescricaoProdutoComponent implements OnInit {
     //Le o produto 
     this.produtoService.getProduto(this.id_produto).subscribe(res => {
       this.produto = res[0];
-      console.log(this.produto)
+      this.produtoService.getFotosProduto(this.id_produto).subscribe(res => {
+        this.produto.fotos = res;
+        console.log(this.produto.fotos)
+        }, err => {
+        console.log(err);
+      });
+
       }, err => {
       console.log(err);
     });
@@ -34,7 +40,6 @@ export class DescricaoProdutoComponent implements OnInit {
   addProdutoSacola(){
     console.log(this.produto)
     if(JSON.parse(localStorage.getItem('estaLogado'))){
-      //console.log(localStorage.getItem('idCliente'))
       let pedido: Pedido = new Pedido();
       pedido.idCliente = Number(localStorage.getItem('idCliente'));
       pedido.idProduto = this.id_produto;

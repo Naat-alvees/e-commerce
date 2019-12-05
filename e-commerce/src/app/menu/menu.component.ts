@@ -41,6 +41,8 @@ export class MenuComponent implements OnInit {
 
       this.nome = JSON.parse(localStorage.getItem('cliente'))
       this.idCliente = this.nome['idcliente']
+      var nomeAtualizado = this.nome['nome'].split(" ");
+      this.htmlStr = "<div *ngIf = 'islogged'> Olá " + nomeAtualizado[0] + "</div>"
       //this.exibirNome();
     }
   }
@@ -50,14 +52,14 @@ export class MenuComponent implements OnInit {
     this.router.navigate(['/pesquisar', this.pesquisar]);
   }
 
-  exibirNome(): void{
-      this.apiService.getCliente(this.idCliente).subscribe(res => {
-      localStorage.setItem('cliente',JSON.stringify(res[0]))
-      var nomeAtualizado = this.nome['nome'].split(" ");
-      this.htmlStr = "<div *ngIf = 'islogged'> Olá " + nomeAtualizado[0] + "</div>"
-      this.ngOnInit()
-    }, (err) => {
-      console.log(err);
-    });
-  }
+  // exibirNome(): void{
+  //     this.apiService.getCliente(this.idCliente).subscribe(res => {
+  //     localStorage.setItem('cliente',JSON.stringify(res[0]))
+  //     var nomeAtualizado = this.nome['nome'].split(" ");
+  //     this.htmlStr = "<div *ngIf = 'islogged'> Olá " + nomeAtualizado[0] + "</div>"
+  //     this.ngOnInit()
+  //   }, (err) => {
+  //     console.log(err);
+  //   });
+  // }
 }

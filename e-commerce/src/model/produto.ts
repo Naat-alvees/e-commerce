@@ -7,7 +7,7 @@ export class Produto{
     qtdP: number;
     qtdM: number;
     qtdG: number;
-    fotos: Array<Fotos>;
+    fotos: Array<Fotos> = new Array<Fotos>();
     fotoPrincipal: Fotos;
     categoria: string;
     quantidadeEscolhida: number = 1;

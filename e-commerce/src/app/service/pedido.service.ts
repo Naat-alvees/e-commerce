@@ -63,7 +63,7 @@ const httpOptions = {
   
     listarPedidoFinalizado (idCliente): Observable<Pedido[]> {
       console.log(idCliente);  
-      const url = `${apiUrl}/${idCliente}`;
+      const url = `${apiUrl}/finalizado/${idCliente}`;
         
         return this.http.get<Pedido[]>(url).pipe(
             catchError(this.handleError<Pedido[]>('listaPedido'))
