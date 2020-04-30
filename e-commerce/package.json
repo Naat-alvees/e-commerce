@@ -27,7 +27,7 @@
     "arraybuffer-to-string": "^1.0.2",
     "bootstrap": "^4.3.1",
     "hammerjs": "^2.0.8",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "ngx-bootstrap": "^5.2.0",
     "ngx-mask": "^8.1.6",
     "popper.js": "^1.16.0",
